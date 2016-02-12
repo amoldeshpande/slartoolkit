@@ -1,0 +1,2801 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SLARToolKit</name>
+    </assembly>
+    <members>
+        <member name="T:SLARToolKit.ArgbPixelReader">
+            <summary>
+            NyAR PixelReader implementaion for ARGB byte buffer
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.ArgbPixelReader.Buffer">
+            <summary>
+            The ARGB byte Buffer.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.ArgbPixelReader.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new ArgbPixelReader.
+            </summary>
+            <param name="width">The width of the buffer in pixels.</param>
+            <param name="height">The height of the buffer in pixels.</param>
+        </member>
+        <member name="M:SLARToolKit.ArgbPixelReader.#ctor(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="buffer">The ARGB byte buffer.</param>
+            <param name="width">The width of the buffer in pixels.</param>
+            <param name="height">The height of the buffer in pixels.</param>
+        </member>
+        <member name="M:SLARToolKit.ArgbPixelReader.getPixel(System.Int32,System.Int32,System.Int32[])">
+            <summary>
+            Gets the RGB color of a single pixel.
+            </summary>
+            <param name="x">The x coordinate.</param>
+            <param name="y">The y coordinate.</param>
+            <param name="rgb">The out paramter for the color as RGB.</param>
+        </member>
+        <member name="M:SLARToolKit.ArgbPixelReader.getPixelSet(System.Int32[],System.Int32[],System.Int32,System.Int32[])">
+            <summary>
+            Gets the RGB color of a pixel set.
+            </summary>
+            <param name="x">The x coordinates.</param>
+            <param name="y">The y coordinates.</param>
+            <param name="len">The length of the pixels to get.</param>
+            <param name="rgb">The out paramter for the colors as RGB.</param>
+        </member>
+        <member name="M:SLARToolKit.ArgbPixelReader.setPixel(System.Int32,System.Int32,System.Int32[])">
+            <summary>
+            Sets the RGB color of a single pixel.
+            </summary>
+            <param name="x">The x coordinate.</param>
+            <param name="y">The y coordinate.</param>
+            <param name="rgb">The color as RGB in the range 0, 255.</param>
+        </member>
+        <member name="M:SLARToolKit.ArgbPixelReader.setPixels(System.Int32[],System.Int32[],System.Int32,System.Int32[])">
+            <summary>
+            Sets the RGB color of a pixel set.
+            </summary>
+            <param name="x">The x coordinates.</param>
+            <param name="y">The y coordinates.</param>
+            <param name="len">The length of the pixels to set.</param>
+            <param name="rgb">The color as RGB in the range 0, 255.</param>
+        </member>
+        <member name="M:SLARToolKit.ArgbPixelReader.switchBuffer(System.Object)">
+            <summary>
+            Changes the internal ARGB byte buffer to another buffer.
+            Actually not used. Only to satisfy the interface.
+            </summary>
+            <param name="newBuffer">The new buffer that should be used.</param>
+        </member>
+        <member name="T:SLARToolKit.ArgbRaster">
+            <summary>
+            NyAR Raster implementation for an ARGB byte array.
+            </summary>
+        </member>
+        <member name="F:SLARToolKit.ArgbRaster.BufferType">
+            <summary>
+            The Buffer type (BYTE1D_X8R8G8B8_32)
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.ArgbRaster.Buffer">
+            <summary>
+            The ARGB byte Buffer.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.ArgbRaster.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new ARGB buffer,
+            </summary>
+            <param name="width">The width of the buffer that will be used for detection.</param>
+            <param name="height">The height of the buffer that will be used for detection.</param>
+        </member>
+        <member name="M:SLARToolKit.ArgbRaster.getRgbPixelReader">
+            <summary>
+            Gets the RGB pixel reader implementation.
+            </summary>
+            <returns>The RGB pixel reader implementation.</returns>
+        </member>
+        <member name="M:SLARToolKit.ArgbRaster.getBuffer">
+            <summary>
+            Returns the internal ARGB byte buffer.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SLARToolKit.ArgbRaster.hasBuffer">
+            <summary>
+            Determines if this instance has an internal buffer.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SLARToolKit.ArgbRaster.wrapBuffer(System.Object)">
+            <summary>
+            Changes the internal buffer to another buffer.
+            Actually not used. Only to satisfy the interface.
+            </summary>
+            <param name="newBuffer">The new buffer that should be used.</param>
+        </member>
+        <member name="T:SLARToolKit.XrgbIRaster">
+            <summary>
+            NyAR Raster implementation for the IXrgReader
+            </summary>
+        </member>
+        <member name="F:SLARToolKit.XrgbIRaster.BufferType">
+            <summary>
+            The Buffer type (BYTE1D_X8R8G8B8_32)
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.XrgbIRaster.XrgbReader">
+            <summary>
+            The data buffer.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.XrgbIRaster.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new WriteableBitmap buffer,
+            </summary>
+            <param name="width">The width of the buffer that will be used for detection.</param>
+            <param name="height">The height of the buffer that will be used for detection.</param>
+        </member>
+        <member name="M:SLARToolKit.XrgbIRaster.#ctor(SLARToolKit.IXrgbReader)">
+            <summary>
+            Initializes a new WriteableBitmap buffer,
+            </summary>
+            <param name="xrgbReader">The buffer reader.</param>
+        </member>
+        <member name="M:SLARToolKit.XrgbIRaster.getRgbPixelReader">
+            <summary>
+            Gets the RGB pixel reader implementation.
+            </summary>
+            <returns>The RGB pixel reader implementation.</returns>
+        </member>
+        <member name="M:SLARToolKit.XrgbIRaster.SetUpReaders">
+            <summary>
+            Convert to ARGB byte buffer and init the readers.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.XrgbIRaster.getBuffer">
+            <summary>
+            Returns the internal ARGB byte buffer.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SLARToolKit.XrgbIRaster.hasBuffer">
+            <summary>
+            Determines if this instance has an internal buffer.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SLARToolKit.XrgbIRaster.wrapBuffer(System.Object)">
+            <summary>
+            Changes the internal buffer to another ARGB byte buffer.
+            Actually not used. Only to satisfy the interface.
+            </summary>
+            <param name="newBuffer">The new buffer that should be used.</param>
+        </member>
+        <member name="T:SLARToolKit.Convert">
+            <summary>
+            Convert methods.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.Convert.ToMatrix3D(jp.nyatla.nyartoolkit.cs.core.NyARDoubleMatrix34)">
+            <summary>
+            Returns a Matrix3D from the NyARDoubleMatrix34 that is transposed and swapped.
+            </summary>
+            <param name="nymatrix">The matrix that should be converted.</param>
+            <returns>The converted matrix.</returns>
+        </member>
+        <member name="M:SLARToolKit.Convert.GetCameraFrustumRH(jp.nyatla.nyartoolkit.cs.core.NyARParam,System.Double,System.Double)">
+            <summary>
+            Returns a right-handed perspective transformation matrix built from the camera calibration data.
+            </summary>
+            <param name="arParameters">The camera calibration data.</param>
+            <param name="nearPlane">The near view plane of the frustum.</param>
+            <param name="farPlane">The far view plane of the frustum.</param>
+            <returns>The projection matrix.</returns>
+        </member>
+        <member name="T:SLARToolKit.AbstractMarkerDetector">
+            <summary>
+            Abstract base class of a marker detector.
+            </summary>
+        </member>
+        <member name="F:SLARToolKit.AbstractMarkerDetector.filteredBuffer">
+            <summary>
+            The filtered buffer.
+            </summary>
+        </member>
+        <member name="F:SLARToolKit.AbstractMarkerDetector.bufferWidth">
+            <summary>
+            The width of the bitmap buffer that is used for detection in screen coordinates.
+            </summary>
+        </member>
+        <member name="F:SLARToolKit.AbstractMarkerDetector.bufferHeight">
+            <summary>
+            The height of the bitmap buffer that is used for detection in screen coordinates.
+            </summary>
+        </member>
+        <member name="F:SLARToolKit.AbstractMarkerDetector.isAdaptive">
+            <summary>
+            Use adaptive thresholding.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.AbstractMarkerDetector.Projection">
+            <summary>
+            A right-handed perspective transformation matrix built from the camera calibration data.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.AbstractMarkerDetector.Threshold">
+            <summary>
+            The marker detection threshold. Default is 150.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.AbstractMarkerDetector.JitteringThreshold">
+            <summary>
+            Each frame the results are compared with the previous results.
+            If the distance is above this threshold, the new result is returned, otherwise the old. 
+            This prevents jittering;
+            Default is 0.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.AbstractMarkerDetector.#ctor">
+            <summary>
+            Creates a new instance of the AbstractMarkerDetector.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.AbstractMarkerDetector.Initialize(System.Int32,System.Int32,System.Double,System.Double,System.Collections.Generic.IList{SLARToolKit.Marker},System.Int32,System.Boolean)">
+            <summary>
+            Initializes the detector for single marker detection.
+            </summary>
+            <param name="width">The width of the buffer that will be used for detection.</param>
+            <param name="height">The height of the buffer that will be used for detection.</param>
+            <param name="nearPlane">The near view plane of the frustum.</param>
+            <param name="farPlane">The far view plane of the frustum.</param>
+            <param name="markers">A list of markers that should be detected.</param>
+            <param name="bufferType">The type of the buffer.</param>
+            <param name="adaptive">Performs an adaptive bitmap thresholding if set to true. Default = false.</param>
+        </member>
+        <member name="M:SLARToolKit.AbstractMarkerDetector.DetectAllMarkers(jp.nyatla.nyartoolkit.cs.core.INyARRgbRaster)">
+            <summary>
+            Detects all markers in the buffer.
+            </summary>
+            <param name="buffer">The buffer which should be searched for markers.</param>
+            <returns>The results of the detection.</returns>
+        </member>
+        <member name="T:SLARToolKit.BitmapMarkerDetector">
+            <summary>
+            Marker detector that searches markers in a WriteableBitmap.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.BitmapMarkerDetector.#ctor">
+            <summary>
+            Creates a new instance of the BitmapMarkerDetector.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.BitmapMarkerDetector.#ctor(System.Int32,System.Int32,System.Double,System.Double,System.Collections.Generic.IList{SLARToolKit.Marker},System.Boolean)">
+            <summary>
+            Creates a new instance of the BitmapMarkerDetector.
+            </summary>
+            <param name="width">The width of the bitmap that will be used for detection.</param>
+            <param name="height">The height of the bitmap that will be used for detection.</param>
+            <param name="nearPlane">The near view plane of the frustum.</param>
+            <param name="farPlane">The far view plane of the frustum.</param>
+            <param name="markers">A list of markers that should be detected.</param>
+            <param name="adaptive">Performs an adaptive bitmap thresholding if set to true. Default = false.</param>
+        </member>
+        <member name="M:SLARToolKit.BitmapMarkerDetector.Initialize(System.Int32,System.Int32,System.Double,System.Double,System.Collections.Generic.IList{SLARToolKit.Marker},System.Boolean)">
+            <summary>
+            Initializes the detector for multiple marker detection.
+            </summary>
+            <param name="width">The width of the bitmap that will be used for detection.</param>
+            <param name="height">The height of the bitmap that will be used for detection.</param>
+            <param name="nearPlane">The near view plane of the frustum.</param>
+            <param name="farPlane">The far view plane of the frustum.</param>
+            <param name="markers">A list of markers that should be detected.</param>
+            <param name="adaptive">Performs an adaptive bitmap thresholding if set to true. Default = false.</param>
+        </member>
+        <member name="M:SLARToolKit.BitmapMarkerDetector.Initialize(System.Int32,System.Int32,System.Double,System.Double,SLARToolKit.Marker[],System.Boolean)">
+            <summary>
+            Initializes the detector for single marker detection.
+            </summary>
+            <param name="width">The width of the bitmap that will be used for detection.</param>
+            <param name="height">The height of the bitmap that will be used for detection.</param>
+            <param name="nearPlane">The near view plane of the frustum.</param>
+            <param name="farPlane">The far view plane of the frustum.</param>
+            <param name="markers">Marker(s) that should be detected.</param>
+            <param name="adaptive">Performs an adaptive bitmap thresholding if set to true. Default = false.</param>
+        </member>
+        <member name="M:SLARToolKit.BitmapMarkerDetector.DetectAllMarkers(System.Windows.Media.Imaging.WriteableBitmap)">
+            <summary>
+            Detects all markers in the bitmap.
+            </summary>
+            <param name="bitmap">The WriteableBitmap which should be searched for markers.</param>
+            <returns>The results of the detection.</returns>
+        </member>
+        <member name="T:SLARToolKit.WriteableBitmapReader">
+            <summary>
+            Provides data in XRGB format from the WriteableBitmap.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.WriteableBitmapReader.Width">
+            <summary>
+            Thw width of the buffer.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.WriteableBitmapReader.Height">
+            <summary>
+            The height of the buffer.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.WriteableBitmapReader.GetPixel(System.Int32,System.Int32)">
+            <summary>
+            Gets the color as XRGB byte components for the given x and y coordinate. 
+            Only the RGB part will actually be used.
+            </summary>
+            <param name="x">The x coordinate.</param>
+            <param name="y">The y coordinate.</param>
+            <returns>The color at the x and y coordinate.</returns>
+        </member>
+        <member name="M:SLARToolKit.WriteableBitmapReader.GetPixels(System.Int32[],System.Int32[])">
+            <summary>
+            Gets the color as XRGB int components for a set of x and y coordinates. 
+            Only the RGB part will actually be used.
+            </summary>
+            <param name="x">The set of x coordinates.</param>
+            <param name="y">The set of y coordinates.</param>
+            <returns>The color at the x and y coordinates.</returns>
+        </member>
+        <member name="M:SLARToolKit.WriteableBitmapReader.GetAllPixels">
+            <summary>
+            Gets the color as XRGB byte components for the whole bitmap. 
+            Only the RGB part will actually be used.
+            </summary>
+            <returns>The color for the whole bitmap as int array.</returns>
+        </member>
+        <member name="M:SLARToolKit.WriteableBitmapReader.GetAllPixelsAsByte">
+            <summary>
+            Gets the color as XRGB bytes for the whole bitmap. 
+            Only the RGB part will actually be used.
+            </summary>
+            <returns>The color for the whole bitmap as int array.</returns>
+        </member>
+        <member name="T:SLARToolKit.CaptureSourceMarkerDetector">
+            <summary>
+            Marker detector that subsequently searches markers in the CaptureSource's data.
+            </summary>
+        </member>
+        <member name="E:SLARToolKit.CaptureSourceMarkerDetector.MarkersDetected">
+            <summary>
+            Event raised when a marker detection was completed. 
+            This event is raised in a background thread and not in the UI thread.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.CaptureSourceMarkerDetector.IsMultithreaded">
+            <summary>
+            If true, the detection will be performed multi-threaded. It's often faster, 
+            but it's not guaranteed that each frame is used for detection due to concurrency, 
+            which should not be a huge problem.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.CaptureSourceMarkerDetector.#ctor">
+            <summary>
+            Creates a new instance of the CaptureSourceMarkerDetector.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.CaptureSourceMarkerDetector.#ctor(System.Windows.Media.CaptureSource,System.Double,System.Double,System.Collections.Generic.IList{SLARToolKit.Marker},System.Boolean)">
+            <summary>
+            Creates a new instance of the CaptureSourceMarkerDetector.
+            </summary>
+            <param name="captureSource">The capture source.</param>
+            <param name="nearPlane">The near view plane of the frustum.</param>
+            <param name="farPlane">The far view plane of the frustum.</param>
+            <param name="markers">A list of markers that should be detected.</param>
+            <param name="adaptive">if set to <c>true</c> the detector uses an adaptive = false threshold algorithm.</param>
+        </member>
+        <member name="M:SLARToolKit.CaptureSourceMarkerDetector.Initialize(System.Windows.Media.CaptureSource,System.Double,System.Double,System.Collections.Generic.IList{SLARToolKit.Marker},System.Boolean)">
+            <summary>
+            Initializes the detector for multiple marker detection.
+            </summary>
+            <param name="captureSource">The capture source.</param>
+            <param name="nearPlane">The near view plane of the frustum.</param>
+            <param name="farPlane">The far view plane of the frustum.</param>
+            <param name="markers">A list of markers that should be detected.</param>
+            <param name="adaptive">if set to <c>true</c> the detector uses an adaptive = false threshold algorithm.</param>
+        </member>
+        <member name="M:SLARToolKit.CaptureSourceMarkerDetector.ChangeFormat(System.Int32,System.Int32)">
+            <summary>
+            Changes the format.
+            </summary>
+            <param name="width">The width of the buffer that will be used for detection.</param>
+            <param name="height">The height of the buffer that will be used for detection.</param>
+        </member>
+        <member name="M:SLARToolKit.CaptureSourceMarkerDetector.Start">
+            <summary>
+            Called when the detection starts.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.CaptureSourceMarkerDetector.DetectAllMarkers(System.Byte[],System.Int64)">
+            <summary>
+            Detects all markers in the bitmap.
+            </summary>
+            <param name="argbBuffer">The ARGB byte buffer containing the current frame.</param>
+            <param name="frameNumber">The current frame number of the buffer.</param>
+            <returns>The results of the detection.</returns>
+        </member>
+        <member name="M:SLARToolKit.CaptureSourceMarkerDetector.OnMarkersDetected(SLARToolKit.MarkerDetectionEventArgs)">
+            <summary>
+            Fires the MarkersDetected event.
+            </summary>
+            <param name="args">The MarkerDetectionEventArgs.</param>
+        </member>
+        <member name="T:SLARToolKit.MarkerDetectionEventArgs">
+            <summary>
+            Event args for marker detection results.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.MarkerDetectionEventArgs.DetectionResults">
+            <summary>
+            The marker detection results.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.MarkerDetectionEventArgs.FrameNumber">
+            <summary>
+            The frame number where the results where detected.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.MarkerDetectionEventArgs.BufferWidth">
+            <summary>
+            The width of the bitmap buffer that was used for detection in screen coordinates.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.MarkerDetectionEventArgs.BufferHeight">
+            <summary>
+            The height of the bitmap buffer that was used for detection in screen coordinates.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.MarkerDetectionEventArgs.#ctor(SLARToolKit.DetectionResults,System.Int32,System.Int32,System.Int64)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="detectionResults">The detection results.</param>
+            <param name="width">The width of the bitmap buffer that was used for detection in screen coordinates.</param>
+            <param name="height">The height of the bitmap buffer that was used for detection in screen coordinates.</param>
+            <param name="frameNumber">The frame number where the results where detected.</param>
+        </member>
+        <member name="T:SLARToolKit.DetectorVideoSink">
+            <summary>
+            VideoSink that triggers a marker detector.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.DetectorVideoSink.IsMultithreaded">
+            <summary>
+            If true, the detection will be called multi-threaded.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.DetectorVideoSink.#ctor(SLARToolKit.CaptureSourceMarkerDetector)">
+            <summary>
+            Initializes a new DetectorVideoSink.
+            </summary>
+            <param name="detector">The CaptureSourceMarkerDetector to use.</param>
+        </member>
+        <member name="M:SLARToolKit.DetectorVideoSink.OnCaptureStarted">
+            <summary>
+            Invoked when a video device starts capturing video data.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.DetectorVideoSink.OnCaptureStopped">
+            <summary>
+            Invoked when a video device stops capturing video data.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.DetectorVideoSink.OnFormatChange(System.Windows.Media.VideoFormat)">
+            <summary>
+            Invoked when a video device reports a  video format change.
+            </summary>
+            <param name="videoFormat">The new video format.</param>
+        </member>
+        <member name="M:SLARToolKit.DetectorVideoSink.OnSample(System.Int64,System.Int64,System.Byte[])">
+            <summary>
+            Invoked when a video device captures a complete video sample / frame.
+            </summary>
+            <param name="sampleTime">The time when the sample was captured in 100 nanosecond units.</param>
+            <param name="frameDuration"> The duration of the sample in 100 nanosecond units.</param>
+            <param name="sampleData">A byte stream containing video data, to be interpreted per the relevant video format information.</param>
+        </member>
+        <member name="M:SLARToolKit.DetectorVideoSink.ExecuteDetection(System.Byte[],System.Int64)">
+            <summary>
+            Executes the detection
+            </summary>
+            <param name="sampleData">The sample data form the webcam.</param>
+            <param name="frameNumber">The current frame number.</param>
+        </member>
+        <member name="T:SLARToolKit.IXrgbReader">
+            <summary>
+            An interface that provides data in XRGB format from a byte buffer.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.IXrgbReader.Width">
+            <summary>
+            Thw width of the buffer.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.IXrgbReader.Height">
+            <summary>
+            The height of the buffer.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.IXrgbReader.GetPixel(System.Int32,System.Int32)">
+            <summary>
+            Gets the color as XRGB byte components for the given x and y coordinate. 
+            Only the RGB part will actually be used.
+            </summary>
+            <param name="x">The x coordinate.</param>
+            <param name="y">The y coordinate.</param>
+            <returns>The color at the x and y coordinate.</returns>
+        </member>
+        <member name="M:SLARToolKit.IXrgbReader.GetPixels(System.Int32[],System.Int32[])">
+            <summary>
+            Gets the color as XRGB byte components for a set of x and y coordinates. 
+            Only the RGB part will actually be used.
+            </summary>
+            <param name="x">The set of x coordinates.</param>
+            <param name="y">The set of y coordinates.</param>
+            <returns>The color at the x and y coordinates.</returns>
+        </member>
+        <member name="M:SLARToolKit.IXrgbReader.GetAllPixels">
+            <summary>
+            Gets the color as XRGB byte components for the whole bitmap. 
+            Only the RGB part will actually be used.
+            </summary>
+            <returns>The color for the whole bitmap as int array.</returns>
+        </member>
+        <member name="M:SLARToolKit.IXrgbReader.GetAllPixelsAsByte">
+            <summary>
+            Gets the color as XRGB bytes for the whole bitmap. 
+            Only the RGB part will actually be used.
+            </summary>
+            <returns>The color for the whole bitmap as int array.</returns>
+        </member>
+        <member name="T:SLARToolKit.GenericMarkerDetector">
+            <summary>
+            A generic Marker detector that searches markers in data provided by an IXrgbReader.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.GenericMarkerDetector.#ctor">
+            <summary>
+            Creates a new instance of the GenericMarkerDetector.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.GenericMarkerDetector.#ctor(System.Int32,System.Int32,System.Double,System.Double,System.Collections.Generic.IList{SLARToolKit.Marker},System.Boolean)">
+            <summary>
+            Creates a new instance of the GenericMarkerDetector.
+            </summary>
+            <param name="width">The width of the bitmap that will be used for detection.</param>
+            <param name="height">The height of the bitmap that will be used for detection.</param>
+            <param name="nearPlane">The near view plane of the frustum.</param>
+            <param name="farPlane">The far view plane of the frustum.</param>
+            <param name="markers">A list of markers that should be detected.</param>
+            <param name="adaptive">Performs an adaptive bitmap thresholding if set to true. Default = false.</param>
+        </member>
+        <member name="M:SLARToolKit.GenericMarkerDetector.Initialize(System.Int32,System.Int32,System.Double,System.Double,System.Collections.Generic.IList{SLARToolKit.Marker},System.Boolean)">
+            <summary>
+            Initializes the detector for multiple marker detection.
+            </summary>
+            <param name="width">The width of the bitmap that will be used for detection.</param>
+            <param name="height">The height of the bitmap that will be used for detection.</param>
+            <param name="nearPlane">The near view plane of the frustum.</param>
+            <param name="farPlane">The far view plane of the frustum.</param>
+            <param name="markers">A list of markers that should be detected.</param>
+            <param name="adaptive">Performs an adaptive bitmap thresholding if set to true. Default = false.</param>
+        </member>
+        <member name="M:SLARToolKit.GenericMarkerDetector.Initialize(System.Int32,System.Int32,System.Double,System.Double,SLARToolKit.Marker[],System.Boolean)">
+            <summary>
+            Initializes the detector for single marker detection.
+            </summary>
+            <param name="width">The width of the bitmap that will be used for detection.</param>
+            <param name="height">The height of the bitmap that will be used for detection.</param>
+            <param name="nearPlane">The near view plane of the frustum.</param>
+            <param name="farPlane">The far view plane of the frustum.</param>
+            <param name="markers">Marker(s) that should be detected.</param>
+            <param name="adaptive">Performs an adaptive bitmap thresholding if set to true. Default = false.</param>
+        </member>
+        <member name="M:SLARToolKit.GenericMarkerDetector.DetectAllMarkers(SLARToolKit.IXrgbReader)">
+            <summary>
+            Detects all markers in the bitmap.
+            </summary>
+            <param name="xrgbReader">A generic XRGB buffer.</param>
+            <returns>The results of the detection.</returns>
+        </member>
+        <member name="T:SLARToolKit.DetectionResult">
+            <summary>
+            Result from an AR marker detection.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.DetectionResult.Marker">
+            <summary>
+            A reference to the found marker.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.DetectionResult.Confidence">
+            <summary>
+            The confidence / quality  of the result (Is this really the marker?). The maximum value is 1.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.DetectionResult.Transformation">
+            <summary>
+            The transformation matrix for the marker.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.DetectionResult.Square">
+            <summary>
+            The pixel coordinates where the square marker was found. 
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.DetectionResult.#ctor(SLARToolKit.Marker,System.Double,System.Windows.Media.Media3D.Matrix3D,SLARToolKit.Square)">
+            <summary>
+            Creates a new detection result
+            </summary>
+            <param name="marker">A reference to the found marker.</param>
+            <param name="confidence">The confidence / quality  of the result.</param>
+            <param name="transformation">The transformation matrix for the marker.</param>
+            <param name="square">The pixel coordinates where the square marker was found. </param>
+        </member>
+        <member name="T:SLARToolKit.DetectionResults">
+            <summary>
+            Results from an AR marker detection.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.DetectionResults.Count">
+            <summary>
+            The number of results that were found.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.DetectionResults.HasResults">
+            <summary>
+            True if this collection contains results.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.DetectionResults.Item(System.Int32)">
+            <summary>
+            Returns the result at index.
+            </summary>
+            <param name="index">The index of the result.</param>
+            <returns>A detection result.</returns>
+        </member>
+        <member name="P:SLARToolKit.DetectionResults.MostConfidableResult">
+            <summary>
+            Gets the detection result with the highest confidence.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.DetectionResults.#ctor">
+            <summary>
+            Creates a new detection result collection.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.DetectionResults.Add(SLARToolKit.DetectionResult)">
+            <summary>
+            Adds a detection result.
+            </summary>
+            <param name="result">The detection result.</param>
+        </member>
+        <member name="M:SLARToolKit.DetectionResults.Clear">
+            <summary>
+            Clears all results.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.DetectionResults.GetEnumerator">
+            <summary>
+            Gets an IEnumerator.
+            </summary>
+            <returns>An IEnumerator for the results.</returns>
+        </member>
+        <member name="M:SLARToolKit.DetectionResults.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Gets an IEnumerator.
+            </summary>
+            <returns>An IEnumerator for the results.</returns>
+        </member>
+        <member name="T:SLARToolKit.SquareDetectionListener">
+            <summary>
+            Square detection listener used for marker detetcion.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.SquareDetectionListener.Buffer">
+            <summary>
+            The bitmap buffer that is searched for the markers.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.SquareDetectionListener.Results">
+            <summary>
+            The detection results
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.SquareDetectionListener.#ctor(System.Collections.Generic.List{SLARToolKit.PatternMatcher},jp.nyatla.nyartoolkit.cs.core.NyARParam,jp.nyatla.nyartoolkit.cs.core.INyARColorPatt,jp.nyatla.nyartoolkit.cs.core.NyARMatchPattDeviationColorData)">
+            <summary>
+            Initialize a new SquareDetectionListener.
+            </summary>
+            <param name="patternMatchers">The pattern matchers with the marker data.</param>
+            <param name="cameraParameters">The camera calibration data.</param>
+            <param name="colorPattern">The used color pattern.</param>
+            <param name="patternMatchDeviationData">The pattern match deviation data.</param>
+        </member>
+        <member name="M:SLARToolKit.SquareDetectionListener.Reset">
+            <summary>
+            Resets the Results
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.SquareDetectionListener.onSquareDetect(jp.nyatla.nyartoolkit.cs.core.NyARSquareContourDetector,System.Int32[],System.Int32[],System.Int32,System.Int32[])">
+            <summary>
+            Listener method called when something was detected.
+            </summary>
+            <param name="callingDetector">The detector that called the method.</param>
+            <param name="coordsX">The four x coordinates of the detected marker square.</param>
+            <param name="coordsY">The four y coordinates of the detected marker square.</param>
+            <param name="coordCount">The number of coordinates.</param>
+            <param name="coordIndices">The indices of the coordiantes in the coords array.</param>
+        </member>
+        <member name="T:SLARToolKit.PatternMatcher">
+            <summary>
+            A pattern matcher derived from NyARMatchPatt_Color_WITHOUT_PCA, that has a public marker getter.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.PatternMatcher.Marker">
+            <summary>
+            The marker that was found.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.PatternMatcher.#ctor(SLARToolKit.Marker)">
+            <summary>
+            Creates a new instance of the PatternMatcher with a marker.
+            </summary>
+            <param name="marker">A marker.</param>
+        </member>
+        <member name="T:SLARToolKit.Marker">
+            <summary>
+            An AR marker.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.Marker.SegmentsX">
+            <summary>
+            The number of marker segments in x direction.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.Marker.SegmentsY">
+            <summary>
+            The number of marker segments in y direction.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.Marker.Width">
+            <summary>
+            The physical width of the marker in millimeters.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.Marker.NyMarker">
+            <summary>
+            The underlying Ny marker NyARCode
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.Marker.RectOffset">
+            <summary>
+            The offset of the marker used for detection.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.Marker.Name">
+            <summary>
+            The optional name of the marker.
+            </summary>
+        </member>
+        <member name="M:SLARToolKit.Marker.Load(System.IO.Stream,System.Int32,System.Int32,System.Double)">
+            <summary>
+            Creates a marker instance form the stream data.
+            </summary>
+            <param name="markerStream">The stream for the marker data.</param>
+            <param name="segmentsX">The number of marker segments in x direction.</param>
+            <param name="segmentsY">The number of marker segments in y direction.</param>
+            <param name="width">The physical width of the marker in millimeters.</param>
+            <returns>A new marker instance.</returns>
+        </member>
+        <member name="M:SLARToolKit.Marker.Load(System.IO.Stream,System.Int32,System.Int32,System.Double,System.String)">
+            <summary>
+            Creates a marker instance from the stream data.
+            </summary>
+            <param name="markerStream">The stream for the marker data.</param>
+            <param name="segmentsX">The number of marker segments in x direction.</param>
+            <param name="segmentsY">The number of marker segments in y direction.</param>
+            <param name="width">The physical width of the marker in millimeters.</param>
+            <param name="name">The name the marker should get.</param>
+            <returns>A new marker instance.</returns>
+        </member>
+        <member name="M:SLARToolKit.Marker.LoadFromResource(System.String,System.Int32,System.Int32,System.Double)">
+            <summary>
+            Creates a marker instance from the applications resource file.
+            </summary>
+            <param name="relativePath">Only the relative path to the resource file. The assembly name is retrieved automatically.</param>
+            <param name="segmentsX">The number of marker segments in x direction.</param>
+            <param name="segmentsY">The number of marker segments in y direction.</param>
+            <param name="width">The physical width of the marker in millimeters.</param>
+            <returns>A new marker instance.</returns>
+            <returns>The WriteableBitmap that was passed as parameter.</returns>
+        </member>
+        <member name="M:SLARToolKit.Marker.LoadFromResource(System.String,System.Int32,System.Int32,System.Double,System.String)">
+            <summary>
+            Creates a marker instance from the applications resource file.
+            </summary>
+            <param name="relativePath">Only the relative path to the resource file. The assembly name is retrieved automatically.</param>
+            <param name="segmentsX">The number of marker segments in x direction.</param>
+            <param name="segmentsY">The number of marker segments in y direction.</param>
+            <param name="width">The physical width of the marker in millimeters.</param>
+            <param name="name">The name the marker should get.</param>
+            <returns>A new marker instance.</returns>
+            <returns>The WriteableBitmap that was passed as parameter.</returns>
+        </member>
+        <member name="M:SLARToolKit.Marker.LoadFromResource(System.String,System.Int32,System.Int32,System.Double,System.Reflection.Assembly)">
+            <summary>
+            Creates a marker instance from the applications resource file.
+            </summary>
+            <param name="relativePath">Only the relative path to the resource file. The assembly name is retrieved automatically.</param>
+            <param name="segmentsX">The number of marker segments in x direction.</param>
+            <param name="segmentsY">The number of marker segments in y direction.</param>
+            <param name="width">The physical width of the marker in millimeters.</param>
+            <param name="assembly">The assembly that will be used to generate the right URI.</param>
+            <returns>A new marker instance.</returns>
+            <returns>The WriteableBitmap that was passed as parameter.</returns>
+        </member>
+        <member name="M:SLARToolKit.Marker.ToString">
+            <summary>
+            Returns the name of the marker.
+            </summary>
+            <returns>The name of the marker.</returns>
+        </member>
+        <member name="T:SLARToolKit.Square">
+            <summary>
+            A square with 4 points.
+            </summary>
+        </member>
+        <member name="F:SLARToolKit.Square.P1">
+            <summary>
+            The first point of the square.
+            </summary>
+        </member>
+        <member name="F:SLARToolKit.Square.P2">
+            <summary>
+            The second point of the square.
+            </summary>
+        </member>
+        <member name="F:SLARToolKit.Square.P3">
+            <summary>
+            The third point of the square.
+            </summary>
+        </member>
+        <member name="F:SLARToolKit.Square.P4">
+            <summary>
+            The fourth point of the square.
+            </summary>
+        </member>
+        <member name="P:SLARToolKit.Square.Center">
+            <summary>
+            Calculates the center point of this rectangle.
+            </summary>
+            <returns>The center of the rectangle.</returns>
+        </member>
+        <member name="M:SLARToolKit.Square.#ctor(System.Windows.Point,System.Windows.Point,System.Windows.Point,System.Windows.Point)">
+            <summary>
+            Creates a new square.
+            </summary>
+            <param name="p1">The first point of the square.</param>
+            <param name="p2">The second point of the square.</param>
+            <param name="p3">The third point of the square.</param>
+            <param name="p4">The fourth point of the square.</param>
+        </member>
+        <member name="M:SLARToolKit.Square.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a new square.
+            </summary>
+            <param name="p1x">The x-coordinate for the first point of the square.</param>
+            <param name="p1y">The y-coordinate for the first point of the square.</param>
+            <param name="p2x">The x-coordinate for the second point of the square.</param>
+            <param name="p2y">The y-coordinate for the second point of the square.</param>
+            <param name="p3x">The x-coordinate for the third point of the square.</param>
+            <param name="p3y">The y-coordinate for the third point of the square.</param>
+            <param name="p4x">The x-coordinate for the fourth point of the square.</param>
+            <param name="p4y">The y-coordinate for the fourth point of the square.</param>
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARHistogramAnalyzer_Threshold.getThreshold(jp.nyatla.nyartoolkit.cs.core.NyARHistogram)">
+            ヒストグラムから閾値探索をします。
+            @param i_histogram
+            ヒストグラム
+            @return
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARHistogramAnalyzer_DiscriminantThreshold">
+            判別法で閾値を求めます。
+            画素数が2048^2に満たない場合は、fixedint(24-8)で計算できます。
+            @param i_histogram
+            @param o_value
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARHistogramAnalyzer_DiscriminantThreshold.getLastScore">
+            最後に実行したgetThresholdのスコアを返します。
+            スコアは正規化された分離度。1.0-0.0の範囲を取る。0.7以上なら概ね双峰的です。
+            @return
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARHistogramAnalyzer_KittlerThreshold">
+            kittlerThresholdの方式で閾値を求めます。
+            @param i_histogram
+            @return
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARHistogramAnalyzer_SlidePTile">
+            明点と暗点を双方向からPタイル法でカウントして、その中央値を閾値とする。
+            
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRasterAnalyzer_Histogram">
+            画像のヒストグラムを計算します。
+            RGBの場合、(R+G+B)/3のヒストグラムを計算します。
+            
+            
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARRasterAnalyzer_Histogram._vertical_skip">
+            ヒストグラム解析の縦方向スキップ数。継承クラスはこのライン数づつ
+            スキップしながらヒストグラム計算を行うこと。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRasterAnalyzer_Histogram.analyzeRaster(jp.nyatla.nyartoolkit.cs.core.INyARRaster,jp.nyatla.nyartoolkit.cs.core.NyARHistogram)">
+            o_histogramにヒストグラムを出力します。
+            @param i_input
+            @param o_histogram
+            @return
+            @throws NyARException
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRasterThresholdAnalyzer_SlidePTile">
+            明点と暗点をPタイル法で検出して、その中央値を閾値とする。
+            
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARLabelingImage">
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARLabelingImage.drawFrameEdge">
+            エッジを書きます。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARLabelingImage.getIndexArray">
+            ラベリング結果がインデックステーブルを持つ場合、その配列を返します。
+            持たない場合、nullを返します。
+            
+            値がnullの時はラベル番号そのものがラスタに格納されていますが、
+            null以外の時はラスタに格納されているのはインデクス番号です。
+            
+            インデクス番号とラベル番号の関係は、以下の式で表されます。
+            ラベル番号:=value[インデクス番号]
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARLabelingImage.getTopClipTangentX(jp.nyatla.nyartoolkit.cs.core.NyARLabelingLabel)">
+            i_labelのラベルの、クリップ領域が上辺に接しているx座標を返します。
+            @param i_index
+            @return
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARLabeling_ARToolKit">
+            ARToolKit互換のラベリングクラスです。 ARToolKitと同一な評価結果を返します。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARLabeling_ARToolKit.labeling(jp.nyatla.nyartoolkit.cs.core.NyARBinRaster,jp.nyatla.nyartoolkit.cs.core.NyARLabelingImage)">
+            static ARInt16 *labeling2( ARUint8 *image, int thresh,int *label_num, int **area, double **pos, int **clip,int **label_ref, int LorR ) 関数の代替品
+            ラスタimageをラベリングして、結果を保存します。 Optimize:STEP[1514->1493]
+            
+            @param i_raster
+            @throws NyARException
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARWorkHolder">
+            NyARLabeling_O2のworkとwork2を可変長にするためのクラス
+            
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARWorkHolder.#ctor(System.Int32)">
+            最大i_holder_size個の動的割り当てバッファを準備する。
+            
+            @param i_holder_size
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARWorkHolder.reserv(System.Int32)">
+            i_indexで指定した番号までのバッファを準備する。
+            
+            @param i_index
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARLabelInfoStack`1">
+            NyLabelの予約型動的配列
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARLabelInfoStack`1.sortByArea">
+            エリアの大きい順にラベルをソートします。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.LabelOverlapChecker`1">
+            ラベル同士の重なり（内包関係）を調べるクラスです。 
+            ラベルリストに内包するラベルを蓄積し、それにターゲットのラベルが内包されているか を確認します。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.LabelOverlapChecker`1.push(`0)">
+            チェック対象のラベルを追加する。
+            
+            @param i_label_ref
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.LabelOverlapChecker`1.check(`0)">
+            現在リストにあるラベルと重なっているかを返す。
+            
+            @param i_label
+            @return 何れかのラベルの内側にあるならばfalse,独立したラベルである可能性が高ければtrueです．
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.LabelOverlapChecker`1.setMaxLabels(System.Int32)">
+            最大i_max_label個のラベルを蓄積できるようにオブジェクトをリセットする
+            
+            @param i_max_label
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.RleElement">
+            [strage class]
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARLabeling_Rle.setAreaRange(System.Int32,System.Int32)">
+            対象サイズ
+            @param i_max
+            @param i_min
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:jp.nyatla.nyartoolkit.cs.core.NyARLabeling_Rle.toRel(System.Int32[],System.Int32,System.Int32,jp.nyatla.nyartoolkit.cs.core.RleElement[],System.Int32)" -->
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARLabeling_Rle.labeling(jp.nyatla.nyartoolkit.cs.core.NyARBinRaster,System.Int32,System.Int32,jp.nyatla.nyartoolkit.cs.core.RleLabelFragmentInfoStack)">
+            単一閾値を使ってGSラスタをBINラスタに変換しながらラベリングします。
+            @param i_gs_raster
+            @param i_top
+            @param i_bottom
+            @param o_stack
+            @return
+            @throws NyARException
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:jp.nyatla.nyartoolkit.cs.core.NyARLabeling_Rle.labeling(jp.nyatla.nyartoolkit.cs.core.NyARGrayscaleRaster,System.Int32,System.Int32,System.Int32,jp.nyatla.nyartoolkit.cs.core.RleLabelFragmentInfoStack)" -->
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.INyARMatchPatt">
+            ARCodeとINyARColorPattの間で一致計算をするインタフェイスです。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARMatchPattDeviationBlackWhiteData">
+             INyARMatchPattのColor差分ラスタを格納するクラスです。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMatchPattDeviationBlackWhiteData.setRaster(jp.nyatla.nyartoolkit.cs.core.INyARRaster)">
+            XRGB[width*height]の配列から、パターンデータを構築。
+            @param i_buffer
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARMatchPattDeviationColorData">
+             INyARMatchPattのRGBColor差分データを格納するクラスです。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMatchPattDeviationColorData.setRaster(jp.nyatla.nyartoolkit.cs.core.INyARRaster)">
+            NyARRasterからパターンデータをセットします。
+            この関数は、データを元に所有するデータ領域を更新します。
+            @param i_buffer
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARMatchPattResult">
+             [[Strage class]]
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARMatchPatt_BlackWhite">
+            AR_TEMPLATE_MATCHING_BWと同等のルールで マーカを評価します。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMatchPatt_BlackWhite.setARCode(jp.nyatla.nyartoolkit.cs.core.NyARCode)">
+            比較対象のARCodeをセットします。
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMatchPatt_BlackWhite.evaluate(jp.nyatla.nyartoolkit.cs.core.NyARMatchPattDeviationBlackWhiteData,jp.nyatla.nyartoolkit.cs.core.NyARMatchPattResult)">
+            現在セットされているコードとパターンを比較して、結果値o_resultを更新します。
+            比較部分はFor文を16倍展開してあります。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARMatchPatt_Color_WITHOUT_PCA">
+            AR_TEMPLATE_MATCHING_COLORかつAR_MATCHING_WITHOUT_PCAと同等のルールで マーカーを評価します。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMatchPatt_Color_WITHOUT_PCA.setARCode(jp.nyatla.nyartoolkit.cs.core.NyARCode)">
+            比較対象のARCodeをセットします。
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMatchPatt_Color_WITHOUT_PCA.evaluate(jp.nyatla.nyartoolkit.cs.core.NyARMatchPattDeviationColorData,jp.nyatla.nyartoolkit.cs.core.NyARMatchPattResult)">
+            現在セットされているARコードとi_pattを比較します。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARCodeFileReader.loadFromARToolKitFormFile(System.IO.StreamReader,jp.nyatla.nyartoolkit.cs.core.NyARRaster[])">
+            ARコードファイルからデータを読み込んでo_raster[4]に格納します。
+            @param i_stream
+            @param o_raster
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARCodeFileReader.loadFromARToolKitFormFile(System.IO.StreamReader,jp.nyatla.nyartoolkit.cs.core.NyARCode)">
+            ARコードファイルからデータを読み込んでo_codeに格納します。
+            @param i_stream
+            @param o_code
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARCodeFileReader.readBlock(System.String[],System.Int32,System.Int32,System.Int32,System.Int32[])">
+            1ブロック分のXRGBデータをi_stからo_bufへ読みだします。
+            @param i_st
+            @param o_buf
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARCode">
+            ARToolKitのマーカーコードを1個保持します。
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARMat">
+            ARMat構造体に対応するクラス typedef struct { double *m; int row; int clm; }ARMat;
+            
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARMat._m">
+            配列サイズと行列サイズは必ずしも一致しないことに注意 返された配列のサイズを行列の大きさとして使わないこと！
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.#ctor">
+            デフォルトコンストラクタは機能しません。
+            
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.getClm">
+            行列の列数を返します。
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.getRow">
+            行列の行数を返します。
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.realloc(System.Int32,System.Int32)">
+            行列のサイズを変更します。
+            実行後、行列の各値は不定になります。
+            @param i_row
+            @param i_clm
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.matrixMul(jp.nyatla.nyartoolkit.cs.core.NyARMat,jp.nyatla.nyartoolkit.cs.core.NyARMat)">
+            i_mat_aとi_mat_bの積を計算して、thisへ格納します。
+            @param i_mat_a
+            @param i_mat_b
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.matrixSelfInv">
+            逆行列を計算して、thisへ格納します。
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.zeroClear">
+            行列をゼロクリアする。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.copyFrom(jp.nyatla.nyartoolkit.cs.core.NyARMat)">
+            i_copy_fromの内容を自分自身にコピーします。 高さ・幅は同一で無いと失敗します。
+            
+            @param i_copy_from
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.matrixTrans(jp.nyatla.nyartoolkit.cs.core.NyARMat,jp.nyatla.nyartoolkit.cs.core.NyARMat)">
+            sourceの転置行列をdestに得る。arMatrixTrans()の代替品
+            
+            @param dest
+            @param source
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.matrixUnit(jp.nyatla.nyartoolkit.cs.core.NyARMat)">
+            unitを単位行列に初期化する。arMatrixUnitの代替品
+            
+            @param unit
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.matrixDup(jp.nyatla.nyartoolkit.cs.core.NyARMat)">
+            sourceの内容を自身に複製する。 Optimized 2008.04.19
+            
+            @param i_source
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.PCA_EX(jp.nyatla.nyartoolkit.cs.core.NyARVec)">
+            static int EX( ARMat *input, ARVec *mean )の代替関数 Optimize:STEP:[144->110]
+            
+            @param input
+            @param mean
+            @return
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.PCA_CENTER(jp.nyatla.nyartoolkit.cs.core.NyARMat,jp.nyatla.nyartoolkit.cs.core.NyARVec)">
+            static int CENTER( ARMat *inout, ARVec *mean )の代替関数
+            
+            @param inout
+            @param mean
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.PCA_x_by_xt(jp.nyatla.nyartoolkit.cs.core.NyARMat,jp.nyatla.nyartoolkit.cs.core.NyARMat)">
+            int x_by_xt( ARMat *input, ARMat *output )の代替関数
+            
+            @param input
+            @param output
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.PCA_xt_by_x(jp.nyatla.nyartoolkit.cs.core.NyARMat,jp.nyatla.nyartoolkit.cs.core.NyARMat)">
+            static int xt_by_x( ARMat *input, ARMat *output )の代替関数
+            Optimize:2008.04.19
+            
+            @param input
+            @param i_output
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.PCA_QRM(jp.nyatla.nyartoolkit.cs.core.NyARVec)">
+            static int QRM( ARMat *a, ARVec *dv )の代替関数
+            
+            @param a
+            @param dv
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.flipRow(System.Int32,System.Int32)">
+            i_row_1番目の行と、i_row_2番目の行を入れ替える。
+            
+            @param i_row_1
+            @param i_row_2
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.PCA_EV_create(jp.nyatla.nyartoolkit.cs.core.NyARMat,jp.nyatla.nyartoolkit.cs.core.NyARMat,jp.nyatla.nyartoolkit.cs.core.NyARMat,jp.nyatla.nyartoolkit.cs.core.NyARVec)">
+            static int EV_create( ARMat *input, ARMat *u, ARMat *output, ARVec *ev
+            )の代替関数
+            
+            @param input
+            @param u
+            @param output
+            @param ev
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.PCA_PCA(jp.nyatla.nyartoolkit.cs.core.NyARMat,jp.nyatla.nyartoolkit.cs.core.NyARVec)">
+            static int PCA( ARMat *input, ARMat *output, ARVec *ev )
+            
+            @param output
+            @param o_ev
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.pca(jp.nyatla.nyartoolkit.cs.core.NyARMat,jp.nyatla.nyartoolkit.cs.core.NyARVec,jp.nyatla.nyartoolkit.cs.core.NyARVec)">
+            主成分分析を実行して、結果をthisと引数へ格納します。
+            @param o_evec
+            @param o_ev
+            @param o_mean
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMat.vecTridiagonalize(jp.nyatla.nyartoolkit.cs.core.NyARVec,jp.nyatla.nyartoolkit.cs.core.NyARVec,System.Int32)">
+            arVecTridiagonalize関数の代替品 a,d,e間で演算をしてる。何をどうしているかはさっぱりさっぱり
+            
+            @param a
+            @param d
+            @param e
+            @param i_e_start
+                       演算開始列(よくわからないけどarVecTridiagonalizeの呼び出し元でなんかしてる)
+            @return
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARVec.realloc(System.Int32)">
+            i_clmサイズの列を格納できるように列サイズを変更します。 実行後、列の各値は不定になります。
+            
+            @param i_clm
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARVec.arVecDisp">
+            arVecDispの代替品
+            
+            @param value
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARVec.vecInnerproduct(jp.nyatla.nyartoolkit.cs.core.NyARVec,System.Int32)">
+            arVecInnerproduct関数の代替品
+            
+            @param x
+            @param y
+            @param i_start
+                       演算開始列(よくわからないけどarVecTridiagonalizeの呼び出し元でなんかしてる)
+            @return
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARVec.vecHousehold(System.Int32)">
+            double arVecHousehold関数の代替品
+            
+            @param x
+            @param i_start
+                       演算開始列(よくわからないけどarVecTridiagonalizeの呼び出し元でなんかしてる)
+            @return
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARVec.setNewArray(System.Double[],System.Int32)">
+            現在ラップしている配列を取り外して、新しい配列をラップします。
+            
+            @param i_v
+            @param i_clm
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARVersion">
+            ARUint32 arGetVersion(char **versionStringRef);
+            関数の置き換え
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARCameraDistortionFactor">
+            カメラの歪み成分を格納するクラスと、補正関数群
+            http://www.hitl.washington.edu/artoolkit/Papers/ART02-Tutorial.pdf
+            11ページを読むといいよ。
+            
+            x=x(xi-x0),y=s(yi-y0)
+            d^2=x^2+y^2
+            p=(1-fd^2)
+            xd=px+x0,yd=py+y0
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARCameraDistortionFactor.setValue(System.Double[])">
+            配列の値をファクタ値としてセットする。
+            @param i_factor
+            4要素以上の配列
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARCameraDistortionFactor.ideal2Observ(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d)">
+            int arParamIdeal2Observ( const double dist_factor[4], const double ix,const double iy,double *ox, double *oy ) 関数の代替関数
+            
+            @param i_in
+            @param o_out
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARCameraDistortionFactor.ideal2ObservBatch(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d[],jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d[],System.Int32)">
+            ideal2Observをまとめて実行します。
+            @param i_in
+            @param o_out
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARCameraDistortionFactor.observ2Ideal(System.Double,System.Double,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d)">
+            int arParamObserv2Ideal( const double dist_factor[4], const double ox,const double oy,double *ix, double *iy );
+            
+            @param ox
+            @param oy
+            @param ix
+            @param iy
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARCameraDistortionFactor.observ2IdealBatch(System.Int32[],System.Int32[],System.Int32,System.Int32,System.Double[],System.Double[])">
+            指定範囲のobserv2Idealをまとめて実行して、結果をo_idealに格納します。
+            @param i_x_coord
+            @param i_y_coord
+            @param i_start
+                       coord開始点
+            @param i_num
+                       計算数
+            @param o_ideal
+                       出力バッファ[i_num][2]であること。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARParam">
+             typedef struct { int xsize, ysize; double mat[3][4]; double dist_factor[4]; } ARParam;
+             NyARの動作パラメータを格納するクラス
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARParam.loadARParamFromFile(System.String)">
+            ARToolKit標準ファイルから1個目の設定をロードする。
+            
+            @param i_filename
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARParam.changeScreenSize(System.Int32,System.Int32)">
+            int arParamChangeSize( ARParam *source, int xsize, int ysize, ARParam *newparam );
+            関数の代替関数 サイズプロパティをi_xsize,i_ysizeに変更します。
+            @param i_xsize
+            @param i_ysize
+            @param newparam
+            @return
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARParam.loadARParam(System.IO.BinaryReader)">
+            int arParamLoad( const char *filename, int num, ARParam *param, ...);
+            i_streamの入力ストリームからi_num個の設定を読み込み、パラメタを配列にして返します。
+            
+            @param i_stream
+            @throws Exception
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARPerspectiveProjectionMatrix">
+             透視変換行列を格納します。
+             http://www.hitl.washington.edu/artoolkit/Papers/ART02-Tutorial.pdf
+             7ページを見るといいよ。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARPerspectiveProjectionMatrix.decompMat(jp.nyatla.nyartoolkit.cs.core.NyARMat,jp.nyatla.nyartoolkit.cs.core.NyARMat)">
+            int arParamDecompMat( double source[3][4], double cpara[3][4], double trans[3][4] ); 関数の置き換え Optimize STEP[754->665]
+            
+            @param o_cpara
+                       戻り引数。3x4のマトリクスを指定すること。
+            @param o_trans
+                       戻り引数。3x4のマトリクスを指定すること。
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARPerspectiveProjectionMatrix.changeScale(System.Double)">
+            int arParamChangeSize( ARParam *source, int xsize, int ysize, ARParam *newparam );
+            Matrixのスケールを変換します。
+            @param i_scale
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARPerspectiveProjectionMatrix.projectionConvert(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d)">
+            現在の行列で３次元座標を射影変換します。
+            @param i_3dvertex
+            @param o_2d
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARPca2d.pca(System.Double[],System.Double[],System.Int32,jp.nyatla.nyartoolkit.cs.core.NyARDoubleMatrix22,System.Double[],System.Double[])">
+            通常のPCA
+            @param i_x
+            @param i_y
+            @param i_start
+            @param i_number_of_point
+            @param o_evec
+            @param o_ev
+            @param o_mean
+            @throws NyARException
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARPca2d_MatrixPCA">
+            NyARMatrixを利用した主成分分析
+            ARToolKitと同じ処理をします。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARPca2d_MatrixPCA_O2.PCA_QRM(jp.nyatla.nyartoolkit.cs.core.NyARDoubleMatrix22,System.Double[])">
+            static int QRM( ARMat *a, ARVec *dv )の代替関数
+            
+            @param a
+            @param dv
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARPca2d_MatrixPCA_O2.PCA_PCA(System.Double[],System.Double[],System.Int32,jp.nyatla.nyartoolkit.cs.core.NyARDoubleMatrix22,System.Double[],System.Double[])">
+            static int PCA( ARMat *input, ARMat *output, ARVec *ev )
+            
+            @param output
+            @param o_ev
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARColorPatt.pickFromRaster(jp.nyatla.nyartoolkit.cs.core.INyARRgbRaster,jp.nyatla.nyartoolkit.cs.core.NyARIntPoint2d[])">
+            ラスタイメージからi_square部分のカラーパターンを抽出して、thisメンバに格納します。
+            
+            @param image
+            Source raster object.
+            ----
+            抽出元のラスタオブジェクト
+            @param i_vertexs
+            Vertexes of the square. Number of element must be 4.
+            ----
+            射影変換元の４角形を構成する頂点群頂群。要素数は4であること。
+            @return
+            True if sucessfull; otherwise false.
+            ----
+            ラスターの取得に成功するとTRUE/失敗するとFALSE
+            @throws NyARException
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_O3">
+            24ビットカラーのマーカーを保持するために使うクラスです。 このクラスは、ARToolkitのパターンと、ラスタから取得したパターンを保持します。
+            演算順序を含む最適化をしたもの
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_O3.get_cpara(jp.nyatla.nyartoolkit.cs.core.NyARIntPoint2d[],jp.nyatla.nyartoolkit.cs.core.NyARMat)">
+            @param world
+            @param vertex
+            @param o_para
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_O3.pickFromRaster(jp.nyatla.nyartoolkit.cs.core.INyARRgbRaster,jp.nyatla.nyartoolkit.cs.core.NyARIntPoint2d[])">
+            @see INyARColorPatt#pickFromRaster
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_Perspective">
+             遠近法を使ったパースペクティブ補正をかけて、ラスタ上の四角形から
+             任意解像度の矩形パターンを作成します。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_Perspective.#ctor(System.Int32,System.Int32,System.Int32)">
+            例えば、64
+            @param i_width
+            取得画像の解像度幅
+            @param i_height
+            取得画像の解像度高さ
+            @param i_point_per_pix
+            1ピクセルあたりの縦横サンプリング数。2なら2x2=4ポイントをサンプリングする。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_Perspective.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            例えば、64
+            @param i_width
+            取得画像の解像度幅
+            @param i_height
+            取得画像の解像度高さ
+            @param i_edge_percentage
+            エッジ幅の割合(ARToolKit標準と同じなら、25)
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_Perspective.setEdgeSize(System.Int32,System.Int32,System.Int32)">
+            矩形領域のエッジサイズを指定します。
+            エッジの計算方法は以下の通りです。
+            1.マーカ全体を(i_x_edge*2+width)x(i_y_edge*2+height)の解像度でパラメタを計算します。
+            2.ピクセルの取得開始位置を(i_x_edge/2,i_y_edge/2)へ移動します。
+            3.開始位置から、width x height個のピクセルを取得します。
+            
+            ARToolKit標準マーカの場合は、width/2,height/2を指定してください。
+            @param i_x_edge
+            @param i_y_edge
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_Perspective.pickFromRaster(jp.nyatla.nyartoolkit.cs.core.INyARRgbRaster,jp.nyatla.nyartoolkit.cs.core.NyARIntPoint2d[])">
+            @see INyARColorPatt#pickFromRaster
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.pickFromRaster_N">
+             汎用ピックアップ関数
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.pickFromRaster_1">
+             チェックデジット:4127936236942444153655776299710081208144715171590159116971715177917901890204024192573274828522936312731813388371037714083
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.pickFromRaster_2x">
+             2x2
+             チェックデジット:207585881161241401501892422483163713744114324414474655086016467027227327958629279571017
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.pickFromRaster_4x">
+             4x4
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_Perspective_O2">
+             遠近法を使ったパースペクティブ補正をかけて、ラスタ上の四角形から
+             任意解像度の矩形パターンを作成します。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_Perspective_O2.pickFromRaster(jp.nyatla.nyartoolkit.cs.core.INyARRgbRaster,jp.nyatla.nyartoolkit.cs.core.NyARIntPoint2d[])">
+            @see INyARColorPatt#pickFromRaster
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_PseudoAffine">
+             疑似アフィン変換を使用して、ラスタ上の四角形から任意解像度
+             の矩形パターンを作成します。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_PseudoAffine.#ctor(System.Int32,System.Int32)">
+            @param i_width
+            @param i_height
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_PseudoAffine.calcPara(jp.nyatla.nyartoolkit.cs.core.NyARIntPoint2d[],System.Double[])">
+            変換行列と頂点座標から、パラメータを計算
+            o_paramの[0..3]にはXのパラメタ、[4..7]にはYのパラメタを格納する。
+            @param i_vertex
+            @param pa
+            @param pb
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_PseudoAffine._convparam">
+            疑似アフィン変換の変換パラメタ
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARColorPatt_PseudoAffine.pickFromRaster(jp.nyatla.nyartoolkit.cs.core.INyARRgbRaster,jp.nyatla.nyartoolkit.cs.core.NyARIntPoint2d[])">
+            @see INyARColorPatt#pickFromRaster
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_ConstantThreshold.#ctor" -->
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_CustomToneTable">
+            色調テーブルを使用したフィルターです。
+            色調テーブルクラスのベースクラスです。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_EqualizeHist">
+             ヒストグラムを平滑化します。
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_GaussianSmooth">
+            平滑化フィルタ
+            Gaussianフィルタで画像を平滑化します。
+            カーネルサイズは3x3です。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_Reverse">
+             ネガポジ反転フィルタ。
+             画像の明暗を反転します。
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_Rgb2Hsv">
+             RGB画像をHSV画像に変換します。
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_Roberts">
+            Roberts法で勾配を計算します。
+            出力画像のピクセルは、X,Y軸方向に-1され、下端、右端の画素は無効な値が入ります。
+            X=|-1, 0|  Y=|0,-1|
+              | 0, 1|    |1, 0|
+            V=sqrt(X^2+Y+2)/2
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_SimpleSmooth">
+            平滑化フィルタ
+            画像を平滑化します。
+            カーネルサイズは3x3です。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_ToneTable">
+            色調テーブルを使用したフィルターです。
+            基本的な関数テーブルで色調テーブルを作成できます。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_ToneTable.setLine(System.Int32,System.Int32,System.Double)">
+            点x,yを通過する、傾きi_aの直線をテーブルに書き込みます。
+            @param i_x
+            @param i_y
+            @param i_a
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_ToneTable.setLine(System.Double)" -->
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_ToneTable.setSigmoid(System.Int32,System.Int32,System.Double)">
+            点 i_x,i_yを中心とする、ゲインi_gainのシグモイド関数をテーブルに書き込みます。
+            @param i_x
+            @param i_y
+            @param i_gain
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_ToneTable.setGamma(System.Double)">
+            ガンマ補正値をテーブルに書き込みます。
+            @param i_gamma
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_ARToolkitThreshold.setThreshold(System.Int32)" -->
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.INyARRasterFilter_Rgb2Gs">
+             このインタフェイスは、RGBラスタをグレースケールラスタに変換します。
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_Rgb2Gs_AveAdd">
+             RGBラスタをGrayScaleに変換するフィルタを作成します。
+             このフィルタは、RGB値の平均値を、(R+G+B)/3で算出します。
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_Rgb2Gs_RgbCube">
+             RGBラスタをGrayScaleに変換するフィルタを作成します。
+             このフィルタは、RGB値の平均値を、(R*G*B)/(255*255)で算出します。
+             
+             この値は、RGB成分の作る立方体の体積を0-255スケールにした値です。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_Rgb2Gs_RgbCube.IdoFilterImpl_BYTE1D_B8G8R8_24.doFilter(jp.nyatla.nyartoolkit.cs.core.INyARRaster,jp.nyatla.nyartoolkit.cs.core.INyARRaster,jp.nyatla.nyartoolkit.cs.core.NyARIntSize)">
+            This function is not optimized.
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRasterFilter_Rgb2Gs_YCbCr.IdoFilterImpl_BYTE1D_B8G8R8_24.doFilter(jp.nyatla.nyartoolkit.cs.core.INyARRaster,jp.nyatla.nyartoolkit.cs.core.INyARRaster,jp.nyatla.nyartoolkit.cs.core.NyARIntSize)">
+            This function is not optimized.
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.INyARRgbPixelReader">
+            R8G8B8でピクセルを読み出すインタフェイス
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARRgbPixelReader.getPixel(System.Int32,System.Int32,System.Int32[])">
+            1ピクセルをint配列にして返します。
+            
+            @param i_x
+            @param i_y
+            @param i_rgb
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARRgbPixelReader.getPixelSet(System.Int32[],System.Int32[],System.Int32,System.Int32[])">
+            複数のピクセル値をint配列に返します。
+            配列には、[R1][G1][B1][R2][G2][B2]の順でピクセル値が格納されます。
+            
+            @param i_x
+            xのインデックス配列
+            @param i_y
+            yのインデックス配列
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARRgbPixelReader.setPixel(System.Int32,System.Int32,System.Int32[])">
+            1ピクセルを設定します。
+            @param i_x
+            @param i_y
+            @param i_rgb
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARRgbPixelReader.setPixels(System.Int32[],System.Int32[],System.Int32,System.Int32[])">
+            複数のピクセル値をint配列から設定します。
+            @param i_x
+            @param i_y
+            @param i_num
+            @param i_intrgb
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARRgbPixelReader.switchBuffer(System.Object)">
+            参照しているバッファをi_ref_bufferへ切り替えます。
+            内部パラメータのチェックは、実装依存です。
+            @param i_ref_buffer
+            @throws NyARException
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRgbPixelReader_BYTE1D_R8G8B8_24">
+             byte[]配列に、パディング無しの8bit画素値が、RGBRGBの順で並んでいる
+             バッファに使用できるピクセルリーダー
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.rasterreader.NyARRgbPixelReader_BYTE1D_X8R8G8B8_32">
+             byte[]配列に、パディング無しの8bit画素値が、XRGBXRGBの順で並んでいる
+             バッファに使用できるピクセルリーダー
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARVectorReader_INT1D_GRAY_8.getPixelVector4(System.Int32,System.Int32,jp.nyatla.nyartoolkit.cs.core.NyARIntPoint2d)">
+            4近傍の画素ベクトルを取得します。
+            0,1,0
+            1,x,1
+            0,1,0
+            @param i_raster
+            @param x
+            @param y
+            @param o_v
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARVectorReader_INT1D_GRAY_8.getPixelVector8(System.Int32,System.Int32,jp.nyatla.nyartoolkit.cs.core.NyARIntPoint2d)">
+            8近傍画素ベクトル
+            1,2,1
+            2,x,2
+            1,2,1
+            @param i_raster
+            @param x
+            @param y
+            @param o_v
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARRaster.getBuffer">
+            ƒoƒbƒtƒ@ƒIƒuƒWƒFƒNƒg‚ð•Ô‚µ‚Ü‚·B
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARRaster.getBufferType">
+            ƒoƒbƒtƒ@ƒIƒuƒWƒFƒNƒg‚Ìƒ^ƒCƒv‚ð•Ô‚µ‚Ü‚·B
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARRaster.isEqualBufferType(System.Int32)">
+            ƒoƒbƒtƒ@‚Ìƒ^ƒCƒv‚ªi_type_value‚Å‚ ‚é‚©Aƒ`ƒFƒbƒN‚µ‚Ü‚·B
+            @param i_type_value
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARRaster.hasBuffer">
+            getBuffer‚ªƒIƒuƒWƒFƒNƒg‚ð•Ô‚¹‚é‚©‚Ì^‹U’l‚Å‚·B
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARRaster.wrapBuffer(System.Object)">
+            i_ref_buf‚ðƒ‰ƒbƒv‚µ‚Ü‚·B‚Å‚«‚éŒÀ‚è®‡«ƒ`ƒFƒbƒN‚ðs‚¢‚Ü‚·B
+            ƒoƒbƒtƒ@‚ÌÄƒ‰ƒbƒsƒ“ƒO‚ª‰Â”\‚ÈŠÖ”‚Ì‚ÝA‚±‚ÌŠÖ”‚ðŽÀ‘•‚µ‚Ä‚­‚¾‚³‚¢B
+            @param i_ref_buf
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBinRaster._is_attached_buffer">
+            ƒoƒbƒtƒ@ƒIƒuƒWƒFƒNƒg‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚ê‚Îtrue
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARBinRaster.hasBuffer">
+            ƒCƒ“ƒXƒ^ƒ“ƒX‚ªƒoƒbƒtƒ@‚ðŠ—L‚·‚é‚©‚ð•Ô‚µ‚Ü‚·B
+            ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Åi_is_alloc‚ðfalse‚É‚µ‚Äƒ‰ƒXƒ^‚ðì¬‚µ‚½ê‡A
+            ƒoƒbƒtƒ@‚ÉƒAƒNƒZƒX‚·‚é‚Ü‚¦‚ÉAƒoƒbƒtƒ@‚Ì—L–³‚ð‚±‚ÌŠÖ”‚Åƒ`ƒFƒbƒN‚µ‚Ä‚­‚¾‚³‚¢B
+            @return
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARGrayscaleRaster._is_attached_buffer">
+            ƒoƒbƒtƒ@ƒIƒuƒWƒFƒNƒg‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚ê‚Îtrue
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARGrayscaleRaster.hasBuffer">
+            ƒCƒ“ƒXƒ^ƒ“ƒX‚ªƒoƒbƒtƒ@‚ðŠ—L‚·‚é‚©‚ð•Ô‚µ‚Ü‚·B
+            ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Åi_is_alloc‚ðfalse‚É‚µ‚Äƒ‰ƒXƒ^‚ðì¬‚µ‚½ê‡A
+            ƒoƒbƒtƒ@‚ÉƒAƒNƒZƒX‚·‚é‚Ü‚¦‚ÉAƒoƒbƒtƒ@‚Ì—L–³‚ð‚±‚ÌŠÖ”‚Åƒ`ƒFƒbƒN‚µ‚Ä‚­‚¾‚³‚¢B
+            @return
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRaster">
+            このクラスは、単機能のNyARRasterです。
+            
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARRaster._is_attached_buffer">
+            バッファオブジェクトがアタッチされていればtrue
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRaster.#ctor(System.Int32,System.Int32,System.Int32,System.Boolean)">
+            指定したバッファタイプのラスタを作成します。
+            @param i_width
+            @param i_height
+            @param i_buffer_type
+            @param i_is_alloc
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRaster.hasBuffer">
+            インスタンスがバッファを所有するかを返します。
+            コンストラクタでi_is_allocをfalseにしてラスタを作成した場合、
+            バッファにアクセスするまえに、バッファの有無をこの関数でチェックしてください。
+            @return
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.INyARRgbRaster">
+            8bitRGBを表現できるラスタ
+            
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARRgbRaster._is_attached_buffer">
+            バッファオブジェクトがアタッチされていればtrue
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRgbRaster_BasicClass">
+            NyARRasterインタフェイスの基本関数/メンバを実装したクラス
+            
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARSquare">
+            ARMarkerInfoに相当するクラス。 矩形情報を保持します。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARSquareContourDetector.detectMarkerCB(jp.nyatla.nyartoolkit.cs.core.NyARBinRaster,jp.nyatla.nyartoolkit.cs.core.NyARSquareContourDetector.IDetectMarkerCallback)">
+            
+             @param i_raster
+             @param o_square_stack
+             @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARSquareContourDetector_ARToolKit.#ctor(jp.nyatla.nyartoolkit.cs.core.NyARIntSize)">
+            最大i_squre_max個のマーカーを検出するクラスを作成する。
+            
+            @param i_param
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARSquareContourDetector_ARToolKit.detectMarkerCB(jp.nyatla.nyartoolkit.cs.core.NyARBinRaster,jp.nyatla.nyartoolkit.cs.core.NyARSquareContourDetector.IDetectMarkerCallback)">
+            arDetectMarker2を基にした関数
+            この関数はNyARSquare要素のうち、directionを除くパラメータを取得して返します。
+            directionの確定は行いません。
+            @param i_raster
+            解析する２値ラスタイメージを指定します。
+            @param o_square_stack
+            抽出した正方形候補を格納するリスト
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARSquareContourDetector_Rle.#ctor(jp.nyatla.nyartoolkit.cs.core.NyARIntSize)">
+            最大i_squre_max個のマーカーを検出するクラスを作成する。
+            
+            @param i_param
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARSquareContourDetector_Rle._getFragmentStack">
+            デバック用API
+            @return
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.ContourPickup">
+             輪郭線を取得するクラスです。
+            
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:jp.nyatla.nyartoolkit.cs.core.ContourPickup.getContour(jp.nyatla.nyartoolkit.cs.core.NyARGrayscaleRaster,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[])" -->
+        <!-- Badly formed XML comment ignored for member "M:jp.nyatla.nyartoolkit.cs.core.ContourPickup.impl_getContour(jp.nyatla.nyartoolkit.cs.core.INyARRaster,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[])" -->
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.Coord2Linear">
+             頂点集合を一次方程式のパラメータに変換します。
+             
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.Coord2Linear.coord2Line(System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32,jp.nyatla.nyartoolkit.cs.core.NyARLinear)">
+            輪郭点集合からay+bx+c=0の直線式を計算します。
+            @param i_st
+            @param i_ed
+            @param i_xcoord
+            @param i_ycoord
+            @param i_cood_num
+            @param o_line
+            @return
+            @throws NyARException
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.Coord2SquareVertexIndexes">
+             座標店集合（輪郭線）から、四角系の頂点候補点を計算します。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.Coord2SquareVertexIndexes.getVertexIndexes(System.Int32[],System.Int32[],System.Int32,System.Int32,System.Int32[])">
+            座標集合から、頂点候補になりそうな場所を４箇所探して、そのインデクス番号を返します。
+            @param i_x_coord
+            @param i_y_coord
+            @param i_coord_num
+            @param i_area
+            @param o_vertex
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.Coord2SquareVertexIndexes.getFarPoint(System.Int32[],System.Int32[],System.Int32,System.Int32)">
+            i_pointの輪郭座標から、最も遠方にある輪郭座標のインデクスを探します。
+            @param i_xcoord
+            @param i_ycoord
+            @param i_coord_num
+            @return
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARVertexCounter">
+            get_vertex関数を切り離すためのクラス
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARVertexCounter.get_vertex(System.Int32,System.Int32,System.Int32)">
+            static int get_vertex( int x_coord[], int y_coord[], int st, int ed,double thresh, int vertex[], int *vnum) 関数の代替関数
+            
+            @param x_coord
+            @param y_coord
+            @param st
+            @param ed
+            @param thresh
+            @return
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.INyARTransMat">
+            This class calculates ARMatrix from square information. -- 変換行列を計算するクラス。
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRectOffset">
+            矩形の頂点情報を格納します。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRectOffset.setSquare(System.Double)">
+            中心位置と辺長から、オフセット情報を作成して設定する。
+            @param i_width
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARTransMat">
+            This class calculates ARMatrix from square information and holds it. --
+            変換行列を計算して、結果を保持するクラス。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARTransMat.#ctor">
+             派生クラスで自分でメンバオブジェクトを指定したい場合はこちらを使う。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARTransMat.makeErrThreshold(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d[])">
+            頂点情報を元に、エラー閾値を計算します。
+            @param i_vertex
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARTransMat.transMat(jp.nyatla.nyartoolkit.cs.core.NyARSquare,jp.nyatla.nyartoolkit.cs.core.NyARRectOffset,jp.nyatla.nyartoolkit.cs.core.NyARTransMatResult)">
+            double arGetTransMat( ARMarkerInfo *marker_info,double center[2], double width, double conv[3][4] )
+            
+            @param i_square
+            計算対象のNyARSquareオブジェクト
+            @param i_direction
+            @param i_width
+            @return
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARTransMat.updateMatrixValue(jp.nyatla.nyartoolkit.cs.core.NyARRotMatrix,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d,jp.nyatla.nyartoolkit.cs.core.NyARTransMatResult)">
+            パラメータで変換行列を更新します。
+            
+            @param i_rot
+            @param i_off
+            @param i_trans
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARTransMatResult">
+            NyARTransMat戻り値専用のNyARMat
+            
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARTransMatResult.error">
+            エラーレート。この値はINyARTransMatの派生クラスが使います。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARTransMatResult.getZXYAngle(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d)">
+            この関数は、0-PIの間で値を返します。
+            @param o_out
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARTransMat_ARToolKit">
+            This class calculates ARMatrix from square information and holds it. --
+            変換行列を計算して、結果を保持するクラス。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARTransMat_ARToolKit.#ctor">
+             派生クラスで自分でメンバオブジェクトを指定したい場合はこちらを使う。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARTransMat_ARToolKit.transMat(jp.nyatla.nyartoolkit.cs.core.NyARSquare,jp.nyatla.nyartoolkit.cs.core.NyARRectOffset,jp.nyatla.nyartoolkit.cs.core.NyARTransMatResult)">
+            double arGetTransMat( ARMarkerInfo *marker_info,double center[2], double width, double conv[3][4] )
+            
+            @param i_square
+            計算対象のNyARSquareオブジェクト
+            @param i_width
+            @return
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARTransMat_ARToolKit.updateMatrixValue(jp.nyatla.nyartoolkit.cs.core.NyARRotMatrix,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d,jp.nyatla.nyartoolkit.cs.core.NyARTransMatResult)">
+            パラメータで変換行列を更新します。
+            
+            @param i_rot
+            @param i_off
+            @param i_trans
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARRotMatrixOptimize.modifyMatrix(jp.nyatla.nyartoolkit.cs.core.NyARRotMatrix_ARToolKit,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d[],jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d[])">
+            @param io_rot
+            初期回転行列
+            @param i_trans
+            初期並進ベクトル
+            @param i_vertex3d
+            初期3次元座標
+            @param i_vertex2d
+            画面上の頂点群
+            @return
+            エラーレート
+            @throws NyARException
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRotMatrixOptimize_O2">
+             基本姿勢と実画像を一致するように、角度を微調整→平行移動量を再計算
+             を繰り返して、変換行列を最適化する。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRotMatrixOptimize_O2.modifyMatrix(jp.nyatla.nyartoolkit.cs.core.NyARRotMatrix_ARToolKit,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d[],jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d[])">
+            arGetRot計算を階層化したModifyMatrix 896
+            
+            @param trans
+            @param i_vertex3d
+            [m][3]
+            @param i_vertex2d
+            [n][2]
+            @return
+            @throws NyARException
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARPartialDifferentiationOptimize">
+            基本姿勢と実画像を一致するように、角度を微調整→平行移動量を再計算 を繰り返して、変換行列を最適化する。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARPartialDifferentiationOptimize.getMinimumErrorAngleFromParam(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            エラーレートが最小になる点を得る。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRotMatrix">
+             回転行列計算用の、3x3行列
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRotMatrix.initRotByPrevResult(jp.nyatla.nyartoolkit.cs.core.NyARTransMatResult)">
+            NyARTransMatResultの内容からNyARRotMatrixを復元します。
+            @param i_prev_result
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRotMatrix.getPoint3d(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d)">
+            i_in_pointを変換行列で座標変換する。
+            @param i_in_point
+            @param i_out_point
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRotMatrix.getPoint3dBatch(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d[],jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d[],System.Int32)">
+            複数の頂点を一括して変換する
+            @param i_in_point
+            @param i_out_point
+            @param i_number_of_vertex
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRotMatrix_ARToolKit.#ctor(jp.nyatla.nyartoolkit.cs.core.NyARPerspectiveProjectionMatrix)">
+            インスタンスを準備します。
+            
+            @param i_param
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRotMatrix_ARToolKit.setAngle(System.Double,System.Double,System.Double)">
+            回転角から回転行列を計算してセットします。
+            @param i_x
+            @param i_y
+            @param i_z
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRotMatrix_ARToolKit.updateAngleFromMatrix">
+            現在のMatrixからangkeを復元する。
+            @param o_angle
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARRotMatrix_ARToolKit_O2">
+             回転行列計算用の、3x3行列
+             計算方法はARToolKitと同じだが、ARToolKitにある不要な行列から角度を逆算する
+             処理を省略しているため、下位12桁目の計算値が異なる。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRotMatrix_ARToolKit_O2.#ctor(jp.nyatla.nyartoolkit.cs.core.NyARPerspectiveProjectionMatrix)">
+            インスタンスを準備します。
+            
+            @param i_param
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRotVector.exteriorProductFromLinear(jp.nyatla.nyartoolkit.cs.core.NyARLinear,jp.nyatla.nyartoolkit.cs.core.NyARLinear)">
+            ２直線に直交するベクトルを計算する・・・だと思う。
+            @param i_linear1
+            @param i_linear2
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRotVector.checkVectorByVertex(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d)">
+            static int check_dir( double dir[3], double st[2], double ed[2],double cpara[3][4] ) Optimize:STEP[526->468]
+            ベクトルの開始/終了座標を指定して、ベクトルの方向を調整する。
+            @param i_start_vertex
+            @param i_end_vertex
+            @param cpara
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARRotVector.checkRotation(jp.nyatla.nyartoolkit.cs.core.NyARRotVector,jp.nyatla.nyartoolkit.cs.core.NyARRotVector)">
+            int check_rotation( double rot[2][3] )
+            2つのベクトル引数の調整をする？
+            @param i_r
+            @throws NyARException
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.INyARTransportVectorSolver">
+             並進ベクトル[T]を３次元座標[b]と基点の回転済行列[M]から計算するインタフェイスです。
+             [M][T]=[b]
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARTransportVectorSolver.solveTransportVector(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d[],jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d)">
+            画面座標群と3次元座標群から、平行移動量を計算します。
+            2d座標系は、直前に実行したset2dVertexのものを使用します。
+            @param i_vertex_2d
+            直前のset2dVertexコールで指定したものと同じものを指定してください。
+            @param i_vertex3d
+            3次元空間の座標群を設定します。頂点の順番は、画面座標群と同じ順序で格納してください。
+            @param o_transfer
+            @throws NyARException
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARTransportVectorSolver">
+            並進ベクトル[T]を３次元座標[b]と基点の回転済行列[M]から計算します。
+            
+            アルゴリズムは、ARToolKit 拡張現実プログラミング入門 の、P207のものです。
+            
+            計算手順
+            [A]*[T]=bを、[A]T*[A]*[T]=[A]T*[b]にする。
+            set2dVertexで[A]T*[A]=[M]を計算して、Aの3列目の情報だけ保存しておく。
+            getTransportVectorで[M]*[T]=[A]T*[b]を連立方程式で解いて、[T]を得る。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARTransportVectorSolver.set2dVertex(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d[],System.Int32)">
+            画面上の座標群を指定します。
+            @param i_ref_vertex_2d
+            歪み矯正済の画面上の頂点座標群への参照値を指定します。
+            @throws NyARException
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARTransportVectorSolver.solveTransportVector(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d[],jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d)">
+            画面座標群と3次元座標群から、平行移動量を計算します。
+            2d座標系は、直前に実行したset2dVertexのものを使用します。
+            @param i_vertex_2d
+            直前のset2dVertexコールで指定したものと同じものを指定してください。
+            @param i_vertex3d
+            3次元空間の座標群を設定します。頂点の順番は、画面座標群と同じ順序で格納してください。
+            @param o_transfer
+            @throws NyARException
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARTransportVectorSolver_ARToolKit">
+             並進ベクトル[T]を３次元座標[b]と基点の回転済行列[M]から計算します。
+             ARToolKit互換の数値を計算します。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARTransportVectorSolver_ARToolKit.solveTransportVector(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d[],jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d)">
+            画面座標群と3次元座標群から、平行移動量を計算します。
+            2d座標系は、直前に実行したset2dVertexのものを使用します。
+            @param i_vertex_2d
+            直前のset2dVertexコールで指定したものと同じものを指定してください。
+            @param i_vertex3d
+            3次元空間の座標群を設定します。頂点の順番は、画面座標群と同じ順序で格納してください。
+            @param o_transfer
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARDoubleMatrix.setValue(System.Double[])">
+            配列の内容を行列に設定する。
+            遅いので余り使わないでね。
+            @param o_value
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.INyARDoubleMatrix.getValue(System.Double[])">
+            行列の内容を配列に返す。
+            遅いので余り使わないでね。
+            @param o_value
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARDoubleMatrix22.setValue(System.Double[])">
+            遅いからあんまり使わないでね。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARDoubleMatrix22.getValue(System.Double[])">
+            遅いからあんまり使わないでね。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARDoubleMatrix33.setValue(System.Double[])">
+            遅いからあんまり使わないでね。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARDoubleMatrix33.getValue(System.Double[])">
+            遅いからあんまり使わないでね。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARDoubleMatrix33.getZXYAngle(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d)">
+            この関数は、0-PIの間で値を返します。
+            @param o_out
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARDoubleMatrix33.transformVertex(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d)">
+            回転行列を適応して座標変換します。
+            @param i_angle
+            @param o_out
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARDoubleMatrix44.setValue(System.Double[])">
+            遅いからあんまり使わないでね。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARDoubleMatrix44.getValue(System.Double[])">
+            遅いからあんまり使わないでね。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.NULL_ALLZERO">
+            RGB24フォーマットで、全ての画素が0
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.USER_DEFINE">
+            USER - USER+0xFFFFはユーザー定義型。実験用に。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.BYTE1D_R8G8B8_24">
+            byte[]で、R8G8B8の24ビットで画素が格納されている。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.BYTE1D_B8G8R8_24">
+            byte[]で、B8G8R8の24ビットで画素が格納されている。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.BYTE1D_B8G8R8X8_32">
+            byte[]で、R8G8B8X8の32ビットで画素が格納されている。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.BYTE1D_X8R8G8B8_32">
+            byte[]で、X8R8G8B8の32ビットで画素が格納されている。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.BYTE1D_R5G6B5_16LE">
+            byte[]で、RGB565の16ビット(little/big endian)で画素が格納されている。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.WORD1D_R5G6B5_16LE">
+            short[]で、RGB565の16ビット(little/big endian)で画素が格納されている。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.INT2D">
+            int[][]で特に値範囲を定めない
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.INT2D_GRAY_8">
+            int[][]で0-255のグレイスケール画像
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.INT2D_BIN_8">
+            int[][]で0/1の2値画像
+            これは、階調値1bitのBUFFERFORMAT_INT2D_GRAY_1と同じです。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.INT1D">
+            int[]で特に値範囲を定めない
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.INT1D_GRAY_8">
+            int[]で0-255のグレイスケール画像
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.INT1D_BIN_8">
+            int[]で0/1の2値画像
+            これは、階調1bitのINT1D_GRAY_1と同じです。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.INT1D_X8R8G8B8_32">
+            int[]で、XRGB32の32ビットで画素が格納されている。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.INT1D_X7H9S8V8_32">
+            H:9bit(0-359),S:8bit(0-255),V(0-255)
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.OBJECT_Java">
+            プラットフォーム固有オブジェクト
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.OBJECT_Java_BufferedImage">
+            JavaのBufferedImageを格納するラスタ
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARBufferType.OBJECT_AS3_BitmapData">
+            ActionScript3のBitmapDataを格納するラスタ
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d.createArray(System.Int32)">
+            配列ファクトリ
+            @param i_number
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d.dist">
+            格納値をベクトルとして、距離を返します。
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d.createArray(System.Int32)">
+            配列ファクトリ
+            @param i_number
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d.dist(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d)">
+            i_pointとのベクトルから距離を計算します。
+            @return
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARHistogram">
+            ヒストグラムを格納するクラスです。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARHistogram.data">
+            サンプリング値の格納変数
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARHistogram.length">
+            有効なサンプリング値の範囲。[0-data.length-1]
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.core.NyARHistogram.total_of_data">
+            有効なサンプルの総数 data[i]
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARHistogram.getTotal(System.Int32,System.Int32)">
+            区間i_stからi_edまでの総データ数を返します。
+            @param i_st
+            @param i_ed
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARHistogram.lowCut(System.Int32)">
+            指定したi_pos未満サンプルを０にします。
+            @param i_pos
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARHistogram.highCut(System.Int32)">
+            指定したi_pos以上のサンプルを０にします。
+            @param i_pos
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARHistogram.getMinSample">
+            最小の値が格納されているサンプル番号を返します。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARHistogram.getMinData">
+            サンプルの中で最小の値を返します。
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARHistogram.getAverage">
+            平均値を計算します。
+            @return
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARIntPoint">
+            @deprecated ‚±‚ÌƒNƒ‰ƒX‚Í–¼Ì•ÏX‚Ì‚½‚ßAíœ‚³‚ê‚Ü‚·B
+            @see NyARIntPoint2d
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARIntPoint.createArray(System.Int32)">
+            ”z—ñƒtƒ@ƒNƒgƒŠ
+            @param i_number
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARIntPoint2d.createArray(System.Int32)">
+            配列ファクトリ
+            @param i_number
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARIntSize.isEqualSize(System.Int32,System.Int32)">
+            サイズが同一であるかを確認する。
+            
+            @param i_width
+            @param i_height
+            @return
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARIntSize.isEqualSize(jp.nyatla.nyartoolkit.cs.core.NyARIntSize)">
+            サイズが同一であるかを確認する。
+            
+            @param i_width
+            @param i_height
+            @return
+            @throws NyARException
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARLinear">
+             0=dx*x+dy*y+cのパラメータを格納します。
+             x,yの増加方向は、x=L→R,y=B→Tです。 
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARLinear.crossPos(jp.nyatla.nyartoolkit.cs.core.NyARLinear,jp.nyatla.nyartoolkit.cs.core.NyARLinear,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d)">
+            2直線の交点を計算します。
+            @param l_line_i
+            @param l_line_2
+            @param o_point
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyAREquationSolver.solve3Equation(System.Double,System.Double,System.Double,System.Double,System.Double[])">
+            ３次方程式 a*x^3+b*x^2+c*x+d=0の実根を求める。	 
+            http://aoki2.si.gunma-u.ac.jp/JavaScript/src/3jisiki.html
+            のコードを基にしてます。
+            @param i_a
+            X^3の係数
+            @param i_b
+            X^2の係数
+            @param i_c
+            X^1の係数
+            @param i_d
+            X^0の係数
+            @param o_result
+            実根。double[3]を指定すること。
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyAREquationSolver.solve3Equation(System.Double,System.Double,System.Double,System.Double[])">
+            ３次方程式 x^3+b*x^2+c*x+d=0の実根を求める。
+            だけを求める。
+            http://aoki2.si.gunma-u.ac.jp/JavaScript/src/3jisiki.html
+            のコードを基にしてます。
+            @param i_b
+            X^2の係数
+            @param i_c
+            X^1の係数
+            @param i_d
+            X^0の係数
+            @param o_result
+            実根。double[1]以上を指定すること。
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyAREquationSolver.solve4Equation(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double[])">
+            ４次方程式の実根だけを求める。
+            @param i_a
+            X^3の係数
+            @param i_b
+            X^2の係数
+            @param i_c
+            X^1の係数
+            @param i_d
+            X^0の係数
+            @param o_result
+            実根。double[3]を指定すること。
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyAREquationSolver.solve3Equation_1(System.Double,System.Double,System.Double)">
+            3次方程式の実根を１個だけ求める。
+            4字方程式で使う。
+            @param i_b
+            @param i_c
+            @param i_d
+            @param o_result
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMath.sqNorm(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint2d)">
+            p2-p1ベクトルのsquare normを計算する。
+            @param i_p1
+            @param i_p2
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMath.sqNorm(jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d,jp.nyatla.nyartoolkit.cs.core.NyARDoublePoint3d)">
+            p2-p1ベクトルのsquare normを計算する。
+            @param i_p1
+            @param i_p2
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARMath.cubeRoot(System.Double)">
+            3乗根を求められないシステムで、３乗根を求めます。
+            http://aoki2.si.gunma-u.ac.jp/JavaScript/src/3jisiki.html
+            @param i_in
+            @return
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARPerspectiveParamGenerator">
+             遠近法を用いたPerspectiveパラメータを計算するクラスです。
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARPerspectiveParamGenerator_O1">
+            NyARPerspectiveParamGeneratorを最適化したクラスです。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.core.NyARSystemOfLinearEquationsProcessor">
+             連立方程式を解くためのプロセッサクラスです。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARSystemOfLinearEquationsProcessor.isValid2dArray(System.Double[][],System.Double[])">
+            i_reftとi_rightの整合性を確認します。
+            @param i_left
+            @param i_right
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARSystemOfLinearEquationsProcessor.doGaussianElimination(System.Double[][],System.Double[],System.Int32,System.Int32)">
+            [i_left_src]=[i_right_src]の式にガウスの消去法を実行して、[x][x]の要素が1になるように基本変形します。
+            i_mとi_nが等しくない時は、最終行までの[x][x]要素までを1になるように変形します。
+            @param i_left
+            連立方程式の左辺値を指定します。[i_m][i_n]の配列を指定してください。
+            @param i_right
+            連立方程式の右辺値を指定します。[i_m][i_n]の配列を指定してください。
+            @param i_n
+            連立方程式の係数の数を指定します。
+            @param i_m
+            連立方程式の数を指定します。
+            @return
+            最終行まで基本変形ができてばtrueを返します。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.core.NyARSystemOfLinearEquationsProcessor.solve(System.Double[][],System.Double[],System.Int32)">
+            i_leftとi_rightの連立方程式を解いて、i_left,i_right内容を更新します。
+            i_right[n]の内容が、i_left[x][n]番目の係数の解になります。
+            @return
+            方程式が解ければtrueを返します。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.utils.NyObjectStack`1">
+            スタック型の可変長配列。
+            配列には実体を格納します。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.utils.NyObjectStack`1.#ctor(System.Int32)">
+            最大ARRAY_MAX個の動的割り当てバッファを準備する。
+            
+            @param i_array
+            @param i_element_type
+            JavaのGenedicsの制限突破
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.utils.NyObjectStack`1.prePush">
+            新しい領域を予約します。
+            @return
+            失敗するとnull
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.utils.NyObjectStack`1.init(System.Int32)">
+            スタックを初期化します。
+            @param i_reserv_length
+            使用済みにするサイズ
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.utils.NyObjectStack`1.pop">
+            見かけ上の要素数を1減らして、そのオブジェクトを返します。
+            返却したオブジェクトの内容は、次回のpushまで有効です。
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.utils.NyObjectStack`1.pops(System.Int32)">
+            見かけ上の要素数をi_count個減らします。
+            @param i_count
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.utils.NyObjectStack`1.getArray">
+            配列を返します。
+            
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.utils.NyObjectStack`1.getLength">
+            配列の見かけ上の要素数を返却します。
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.utils.NyObjectStack`1.clear">
+            見かけ上の要素数をリセットします。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.utils.TransformedBitmapPickup.#ctor(jp.nyatla.nyartoolkit.cs.core.NyARPerspectiveProjectionMatrix,System.Int32,System.Int32,System.Int32)">
+            
+            @param i_width
+            取得するビットマップの幅
+            @param i_height
+            取得するビットマップの解像度
+            @param i_resolution
+            resolution of reading pixel per point. ---- 取得時の解像度。高解像度のときは1を指定してください。低解像度のときは2以上を指定します。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.utils.TransformedBitmapPickup.pickupImage2d(jp.nyatla.nyartoolkit.cs.core.INyARRgbRaster,System.Double,System.Double,System.Double,System.Double,jp.nyatla.nyartoolkit.cs.core.NyARTransMatResult)">
+            This function retrieves bitmap from the area defined by RECT(i_l,i_t,i_r,i_b) above transform matrix i_base_mat. 
+            ----
+            この関数は、basementで示される平面のAで定義される領域から、ビットマップを読み出します。
+            例えば、8cmマーカでRECT(i_l,i_t,i_r,i_b)に-40,0,0,-40.0を指定すると、マーカの左下部分の画像を抽出します。
+            
+            マーカから離れた場所になるほど、また、マーカの鉛直方向から外れるほど誤差が大きくなります。
+            @param i_src_imege
+            詠み出し元の画像を指定します。
+            @param i_l
+            基準点からの左上の相対座標（x）を指定します。
+            @param i_t
+            基準点からの左上の相対座標（y）を指定します。
+            @param i_r
+            基準点からの右下の相対座標（x）を指定します。
+            @param i_b
+            基準点からの右下の相対座標（y）を指定します。
+            @param i_base_mat
+            @return 画像の取得の成否を返す。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.detector.NyARCustomSingleDetectMarker">
+            画像からARCodeに最も一致するマーカーを1個検出し、その変換行列を計算するクラスです。
+            変換行列を求めるには、detectMarkerLite関数にラスタイメージを入力して、計算対象の矩形を特定します。
+            detectMarkerLiteが成功すると、getTransmationMatrix等の関数が使用可能な状態になり、変換行列を求めることができます。
+            
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.detector.NyARCustomSingleDetectMarker.DetectSquareCB">
+            detectMarkerのコールバック関数
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARCustomSingleDetectMarker.DetectSquareCB.onSquareDetect(jp.nyatla.nyartoolkit.cs.core.NyARSquareContourDetector,System.Int32[],System.Int32[],System.Int32,System.Int32[])">
+            矩形が見付かるたびに呼び出されます。
+            発見した矩形のパターンを検査して、方位を考慮した頂点データを確保します。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARCustomSingleDetectMarker.detectMarkerLite(jp.nyatla.nyartoolkit.cs.core.INyARRgbRaster)">
+            i_imageにマーカー検出処理を実行し、結果を記録します。
+            
+            @param i_raster
+            マーカーを検出するイメージを指定します。イメージサイズは、カメラパラメータ
+            と一致していなければなりません。
+            @return マーカーが検出できたかを真偽値で返します。
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARCustomSingleDetectMarker.getTransmationMatrix(jp.nyatla.nyartoolkit.cs.core.NyARTransMatResult)">
+            検出したマーカーの変換行列を計算して、o_resultへ値を返します。
+            直前に実行したdetectMarkerLiteが成功していないと使えません。
+            
+            @param o_result
+            変換行列を受け取るオブジェクトを指定します。
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARCustomSingleDetectMarker.refSquare">
+            現在の矩形を返します。
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARCustomSingleDetectMarker.getConfidence">
+            検出したマーカーの一致度を返します。
+            
+            @return マーカーの一致度を返します。0～1までの値をとります。 一致度が低い場合には、誤認識の可能性が高くなります。
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARCustomSingleDetectMarker.setContinueMode(System.Boolean)">
+            getTransmationMatrixの計算モードを設定します。 初期値はTRUEです。
+            
+            @param i_is_continue
+            TRUEなら、transMatCont互換の計算をします。 FALSEなら、transMat互換の計算をします。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.detector.NyARDetectMarker">
+            複数のマーカーを検出し、それぞれに最も一致するARコードを、コンストラクタで登録したARコードから 探すクラスです。最大300個を認識しますが、ゴミラベルを認識したりするので100個程度が限界です。
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.detector.NyARDetectMarker.DetectSquareCB">
+            detectMarkerのコールバック関数
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARDetectMarker.DetectSquareCB.onSquareDetect(jp.nyatla.nyartoolkit.cs.core.NyARSquareContourDetector,System.Int32[],System.Int32[],System.Int32,System.Int32[])">
+            矩形が見付かるたびに呼び出されます。
+            発見した矩形のパターンを検査して、方位を考慮した頂点データを確保します。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARDetectMarker.#ctor(jp.nyatla.nyartoolkit.cs.core.NyARParam,jp.nyatla.nyartoolkit.cs.core.NyARCode[],System.Double[],System.Int32,System.Int32)">
+            複数のマーカーを検出し、最も一致するARCodeをi_codeから検索するオブジェクトを作ります。
+            
+            @param i_param
+            カメラパラメータを指定します。
+            @param i_code
+            検出するマーカーのARCode配列を指定します。
+            配列要素のインデックス番号が、そのままgetARCodeIndex関数で得られるARCodeインデックスになります。 
+            例えば、要素[1]のARCodeに一致したマーカーである場合は、getARCodeIndexは1を返します。
+            @param i_marker_width
+            i_codeのマーカーサイズをミリメートルで指定した配列を指定します。 先頭からi_number_of_code個の要素には、有効な値を指定する必要があります。
+            @param i_number_of_code
+            i_codeに含まれる、ARCodeの数を指定します。
+            @param i_input_raster_type
+            入力ラスタのピクセルタイプを指定します。この値は、INyARBufferReaderインタフェイスのgetBufferTypeの戻り値を指定します。
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARDetectMarker.detectMarkerLite(jp.nyatla.nyartoolkit.cs.core.INyARRgbRaster,System.Int32)">
+            i_imageにマーカー検出処理を実行し、結果を記録します。
+            
+            @param i_raster
+            マーカーを検出するイメージを指定します。
+            @param i_thresh
+            検出閾値を指定します。0～255の範囲で指定してください。 通常は100～130くらいを指定します。
+            @return 見つかったマーカーの数を返します。 マーカーが見つからない場合は0を返します。
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARDetectMarker.getTransmationMatrix(System.Int32,jp.nyatla.nyartoolkit.cs.core.NyARTransMatResult)">
+            i_indexのマーカーに対する変換行列を計算し、結果値をo_resultへ格納します。 直前に実行したdetectMarkerLiteが成功していないと使えません。
+            
+            @param i_index
+            マーカーのインデックス番号を指定します。 直前に実行したdetectMarkerLiteの戻り値未満かつ0以上である必要があります。
+            @param o_result
+            結果値を受け取るオブジェクトを指定してください。
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARDetectMarker.getConfidence(System.Int32)">
+            i_indexのマーカーの一致度を返します。
+            
+            @param i_index
+            マーカーのインデックス番号を指定します。 直前に実行したdetectMarkerLiteの戻り値未満かつ0以上である必要があります。
+            @return マーカーの一致度を返します。0～1までの値をとります。 一致度が低い場合には、誤認識の可能性が高くなります。
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARDetectMarker.getARCodeIndex(System.Int32)">
+            i_indexのマーカーのARCodeインデックスを返します。
+            
+            @param i_index
+            マーカーのインデックス番号を指定します。 直前に実行したdetectMarkerLiteの戻り値未満かつ0以上である必要があります。
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARDetectMarker.setContinueMode(System.Boolean)">
+            getTransmationMatrixの計算モードを設定します。
+            
+            @param i_is_continue
+            TRUEなら、transMatContinueを使用します。 FALSEなら、transMatを使用します。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.detector.NyARSingleDetectMarker">
+            画像からARCodeに最も一致するマーカーを1個検出し、その変換行列を計算するクラスです。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARSingleDetectMarker.#ctor(jp.nyatla.nyartoolkit.cs.core.NyARParam,jp.nyatla.nyartoolkit.cs.core.NyARCode,System.Double,System.Int32,System.Int32)">
+            検出するARCodeとカメラパラメータから、1個のARCodeを検出するNyARSingleDetectMarkerインスタンスを作ります。
+            
+            @param i_param
+            カメラパラメータを指定します。
+            @param i_code
+            検出するARCodeを指定します。
+            @param i_marker_width
+            ARコードの物理サイズを、ミリメートルで指定します。
+            @param i_input_raster_type
+            入力ラスタのピクセルタイプを指定します。この値は、INyARBufferReaderインタフェイスのgetBufferTypeの戻り値を指定します。
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARSingleDetectMarker.initialize(jp.nyatla.nyartoolkit.cs.core.NyARParam,jp.nyatla.nyartoolkit.cs.core.NyARCode,System.Double,System.Int32,System.Int32)">
+            コンストラクタから呼び出す関数です。
+            @param i_ref_param
+            @param i_ref_code
+            @param i_marker_width
+            @param i_input_raster_type
+            @param i_profile_id
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.detector.NyARSingleDetectMarker.detectMarkerLite(jp.nyatla.nyartoolkit.cs.core.INyARRgbRaster,System.Int32)">
+            i_imageにマーカー検出処理を実行し、結果を記録します。
+            
+            @param i_raster
+            マーカーを検出するイメージを指定します。イメージサイズは、カメラパラメータ
+            と一致していなければなりません。
+            @return マーカーが検出できたかを真偽値で返します。
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.nyidmarker.INyIdMarkerData.isEqual(jp.nyatla.nyartoolkit.cs.nyidmarker.INyIdMarkerData)">
+            i_targetのマーカデータと自身のデータが等しいかを返します。
+            @param i_target
+            比較するマーカオブジェクト
+            @return
+            等しいかの真偽値
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.nyidmarker.INyIdMarkerData.copyFrom(jp.nyatla.nyartoolkit.cs.nyidmarker.INyIdMarkerData)">
+            i_sourceからマーカデータをコピーします。
+            @param i_source
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.nyidmarker.NyIdMarkerData_RawBit">
+             [[Strage class]]
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.nyidmarker.NyIdMarkerParam">
+             [[Strage class]]
+             マーカを抽出した時のパラメータを格納するクラスです。
+            
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.nyidmarker.NyIdMarkerParam.direction">
+            マーカの方位値です。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.nyidmarker.NyIdMarkerParam.threshold">
+            マーカ周辺のパターン閾値です。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.nyidmarker.NyIdMarkerPattern">
+             [[Strage class]]
+             IDマーカパターン値を格納するクラスです。
+             クラスは、未整形のマーカデータを格納しています。
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.nyidmarker.PerspectivePixelReader">
+             NyARColorPatt_NyIdMarkerがラスタからPerspective変換して読みだすためのクラス
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.nyidmarker.PerspectivePixelReader.rectPixels(jp.nyatla.nyartoolkit.cs.core.INyARRgbPixelReader,jp.nyatla.nyartoolkit.cs.core.NyARIntSize,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[])">
+            矩形からピクセルを切り出します
+            @param i_lt_x
+            @param i_lt_y
+            @param i_step_x
+            @param i_step_y
+            @param i_width
+            @param i_height
+            @param i_out_st
+            o_pixelへの格納場所の先頭インデクス
+            @param o_pixel
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.nyidmarker.PerspectivePixelReader.checkFreqWidth(System.Int32[],System.Int32)">
+            i_freqにあるゼロクロス点の周期が、等間隔か調べます。
+            次段半周期が、前段の80%より大きく、120%未満であるものを、等間隔周期であるとみなします。
+            @param i_freq
+            @param i_width
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.nyidmarker.PerspectivePixelReader.getMaxFreq(System.Int32[],System.Int32[],System.Int32[])">
+            i_freq_count_tableとi_freq_tableの内容を調査し、最も大きな周波数成分を返します。
+            @param i_freq_count_table
+            @param i_freq_table
+            @param o_freq_table
+            @return
+            見つかれば0以上、密辛ければ0未満
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.nyidmarker.PerspectivePixelReader.getRowFrequency(jp.nyatla.nyartoolkit.cs.core.INyARRgbPixelReader,jp.nyatla.nyartoolkit.cs.core.NyARIntSize,System.Int32,System.Int32,System.Int32,System.Int32[])">
+            i_y1行目とi_y2行目を平均して、タイミングパターンの周波数を得ます。
+            LHLを1周期として、たとえばLHLHLの場合は2を返します。LHLHやHLHL等の始端と終端のレベルが異なるパターンを
+            検出した場合、関数は失敗します。
+            
+            @param i_y1
+            @param i_y2
+            @param i_th_h
+            @param i_th_l
+            @param o_edge_index
+            検出したエッジ位置(H->L,L->H)のインデクスを受け取る配列です。
+            [FRQ_POINTS]以上の配列を指定してください。
+            @return
+            @throws NyARException
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.nyidmarker.PerspectivePixelReader.getFreqInfo(System.Int32[],System.Int32,System.Int32,System.Int32[])">
+            デバックすんだらstaticにしておｋ
+            @param i_pixcels
+            @param i_th_h
+            @param i_th_l
+            @param o_edge_index
+            @return
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.nyidmarker.PerspectivePixelReader.getPtailHighAndLow(System.Int32[],jp.nyatla.nyartoolkit.cs.nyidmarker.PerspectivePixelReader.THighAndLow)">
+            ピクセル配列の上位、下位の4ピクセルのピクセル値平均を求めます。
+            この関数は、(4/i_pixcel.length)の領域を占有するPtail法で双方向の閾値を求めることになります。
+            @param i_pixcel
+            @param i_initial
+            @param i_out
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.nyidmarker.PerspectivePixelReader.detectThresholdValue(jp.nyatla.nyartoolkit.cs.core.INyARRgbPixelReader,jp.nyatla.nyartoolkit.cs.core.NyARIntSize,jp.nyatla.nyartoolkit.cs.nyidmarker.PerspectivePixelReader.TThreshold)">
+            指定した場所のピクセル値を調査して、閾値を計算して返します。
+            @param i_reader
+            @param i_x
+            @param i_y
+            @return
+            @throws NyARException
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.nyidmarker.MarkerPattEncoder">
+             マーカパターンのエンコーダです。
+            
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.nyidmarker.MarkerPattEncoder._bit_table">
+            RECT(0):[0]=(0)
+            RECT(1):[1]=(1-8)
+            RECT(2):[2]=(9-16),[3]=(17-24)
+            RECT(3):[4]=(25-32),[5]=(33-40),[6]=(41-48)
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.nyidmarker.MarkerPattEncoder.encode(jp.nyatla.nyartoolkit.cs.nyidmarker.NyIdMarkerPattern)">
+            格納しているマーカパターンをエンコードして、マーカデータを返します。
+            @param o_out
+            @return
+            成功すればマーカの方位を返却します。失敗すると-1を返します。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.nyidmarker.NyIdMarkerPickup">
+             ラスタ画像の任意矩形から、NyARIdMarkerDataを抽出します。
+            
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.nyidmarker.NyIdMarkerPickup.pickFromRaster(jp.nyatla.nyartoolkit.cs.core.INyARRgbRaster,jp.nyatla.nyartoolkit.cs.core.NyARIntPoint2d[],jp.nyatla.nyartoolkit.cs.nyidmarker.NyIdMarkerPattern,jp.nyatla.nyartoolkit.cs.nyidmarker.NyIdMarkerParam)">
+            i_imageから、idマーカを読みだします。
+            o_dataにはマーカデータ、o_paramにはまーかのパラメータを返却します。
+            @param image
+            @param i_square
+            @param o_data
+            @param o_param
+            @return
+            @throws NyARException
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.processor.SingleARMarkerProcesser">
+            このクラスは、同時に１個のマーカを処理することのできる、アプリケーションプロセッサです。
+            マーカの出現・移動・消滅を、イベントで通知することができます。
+            クラスには複数のマーカを登録できます。一つのマーカが見つかると、プロセッサは継続して同じマーカを
+            １つだけ認識し続け、見失うまでの間は他のマーカを認識しません。
+            
+            イベントは、 OnEnter→OnUpdate[n]→OnLeaveの順で発生します。
+            マーカが見つかるとまずOnEnterが１度発生して、何番のマーカが発見されたかがわかります。
+            次にOnUpdateにより、現在の変換行列が連続して渡されます。最後にマーカを見失うと、OnLeave
+            イベントが発生します。
+            
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.processor.SingleARMarkerProcesser.DetectSquareCB">
+            detectMarkerのコールバック関数
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.processor.SingleARMarkerProcesser.DetectSquareCB.init(jp.nyatla.nyartoolkit.cs.core.INyARRgbRaster,System.Int32)">
+            Initialize call back handler.
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.processor.SingleARMarkerProcesser.DetectSquareCB.onSquareDetect(jp.nyatla.nyartoolkit.cs.core.NyARSquareContourDetector,System.Int32[],System.Int32[],System.Int32,System.Int32[])">
+            矩形が見付かるたびに呼び出されます。
+            発見した矩形のパターンを検査して、方位を考慮した頂点データを確保します。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.processor.SingleARMarkerProcesser.tag">
+            オーナーが自由に使えるタグ変数です。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.processor.SingleARMarkerProcesser.setARCodeTable(jp.nyatla.nyartoolkit.cs.core.NyARCode[],System.Int32,System.Double)">
+            検出するマーカコードの配列を指定します。 検出状態でこの関数を実行すると、
+            オブジェクト状態に強制リセットがかかります。
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.processor.SingleARMarkerProcesser.setConfidenceThreshold(System.Double,System.Double)">
+            
+            @param i_new_detect_cf
+            @param i_exist_detect_cf
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.processor.SingleARMarkerProcesser.updateStatus(jp.nyatla.nyartoolkit.cs.core.NyARSquare,System.Int32)">
+            オブジェクトのステータスを更新し、必要に応じてハンドル関数を駆動します。
+            戻り値は、「実際にマーカを発見する事ができたか」です。クラスの状態とは異なります。
+        </member>
+        <member name="T:jp.nyatla.nyartoolkit.cs.processor.SingleNyIdMarkerProcesser.DetectSquareCB">
+            detectMarkerのコールバック関数
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.processor.SingleNyIdMarkerProcesser.DetectSquareCB.init(jp.nyatla.nyartoolkit.cs.core.INyARRgbRaster,jp.nyatla.nyartoolkit.cs.nyidmarker.INyIdMarkerData)">
+            Initialize call back handler.
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.processor.SingleNyIdMarkerProcesser.DetectSquareCB.onSquareDetect(jp.nyatla.nyartoolkit.cs.core.NyARSquareContourDetector,System.Int32[],System.Int32[],System.Int32,System.Int32[])">
+            矩形が見付かるたびに呼び出されます。
+            発見した矩形のパターンを検査して、方位を考慮した頂点データを確保します。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.processor.SingleNyIdMarkerProcesser.tag">
+            オーナーが自由に使えるタグ変数です。
+        </member>
+        <member name="F:jp.nyatla.nyartoolkit.cs.processor.SingleNyIdMarkerProcesser._lost_delay_count">
+            ロスト遅延の管理
+        </member>
+        <member name="M:jp.nyatla.nyartoolkit.cs.processor.SingleNyIdMarkerProcesser.updateStatus(jp.nyatla.nyartoolkit.cs.core.NyARSquare,jp.nyatla.nyartoolkit.cs.nyidmarker.INyIdMarkerData)">
+            オブジェクトのステータスを更新し、必要に応じてハンドル関数を駆動します。
+        </member>
+    </members>
+</doc>

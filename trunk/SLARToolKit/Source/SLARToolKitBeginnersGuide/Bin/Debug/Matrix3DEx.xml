@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Matrix3DEx</name>
+    </assembly>
+    <members>
+        <member name="T:System.Windows.Media.Media3D.Matrix3DExtensions">
+            <summary>
+            Extension methods for the Matrix3D struct.
+            </summary>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DExtensions.Determinant(System.Windows.Media.Media3D.Matrix3D)">
+            <summary>
+            Calculates the determinant of the matrix.
+            </summary>
+            <param name="m">The matrix.</param>
+            <returns>The determinant of the matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DExtensions.Transpose(System.Windows.Media.Media3D.Matrix3D)">
+            <summary>
+            Returns the transpose of the matrix.
+            </summary>
+            <param name="m">The matrix that should be transposed.</param>
+            <returns>A new transpose of the matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DExtensions.SwapHandedness(System.Windows.Media.Media3D.Matrix3D)">
+            <summary>
+            Returns the other handedness of the matrix by mutliplying the z values with -1.
+            (if m is left-handed the result is right-handed and v.v.).
+            </summary>
+            <param name="m">The matrix that should be converted.</param>
+            <returns>A new matrix that is the other handedness of the matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DExtensions.Dump(System.Windows.Media.Media3D.Matrix3D)">
+            <summary>
+            Writes the members of the values row by row into a string.
+            </summary>
+            <param name="m">The matrix.</param>
+            <returns>The formatted string with the mambers.</returns>
+        </member>
+        <member name="T:System.Windows.Media.Media3D.Matrix3DFactory">
+            <summary>
+            Matrix3D factory methods for common transformations.
+            </summary>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateTranslation(System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a translation matrix.
+            </summary>
+            <param name="x">The offset along the x-axis.</param>
+            <param name="y">The offset along the y-axis..</param>
+            <param name="z">The offset along the z-axis.</param>
+            <returns>A new translation matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateScale(System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a scaling matrix.
+            </summary>
+            <param name="x">The scaling factor along the x-axis.</param>
+            <param name="y">The scaling factor along the y-axis.</param>
+            <param name="z">The scaling factor along the z-axis.</param>
+            <returns>A new scaling matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateScale(System.Double)">
+            <summary>
+            Creates a uniform scaling matrix.
+            </summary>
+            <param name="xyz">The scaling factor along the x-, the y- and the z-axis.</param>
+            <returns>A new scaling matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateRotationX(System.Double)">
+            <summary>
+            Creates a matrix that rotates around the x-axis.
+            </summary>
+            <param name="radians">The rotation angle in radians. See <see cref="M:System.Windows.Media.Media3D.MathHelper.ToRadians(System.Double)"/> for a conversion method.</param>
+            <returns>A new rotation matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateRotationY(System.Double)">
+            <summary>
+            Creates a matrix that rotates around the y-axis.
+            </summary>
+            <param name="radians">The rotation angle in radians. See <see cref="M:System.Windows.Media.Media3D.MathHelper.ToRadians(System.Double)"/> for a conversion method.</param>
+            <returns>A new rotation matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateRotationZ(System.Double)">
+            <summary>
+            Creates a matrix that rotates around the z-axis.
+            </summary>
+            <param name="radians">The rotation angle in radians. See <see cref="M:System.Windows.Media.Media3D.MathHelper.ToRadians(System.Double)"/> for a conversion method.</param>
+            <returns>A new rotation matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateRotationAnyAxis(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a matrix that rotates around any axis.
+            </summary>
+            <param name="radians">The rotation angle in radians. See <see cref="M:System.Windows.Media.Media3D.MathHelper.ToRadians(System.Double)"/> for a conversion method.</param>
+            <param name="axisX">The x-coordinate of the rotation axis.</param>
+            <param name="axisY">The y-coordinate of the rotation axis.</param>
+            <param name="axisZ">The z-coordinate of the rotation axis.</param>
+            <returns>A new rotation matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreatePerspectiveFieldOfViewLH(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a left-handed perspective projection matrix.
+            </summary>
+            <param name="fieldOfView">The Field Of View in radians. See <see cref="M:System.Windows.Media.Media3D.MathHelper.ToRadians(System.Double)"/> for a conversion method.</param>
+            <param name="aspectRatio">The aspect ratio (width divided by height: w/h).</param>
+            <param name="near">The z-coordinate of the near view-plane.</param>
+            <param name="far">The z-coordinate of the far view-plane.</param>
+            <returns>A new projection matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateOrthographicLH(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a left-handed orthographic projection matrix.
+            </summary>
+            <param name="width">The width of the view volume.</param>
+            <param name="height">the height of the view volume.</param>
+            <param name="near">The minimum z-coordinate of the view volume.</param>
+            <param name="far">The maximum z-coordinate of the view volume.</param>
+            <returns>A new projection matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateLookAtLH(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a left-handed look-at matrix (camera).
+            </summary>
+            <param name="eyePosX">The x-coordinate of the viewer (camera) position.</param>
+            <param name="eyePosY">The y-coordinate of the viewer (camera) position.</param>
+            <param name="eyePosZ">The z-coordinate of the viewer (camera) position.</param>
+            <param name="targetX">The x-coordinate of the target (look-at).</param>
+            <param name="targetY">The y-coordinate of the target (look-at).</param>
+            <param name="targetZ">The z-coordinate of the target (look-at).</param>
+            <param name="upX">The x-coordinate of the up vector.</param>
+            <param name="upY">The y-coordinate of the up vector.</param>
+            <param name="upZ">The z-coordinate of the up vector.</param>
+            <returns>A new look-at matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateLookAtLH(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a left-handed look-at matrix (camera) using the deafult up vector (0, 1, 0).
+            </summary>
+            <param name="eyePosX">The x-coordinate of the viewer (camera) position.</param>
+            <param name="eyePosY">The y-coordinate of the viewer (camera) position.</param>
+            <param name="eyePosZ">The z-coordinate of the viewer (camera) position.</param>
+            <param name="targetX">The x-coordinate of the target (look-at).</param>
+            <param name="targetY">The y-coordinate of the target (look-at).</param>
+            <param name="targetZ">The z-coordinate of the target (look-at).</param>
+            <returns>A new look-at matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreatePerspectiveFieldOfViewRH(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a right-handed perspective projection matrix.
+            </summary>
+            <param name="fieldOfView">The Field Of View in radians. See <see cref="M:System.Windows.Media.Media3D.MathHelper.ToRadians(System.Double)"/> for a conversion method.</param>
+            <param name="aspectRatio">The aspect ratio (width divided by height: w/h).</param>
+            <param name="near">The z-coordinate of the near view-plane.</param>
+            <param name="far">The z-coordinate of the far view-plane.</param>
+            <returns>A new projection matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateOrthographicRH(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a right-handed orthographic projection matrix.
+            </summary>
+            <param name="width">The width of the view volume.</param>
+            <param name="height">the height of the view volume.</param>
+            <param name="near">The minimum z-coordinate of the view volume.</param>
+            <param name="far">The maximum z-coordinate of the view volume.</param>
+            <returns>A new projection matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateLookAtRH(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a right-handed look-at matrix (camera).
+            </summary>
+            <param name="eyePosX">The x-coordinate of the viewer (camera) position.</param>
+            <param name="eyePosY">The y-coordinate of the viewer (camera) position.</param>
+            <param name="eyePosZ">The z-coordinate of the viewer (camera) position.</param>
+            <param name="targetX">The x-coordinate of the target (look-at).</param>
+            <param name="targetY">The y-coordinate of the target (look-at).</param>
+            <param name="targetZ">The z-coordinate of the target (look-at).</param>
+            <param name="upX">The x-coordinate of the up vector.</param>
+            <param name="upY">The y-coordinate of the up vector.</param>
+            <param name="upZ">The z-coordinate of the up vector.</param>
+            <returns>A new look-at matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateLookAtRH(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a right-handed look-at matrix (camera) using the deafult up vector (0, 1, 0).
+            </summary>
+            <param name="eyePosX">The x-coordinate of the viewer (camera) position.</param>
+            <param name="eyePosY">The y-coordinate of the viewer (camera) position.</param>
+            <param name="eyePosZ">The z-coordinate of the viewer (camera) position.</param>
+            <param name="targetX">The x-coordinate of the target (look-at).</param>
+            <param name="targetY">The y-coordinate of the target (look-at).</param>
+            <param name="targetZ">The z-coordinate of the target (look-at).</param>
+            <returns>A new look-at matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateViewportProjection(System.Windows.Media.Media3D.Matrix3D,System.Windows.Media.Media3D.Matrix3D,System.Windows.Media.Media3D.Matrix3D,System.Windows.Media.Media3D.Matrix3D)">
+            <summary>
+            Creates a combined transformation which could be used for the Projection of an UIElement. 
+            The arguments are multiplied in that order.
+            </summary>
+            <param name="world">The world matrix.</param>
+            <param name="lookAt">The camera (look-at) matrix.</param>
+            <param name="projection">The projection matrix.</param>
+            <param name="viewport">The final viewport transformation.</param>
+            <returns>A new matrix combined matrix.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.Matrix3DFactory.CreateViewportTransformation(System.Double,System.Double)">
+            <summary>
+            Creates a viewport transformation matrix.
+            </summary>
+            <param name="width">The width of the viewport in screen space.</param>
+            <param name="height">The height of the viewport in screen space.</param>
+            <returns>A new viewport transformation matrix.</returns>
+        </member>
+        <member name="T:System.Windows.Media.Media3D.MathHelper">
+            <summary>
+            Math helper methods.
+            </summary>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.MathHelper.ToDegrees(System.Double)">
+            <summary>
+            Converts a radian into a degreee value.
+            </summary>
+            <param name="radians">An angle in rad.</param>
+            <returns>The angle converted to degress.</returns>
+        </member>
+        <member name="M:System.Windows.Media.Media3D.MathHelper.ToRadians(System.Double)">
+            <summary>
+            Converts a degree into a radian value.
+            </summary>
+            <param name="degrees">A angle in deg.</param>
+            <returns>The angle converted to radians.</returns>
+        </member>
+    </members>
+</doc>

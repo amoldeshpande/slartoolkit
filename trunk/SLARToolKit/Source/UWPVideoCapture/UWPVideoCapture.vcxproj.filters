@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>3e636412-be03-4662-a4db-9012c6e1944f</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="MediaStreamSink\CaptureFrameGrabber.cpp" />
+    <ClCompile Include="UWPARToolkit\MediaStreamSink\MediaStreamSink.cpp" />
+    <ClCompile Include="UWPARToolkit\MediaStreamSink\UWPVideoCapture.cpp" />
+    <ClCompile Include="SocketClient.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="MediaStreamSink\CaptureFrameGrabber.h" />
+    <ClInclude Include="MediaStreamSink\MediaSink.h" />
+    <ClInclude Include="MediaStreamSink\MediaStreamSink.h" />
+    <ClInclude Include="MediaStreamSink\MFIncludes.h" />
+    <ClInclude Include="MediaStreamSink\UWPVideoCapture.h" />
+    <ClInclude Include="SocketClient.h" />
+  </ItemGroup>
+</Project>

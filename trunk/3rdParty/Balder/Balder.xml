@@ -1,0 +1,1539 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Balder</name>
+    </assembly>
+    <members>
+        <member name="T:Balder.Node">
+            <summary>
+            Abstract class representing a node in a scene
+            </summary>
+        </member>
+        <member name="P:Balder.Node.Position">
+            <summary>
+            Gets or sets the position of the node in 3D space
+            </summary>
+        </member>
+        <member name="P:Balder.Node.Scale">
+            <summary>
+            Gets or sets the scale of the node
+            </summary>
+            <remarks>
+            Default is X:1 Y:1 Z:1, which represents the node in a non-scaled form
+            </remarks>
+        </member>
+        <member name="P:Balder.Node.Rotation">
+            <summary>
+            Gets or sets the rotation of the node in angles, 0-360 degrees
+            </summary>
+        </member>
+        <member name="P:Balder.Node.ToolTip">
+            <summary>
+            Tooltip to use on node
+            </summary>
+            <remarks>
+            The property has a TypeConverter which enables one to enter
+            anything in the Xaml and it will be converted to a ToolTip
+            object.
+            </remarks>
+        </member>
+        <member name="P:Balder.Node.ToolTipStartDelay">
+            <summary>
+            Gets or sets the delay when a node has the mouse over till the tooltip shows up 
+            in milliseconds.
+            </summary>
+            <remarks>
+            Default value is 400. Almost half a second.
+            </remarks>
+        </member>
+        <member name="P:Balder.Node.ToolTipShowPeriod">
+            <summary>
+            Gets or sets the period a tooltip should be visible while mouse is hovering over,
+            in milliseconds
+            </summary>
+            <remarks>
+            Default value is 5000 - 5 seconds.
+            </remarks>
+        </member>
+        <member name="T:Balder.Execution.BubbledEventArgs">
+            <summary>
+            Base class for arguments for Bubbled events
+            </summary>
+        </member>
+        <member name="T:Balder.Display.IDisplayDevice">
+            <summary>
+            Represents the display device for a platform
+            </summary>
+        </member>
+        <member name="M:Balder.Display.IDisplayDevice.CreateDisplay">
+            <summary>
+            Create a display from the display device
+            </summary>
+            <returns>Created display</returns>
+        </member>
+        <member name="M:Balder.Display.IDisplayDevice.RemoveDisplay(Balder.Display.IDisplay)">
+            <summary>
+            Remove a created display
+            </summary>
+            <param name="display">Display to remove</param>
+        </member>
+        <member name="T:Balder.Content.IContentManager">
+            <summary>
+            Manages content
+            </summary>
+        </member>
+        <member name="M:Balder.Content.IContentManager.Load``1(System.String)">
+            <summary>
+            Load an asset based on the assetname.
+            </summary>
+            <typeparam name="T">Type of asset to load</typeparam>
+            <param name="assetName">Name of asset - usually a file reference</param>
+            <returns>Loaded asset</returns>
+        </member>
+        <member name="M:Balder.Content.IContentManager.LoadInto``1(``0,System.String)">
+            <summary>
+            Load content into an asset
+            </summary>
+            <typeparam name="T">Type of asset to load into</typeparam>
+            <param name="asset">Asset to load into</param>
+            <param name="assetName">Name of asset - usually a file reference</param>
+        </member>
+        <member name="M:Balder.Content.IContentManager.CreateAssetPart``1">
+            <summary>
+            Create an asset part - assets can have many parts
+            </summary>
+            <typeparam name="T">Type of assetpart to create</typeparam>
+            <returns>Created assetpart</returns>
+        </member>
+        <member name="P:Balder.Content.IContentManager.Creator">
+            <summary>
+            Get the ContentCreator
+            </summary>
+        </member>
+        <member name="P:Balder.Content.IContentManager.AssetsRoot">
+            <summary>
+            Get or set root of assets - typically a folder relative to current directory or a specific folder
+            </summary>
+        </member>
+        <member name="T:Balder.Content.IContentCache">
+            <summary>
+            Represents a caching mechanism for content being created or loaded
+            </summary>
+        </member>
+        <member name="M:Balder.Content.IContentCache.Exists``1(System.Object)">
+            <summary>
+            Check if content is in the cache based upon a key
+            </summary>
+            <typeparam name="T">Type of asset to check</typeparam>
+            <param name="key">Key of the content</param>
+            <returns>True if content is in the cache, false if not</returns>
+        </member>
+        <member name="M:Balder.Content.IContentCache.Get``1(System.Object)">
+            <summary>
+            Get content from the cache based upon the key
+            </summary>
+            <typeparam name="T">Type of asset the content belongs to</typeparam>
+            <param name="key">Key of the content</param>
+            <returns>The asset parts in the cache</returns>
+        </member>
+        <member name="M:Balder.Content.IContentCache.Put``1(System.Object,System.Collections.Generic.IEnumerable{Balder.Assets.IAssetPart})">
+            <summary>
+            Put content into the cache based upon a key
+            </summary>
+            <typeparam name="T">Type of asset the content belongs to</typeparam>
+            <param name="key">Key of the content</param>
+            <param name="parts">AssetParts to put in the cache</param>
+        </member>
+        <member name="M:Balder.Math.MathHelper.Saturate(System.Single)">
+            <summary>
+            Saturates a value to be between 0 and 1.
+            
+            Any values below 0 will be 0, any value above 1 will be 1.
+            </summary>
+            <param name="value">Value to saturate</param>
+            <returns>Saturated value</returns>
+        </member>
+        <member name="T:Balder.Display.IDisplay">
+            <summary>
+            Represents a display on the device
+            </summary>
+        </member>
+        <member name="M:Balder.Display.IDisplay.Initialize(System.Int32,System.Int32)">
+            <summary>
+            Initialize the display
+            </summary>
+            <param name="width">Width of the display</param>
+            <param name="height">Height of the display</param>
+        </member>
+        <member name="M:Balder.Display.IDisplay.Uninitialize">
+            <summary>
+            Uninitialize a display
+            </summary>
+        </member>
+        <member name="M:Balder.Display.IDisplay.InitializeContainer(System.Object)">
+            <summary>
+            Initialize display container
+            </summary>
+            <param name="container">Container</param>
+        </member>
+        <member name="M:Balder.Display.IDisplay.GetNodeAtPosition(System.Int32,System.Int32)">
+            <summary>
+            Get a node at a specific position within the display
+            </summary>
+            <param name="xPosition">X position</param>
+            <param name="yPosition">Y position</param>
+            <returns>The node at the position, null if no node is at the position</returns>
+        </member>
+        <member name="M:Balder.Display.IDisplay.GetMaterialAtPosition(System.Int32,System.Int32)">
+            <summary>
+            Get the material at a specific position within the display
+            </summary>
+            <param name="xPosition">X position</param>
+            <param name="yPosition">Y position</param>
+            <returns>The material at the position, null if no material is at the position</returns>
+        </member>
+        <member name="M:Balder.Display.IDisplay.GetFaceAtPosition(System.Int32,System.Int32)">
+            <summary>
+            Get the face at a specific position within the display
+            </summary>
+            <param name="xPosition">X position</param>
+            <param name="yPosition">Y position</param>
+            <returns>The face at the position, null if no face was at the position</returns>
+        </member>
+        <member name="M:Balder.Display.IDisplay.GetFaceIndexAtPosition(System.Int32,System.Int32)">
+            <summary>
+            Get the index of a face within a geometry of a node at a specific position within the display
+            </summary>
+            <param name="xPosition">X position</param>
+            <param name="yPosition">Y position</param>
+            <returns>The face index at the position, -1 if no face was at the position</returns>
+        </member>
+        <member name="M:Balder.Display.IDisplay.GetCurrentFrame">
+            <summary>
+            Gets the current frames pixeldata
+            </summary>
+            <returns>An array of pixels, 32 bit with alpha</returns>
+        </member>
+        <member name="P:Balder.Display.IDisplay.BackgroundColor">
+            <summary>
+            Get or set the background color used on the display
+            </summary>
+        </member>
+        <member name="P:Balder.Display.IDisplay.ClearEnabled">
+            <summary>
+            Get or set wether or not clear should occur
+            </summary>
+        </member>
+        <member name="P:Balder.Display.IDisplay.Paused">
+            <summary>
+            Get or set wether or not the display is paused
+            By paused, this means that it won't clear or swap next buffer
+            </summary>
+        </member>
+        <member name="P:Balder.Display.IDisplay.Halted">
+            <summary>
+            Get or set wether or not the entire display + rendering events
+            should be halted
+            </summary>
+        </member>
+        <member name="T:Balder.Extensions.IListExtensions">
+            <summary>
+            Extension methods for IList
+            </summary>
+        </member>
+        <member name="M:Balder.Extensions.IListExtensions.AddRange(System.Collections.IList,System.Collections.IEnumerable)">
+            <summary>
+            Add a range of items to a list
+            </summary>
+            <param name="list"><see cref="T:System.Collections.IList"/> to add to</param>
+            <param name="range"><see cref="T:System.Collections.IEnumerable"/> containing the range of items to add</param>
+        </member>
+        <member name="M:Balder.Extensions.IListExtensions.AddRange``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Add a range of items to a generic list
+            </summary>
+            <typeparam name="T">Type of item to add - will be inferred by compiler</typeparam>
+            <param name="list"><see cref="T:System.Collections.Generic.IList`1"/> to add to</param>
+            <param name="range"><see cref="T:System.Collections.Generic.IEnumerable`1"/> containing the range of items to add</param>
+        </member>
+        <member name="T:Balder.Rendering.Silverlight.IMetaDataPixelBuffer">
+            <summary>
+            Represents a manager for maintaining unique identifiers for Nodes
+            during rendering per frame
+            </summary>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.Initialize(System.Int32,System.Int32)">
+            <summary>
+            Initialize with the displays width and height
+            </summary>
+            <param name="width">Width of display</param>
+            <param name="height">Height of display</param>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.Reset">
+            <summary>
+            Reset state completely
+            </summary>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.Clear">
+            <summary>
+            Clear pixel buffer
+            </summary>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.NewFrame">
+            <summary>
+            Signal that a new frame rendering will start
+            </summary>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.GetIdentifier(Balder.INode)">
+            <summary>
+            Get identifier to be used during rendering
+            </summary>
+            <param name="node">Node to get identifier for</param>
+            <returns>A unique identifier for the node for the current frame</returns>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.GetIdentifier(Balder.INode,Balder.Materials.Material)">
+            <summary>
+            Get identifier to be used during rendering
+            </summary>
+            <param name="node">Node to get identifier for</param>
+            <param name="material">Material associated with node</param>
+            <returns>A unique identifier for the node for the current frame</returns>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.GetIdentifier(Balder.INode,Balder.Rendering.Silverlight.RenderFace)">
+            <summary>
+            Get identifier to be used during rendering
+            </summary>
+            <param name="node">Node to get identifier for</param>
+            <param name="renderFace">RenderFace associated with the node</param>
+            <returns>A unique identifier for the node for the current frame</returns>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.GetIdentifier(Balder.INode,Balder.Rendering.Silverlight.RenderFace,Balder.Materials.Material)">
+            <summary>
+            Get identifier to be used during rendering
+            </summary>
+            <param name="node">Node to get identifier for</param>
+            <param name="renderFace">RenderFace associated with the node</param>
+            <param name="material">Material associated with node</param>
+            <returns>A unique identifier for the node for the current frame</returns>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.SetNodeAtPosition(Balder.INode,System.Int32,System.Int32)">
+            <summary>
+            Set a specific node at a specific pixel position
+            </summary>
+            <param name="node">Node to set</param>
+            <param name="xPosition">X position</param>
+            <param name="yPosition">Y position</param>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.SetNodeAtPosition(Balder.INode,Balder.Materials.Material,System.Int32,System.Int32)">
+            <summary>
+            Set a specific node associated with a material at a specific pixel position
+            </summary>
+            <param name="node">Node to set</param>
+            <param name="material">Material to associate at position</param>
+            <param name="xPosition">X position</param>
+            <param name="yPosition">Y position</param>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.SetNodeAtPosition(Balder.INode,Balder.Rendering.Silverlight.RenderFace,System.Int32,System.Int32)">
+            <summary>
+            Set a specific node associated with a material at a specific pixel position
+            </summary>
+            <param name="node">Node to set</param>
+            <param name="face">Face to associate at position</param>
+            <param name="xPosition">X position</param>
+            <param name="yPosition">Y position</param>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.SetNodeAtPosition(Balder.INode,Balder.Rendering.Silverlight.RenderFace,Balder.Materials.Material,System.Int32,System.Int32)">
+            <summary>
+            Set a specific node associated with a material at a specific pixel position
+            </summary>
+            <param name="node">Node to set</param>
+            <param name="face">Face to associate at position</param>
+            <param name="material">Material to associate at position</param>
+            <param name="xPosition">X position</param>
+            <param name="yPosition">Y position</param>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.GetNodeAtPosition(System.Int32,System.Int32)">
+            <summary>
+            Get node that is at a specific position, if any
+            </summary>
+            <param name="xPosition">X position</param>
+            <param name="yPosition">Y position</param>
+            <returns>Node at position, null if there is no node</returns>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.GetMaterialAtPosition(System.Int32,System.Int32)">
+            <summary>
+            Get material that is at a specific position, if any
+            </summary>
+            <param name="xPosition">X position</param>
+            <param name="yPosition">Y position</param>
+            <returns>Material at position, null if there is no material</returns>
+        </member>
+        <member name="M:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.GetRenderFaceAtPosition(System.Int32,System.Int32)">
+            <summary>
+            Get RenderFace that is at a specific position, if any
+            </summary>
+            <param name="xPosition">X position</param>
+            <param name="yPosition">Y position</param>
+            <returns>RenderFace at position, null if there is no RenderFace</returns>
+        </member>
+        <member name="P:Balder.Rendering.Silverlight.IMetaDataPixelBuffer.RenderingBuffer">
+            <summary>
+            Gets the actual rendering buffer for "drawing" Nodes identifiers to
+            </summary>
+        </member>
+        <member name="T:Balder.Materials.MaterialShade">
+            <summary>
+            Specifies the shading model for a material
+            </summary>
+        </member>
+        <member name="F:Balder.Materials.MaterialShade.None">
+            <summary>
+            No shading
+            </summary>
+        </member>
+        <member name="F:Balder.Materials.MaterialShade.Wireframe">
+            <summary>
+            Wireframe shading - no solid filling
+            </summary>
+        </member>
+        <member name="F:Balder.Materials.MaterialShade.Flat">
+            <summary>
+            Flat shading
+            </summary>
+        </member>
+        <member name="F:Balder.Materials.MaterialShade.Gouraud">
+            <summary>
+            Gouraud - smooth shading - linearly interpolated
+            </summary>
+        </member>
+        <member name="T:Balder.Objects.Geometries.ArbitraryHeightmap">
+            <summary>
+            Represents a heightmap were the 4 corners can be placed arbitrary in 3D space
+            </summary>
+            <remarks>
+            Point 1 and 2 represents one side of the quad
+            Point 3 and 4 represents the other side
+            </remarks>
+        </member>
+        <member name="T:Balder.Execution.BubbledEvent`2">
+            <summary>
+            Represents a bubbled event, an event that can travel upwards through the
+            node hierarchy
+            </summary>
+            <typeparam name="T">Type of the owner</typeparam>
+            <typeparam name="TEt">
+            EventHandler type, see <see cref="T:Balder.Execution.BubbledEventHandler"/> or <see cref="T:Balder.Execution.BubbledEventHandler`1"/> 
+            for event handler types that are generic and can be used.
+            </typeparam>
+            <remarks>
+            In order for a bubbled event to be able to alert the entire hierarchy, all
+            elements in the hierarchy must be the same type.
+            
+            If using the BubbledEventArgs as base for your event argument, events can
+            be handled through the hierarchy with the Handled property. That will stop
+            the bubbling.
+            </remarks>
+        </member>
+        <member name="M:Balder.Execution.BubbledEvent`2.Register(System.Func{`0,`1})">
+            <summary>
+            Register a bubbled event on a type
+            </summary>
+            <param name="eventHandlerFunc">Func representing the eventhandler to invoke during raise</param>
+            <returns>BubbledEvent ready to be used</returns>
+        </member>
+        <member name="M:Balder.Execution.BubbledEvent`2.Raise(`0,System.Object[])">
+            <summary>
+            Raise a bubbled event through the hierarchy
+            </summary>
+            <param name="instance">Instance to raise event for</param>
+            <param name="arguments">Arguments for the event, important that these match to the signature of the delegate representing the event</param>
+        </member>
+        <member name="T:Balder.Lighting.ILight">
+            <summary>
+            Represents a light
+            </summary>
+        </member>
+        <member name="M:Balder.Lighting.ILight.Calculate(Balder.Display.Viewport,Balder.Materials.Material,Balder.Math.Vector,Balder.Math.Vector)">
+            <summary>
+            Calculate color for the light in a viewport for a specified point and normal of the point
+            </summary>
+            <param name="viewport"><see cref="T:Balder.Display.Viewport"/> that holds the point</param>
+            <param name="point">Point to calculate for - in the form of a <see cref="T:Balder.Math.Vector"/></param>
+            <param name="normal">Normal for the point to calculate for - in the form of a <see cref="T:Balder.Math.Vector"/></param>
+            <returns>Calculated <see cref="T:Balder.Color"/></returns>
+        </member>
+        <member name="P:Balder.Lighting.ILight.Diffuse">
+            <summary>
+            Gets or sets the diffuse light <see cref="T:Balder.Color"/>
+            </summary>
+        </member>
+        <member name="P:Balder.Lighting.ILight.Ambient">
+            <summary>
+            Gets or sets the ambient light <see cref="T:Balder.Color"/>
+            </summary>
+        </member>
+        <member name="P:Balder.Lighting.ILight.Specular">
+            <summary>
+            Gets or sets the specular light <see cref="T:Balder.Color"/>
+            </summary>
+        </member>
+        <member name="T:Balder.Execution.BindingResolver">
+            <summary>
+            Represents the method that will handle resolving a binding
+            </summary>
+            <param name="context">Binding context to resolve in</param>
+            <returns>The resolved binding - null if it didn't solve it</returns>
+        </member>
+        <member name="T:Balder.Execution.GenericBindingResolver">
+            <summary>
+            Represents the method that will handle resolving a binding with type information
+            </summary>
+            <param name="type">Type to resolve</param>
+            <param name="context">Binding context to resolve in</param>
+            <returns>The resolved binding - null if it didn't solve it</returns>
+        </member>
+        <member name="T:Balder.Execution.AutoKernel">
+            <summary>
+            Represents a kernel that can automatically resolve bindings based on conventions
+            </summary>
+        </member>
+        <member name="M:Balder.Execution.AutoKernel.#ctor(Ninject.Modules.INinjectModule[])">
+            <summary>
+            Creates an instance of the <see cref="T:Balder.Execution.AutoKernel"/>
+            </summary>
+            <param name="modules"></param>
+        </member>
+        <member name="M:Balder.Execution.AutoKernel.AddBindingResolver``1(Balder.Execution.BindingResolver)">
+            <summary>
+            Add a binding resolver
+            </summary>
+            <typeparam name="T">Type to add resolver for</typeparam>
+            <param name="resolver"><see cref="T:Balder.Execution.BindingResolver"/> to use for resolving specific type</param>
+        </member>
+        <member name="M:Balder.Execution.AutoKernel.AddGenericBindingResolver(Balder.Execution.GenericBindingResolver)">
+            <summary>
+            Add a binding resolver for any type
+            </summary>
+            <param name="resolver"><see cref="T:Balder.Execution.GenericBindingResolver"/> to use for resolving any type</param>
+        </member>
+        <member name="T:Balder.Content.IContentCreator">
+            <summary>
+            Handles the creation of content programatically
+            </summary>
+        </member>
+        <member name="M:Balder.Content.IContentCreator.CreateGeometry``1">
+            <summary>
+            Creates a geometry based on the geometry type
+            </summary>
+            <typeparam name="T">Type of geometry to create</typeparam>
+            <returns>An instance of the geometry created</returns>
+        </member>
+        <member name="M:Balder.Content.IContentCreator.CreateMaterial">
+            <summary>
+            Creates a material
+            </summary>
+            <returns>An instance of a Material</returns>
+        </member>
+        <member name="T:Balder.Color">
+            <summary>
+            Represents a color
+            </summary>
+        </member>
+        <member name="M:Balder.Color.#ctor(System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Creates an instance of <see cref="T:Balder.Color"/> with all channels initialized
+            </summary>
+            <param name="red">Value for Red channel</param>
+            <param name="green">Value for Green channel</param>
+            <param name="blue">Value for Blue channel</param>
+            <param name="alpha">Value for Alpha channel</param>
+        </member>
+        <member name="M:Balder.Color.Random">
+            <summary>
+            Create a random color
+            </summary>
+            <returns>Newly created color</returns>
+        </member>
+        <member name="M:Balder.Color.FromArgb(System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Create a color from given channel values
+            </summary>
+            <param name="alpha">Alpha channel value</param>
+            <param name="red">Red channel value</param>
+            <param name="green">Green channel value</param>
+            <param name="blue">Blue channel value</param>
+            <returns>Newly created color</returns>
+        </member>
+        <member name="M:Balder.Color.FromSystemColor(System.Windows.Media.Color)">
+            <summary>
+            Create a color from an existing <see cref="T:System.Windows.Media.Color"/>
+            </summary>
+            <param name="systemColor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Balder.Color.op_Addition(Balder.Color,Balder.Color)">
+            <summary>
+            Add colors - look at <seealso cref="M:Balder.Color.Additive(Balder.Color)"/> for more details on the operation
+            </summary>
+            <param name="firstColor">First color in addition</param>
+            <param name="secondColor">Second color in addition</param>
+            <returns>Combined color</returns>
+        </member>
+        <member name="M:Balder.Color.op_Subtraction(Balder.Color,Balder.Color)">
+            <summary>
+            Subtract colors - look at <seealso cref="M:Balder.Color.Subtract(Balder.Color)"/> for more details on the operation
+            </summary>
+            <param name="firstColor">First color in subtraction</param>
+            <param name="secondColor">Second color in subtraction</param>
+            <returns>Combined color</returns>
+        </member>
+        <member name="M:Balder.Color.op_Implicit(System.Windows.Media.Color)~Balder.Color">
+            <summary>
+            Implicitly convert to <see cref="T:Balder.Color"/> from <see cref="T:System.Windows.Media.Color"/>
+            </summary>
+            <param name="color"></param>
+            <returns>Converted color</returns>
+        </member>
+        <member name="P:Balder.Color.Alpha">
+            <summary>
+            Gets or sets the Alpha channel value
+            </summary>
+        </member>
+        <member name="P:Balder.Color.Red">
+            <summary>
+            Gets or sets the Red channel value
+            </summary>
+        </member>
+        <member name="P:Balder.Color.Green">
+            <summary>
+            Gets or sets the Green channel value
+            </summary>
+        </member>
+        <member name="P:Balder.Color.Blue">
+            <summary>
+            Gets or sets the Blue channel value
+            </summary>
+        </member>
+        <member name="T:Balder.Collections.ActorCollection">
+            <summary>
+            Collection holding actors - actors can be Game or any other actor type.
+            </summary>
+        </member>
+        <member name="T:Balder.Execution.Actor">
+            <summary>
+            Base class for all actors.
+            </summary>
+        </member>
+        <member name="P:Balder.Execution.Actor.Actors">
+            <summary>
+            Gets a collection of all actors contained in the actor - Sub Actors
+            </summary>
+        </member>
+        <member name="P:Balder.Execution.Actor.HasInitialized">
+            <summary>
+            Gets a boolean indicating wether or not the Actor has initialized
+            </summary>
+        </member>
+        <member name="P:Balder.Execution.Actor.HasLoaded">
+            <summary>
+            Gets a boolean indicating wether or not the Actor has loaded
+            </summary>
+        </member>
+        <member name="P:Balder.Execution.Actor.HasUpdated">
+            <summary>
+            Gets a boolean indicating wether or not the Actor has been updated
+            </summary>
+        </member>
+        <member name="P:Balder.Execution.Actor.State">
+            <summary>
+            Gets the current state of the actor
+            </summary>
+        </member>
+        <member name="M:Balder.Extensions.Silverlight.VisualStateExtensions.GoToState(System.Windows.Controls.Control,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="control"></param>
+            <param name="stateName"></param>
+        </member>
+        <member name="M:Balder.Extensions.Silverlight.VisualStateExtensions.GoToState(System.Windows.Controls.UserControl,System.String,System.EventHandler)">
+            <summary>
+            Go to a specific state and provide a callback when the state change
+            has completed its transition.
+            
+            This overload will automatically use transitions
+            </summary>
+            <param name="control">UserControl to change state for</param>
+            <param name="stateName">Name of state to change to</param>
+            <param name="stateChanged">Delegate to call when transition is done</param>
+            <remarks>
+            You must have a LayoutRoot object that is named "LayoutRoot". Oherwize
+            it won't find it.
+            </remarks>
+        </member>
+        <member name="M:Balder.Extensions.Silverlight.VisualStateExtensions.GoToState(System.Windows.Controls.UserControl,System.String,System.Boolean,System.EventHandler)">
+            <summary>
+            Go to a specific state and provide a callback when the state change
+            has completed its transition.
+            </summary>
+            <param name="control">UserControl to change state for</param>
+            <param name="stateName">Name of state to change to</param>
+            <param name="useTransitions">Use transitions or not</param>
+            <param name="stateChanged">Delegate to call when transition is done</param>
+            <remarks>
+            You must have a LayoutRoot object that is named "LayoutRoot". Oherwize
+            it won't find it.
+            </remarks>
+        </member>
+        <member name="T:Balder.Execution.ITypeDiscoverer">
+            <summary>
+            Discovers types based upon basetypes
+            </summary>
+        </member>
+        <member name="M:Balder.Execution.ITypeDiscoverer.FindSingle``1">
+            <summary>
+            Find a single implementation of a basetype
+            </summary>
+            <typeparam name="T">Basetype to find for</typeparam>
+            <returns>Type found</returns>
+            <remarks>
+            If the base type is an interface, it will look for any types implementing the interface.
+            If it is a class, it will find anyone inheriting from that class
+            </remarks>
+            <exception cref="T:System.ArgumentException">If there is more than one instance found</exception>
+        </member>
+        <member name="M:Balder.Execution.ITypeDiscoverer.FindMultiple``1">
+            <summary>
+            Find multiple implementations of a basetype
+            </summary>
+            <typeparam name="T">Basetype to find for</typeparam>
+            <returns>All types implementing or inheriting from the given basetype</returns>
+            <remarks>
+            If the base type is an interface, it will look for any types implementing the interface.
+            If it is a class, it will find anyone inheriting from that class
+            </remarks>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Balder.Math.Quaternion.#ctor(Balder.Math.Vector,System.Single)" -->
+        <member name="M:Balder.Math.Quaternion.op_Explicit(Balder.Math.Quaternion)~Balder.Math.Matrix">
+            <summary>
+            Quaternion -> matrix
+            </summary>
+            <param name="Quaternion"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Balder.Collections.NodeCollection">
+            <summary>
+            Collection of nodes	- any node type can be added to this collection type
+            </summary>
+        </member>
+        <member name="T:Balder.Rendering.Silverlight.MetaDataPixelBuffer">
+            <summary>
+            Represents a concrete implementation of a nodes pixelbuffer
+            </summary>
+        </member>
+        <member name="T:Balder.Objects.Geometries.GeometryHelper">
+            <summary>
+            Helper for working with geometries and its data
+            </summary>
+        </member>
+        <member name="M:Balder.Objects.Geometries.GeometryHelper.CalculateFaceNormals(Balder.Objects.Geometries.IGeometryDetailLevel)">
+            <summary>
+            Generate face normals for faces added to a specific <see cref="T:Balder.Objects.Geometries.IGeometryDetailLevel"/>
+            </summary>
+            <param name="detailLevel"></param>
+        </member>
+        <member name="M:Balder.Objects.Geometries.GeometryHelper.CalculateVertexNormals(Balder.Objects.Geometries.IGeometryDetailLevel)">
+            <summary>
+            Generate vertex normals for vertices added to a specific <see cref="T:Balder.Objects.Geometries.IGeometryDetailLevel"/>
+            </summary>
+            <param name="detailLevel"></param>
+        </member>
+        <member name="T:Balder.Exceptions.AssetNotFoundException">
+            <summary>
+            The exception that is thrown when an asset is not found during load
+            </summary>
+        </member>
+        <member name="M:Balder.Exceptions.AssetNotFoundException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Balder.Exceptions.AssetNotFoundException">AssetNotFoundException</see>
+            </summary>
+            <param name="asset">AssetName that couldn't be found</param>
+        </member>
+        <member name="T:Balder.Lighting.DirectionalLight">
+            <summary>
+            Represents a directional light that has no position in 3D space
+            </summary>
+        </member>
+        <member name="F:Balder.Lighting.DirectionalLight.DirectionProperty">
+            <summary>
+            Direction Property
+            </summary>
+        </member>
+        <member name="P:Balder.Lighting.DirectionalLight.SpecularIntensity">
+            <summary>
+            Gets or sets the specular intensity
+            </summary>
+        </member>
+        <member name="P:Balder.Lighting.DirectionalLight.SpecularPower">
+            <summary>
+            Gets or sets the specular power
+            </summary>
+        </member>
+        <member name="P:Balder.Lighting.DirectionalLight.Direction">
+            <summary>
+            Gets or sets the direction of the light
+            </summary>
+        </member>
+        <member name="T:Balder.Debug.DebugInfo">
+            <summary>
+            Holds all flags for enabling or disabling certain debug information from the
+            rendering.
+            </summary>
+        </member>
+        <member name="M:Balder.Debug.DebugInfo.#ctor">
+            <summary>
+            Creates a debug info object
+            </summary>
+        </member>
+        <member name="P:Balder.Debug.DebugInfo.Geometry">
+            <summary>
+            Get or set if the geometry should be visualized in a debug manner
+            </summary>
+        </member>
+        <member name="P:Balder.Debug.DebugInfo.FaceNormals">
+            <summary>
+            Get or set if the normals of every face in a geometry should be rendered
+            </summary>
+        </member>
+        <member name="P:Balder.Debug.DebugInfo.VertexNormals">
+            <summary>
+            Get or set if the normals of every vertex in a geometry should be rendered
+            </summary>
+        </member>
+        <member name="P:Balder.Debug.DebugInfo.Lights">
+            <summary>
+            Get or set if the lights should be visualized
+            </summary>
+        </member>
+        <member name="P:Balder.Debug.DebugInfo.BoundingBoxes">
+            <summary>
+            Get or set if the bounding boxes for objects should be rendered
+            </summary>
+        </member>
+        <member name="P:Balder.Debug.DebugInfo.BoundingSpheres">
+            <summary>
+            Get or set if the bounding spheres for objects should be rendered
+            </summary>
+        </member>
+        <member name="P:Balder.Debug.DebugInfo.ShowVertices">
+            <summary>
+            Get or set if the vertices should be rendered
+            </summary>
+        </member>
+        <member name="P:Balder.Debug.DebugInfo.ShowMouseHitDetectionRay">
+            <summary>
+            Get or set if the ray that is used for mouse hit detection should show or not
+            </summary>
+        </member>
+        <member name="P:Balder.Debug.DebugInfo.Color">
+            <summary>
+            Get or set the debug information color used for all debug info
+            </summary>
+        </member>
+        <member name="T:Balder.Content.IFileLoader">
+            <summary>
+            To load files in Balder, you should go through the fileloader. 
+            Loading of files is a platform specific operation.
+            </summary>
+        </member>
+        <member name="M:Balder.Content.IFileLoader.GetStream(System.String)">
+            <summary>
+            Get the stream of a given asset
+            </summary>
+            <param name="fileName">Filename for the file you want to load</param>
+            <returns>A stream that can be used to retrieve the content</returns>
+        </member>
+        <member name="T:Balder.Lighting.ILightCalculator">
+            <summary>
+            Represents a service for calculating lighting in a viewport
+            </summary>
+        </member>
+        <member name="M:Balder.Lighting.ILightCalculator.Calculate(Balder.Display.Viewport,Balder.Materials.Material,Balder.Math.Vector,Balder.Math.Vector)">
+            <summary>
+            Calculate color based on lighting in the viewport
+            </summary>
+            <param name="viewport"><see cref="T:Balder.Display.Viewport"/> to calculate from</param>
+            <param name="point">Point to calculate for - in the form of a <see cref="T:Balder.Math.Vector"/></param>
+            <param name="normal">Normal of the point to calculate for - in the form of a <see cref="T:Balder.Math.Vector"/></param>
+            <returns>Calculated <see cref="T:Balder.Color"/></returns>
+            <remarks>
+            It is assumed that it will take into account all lighting information
+            inside the viewport - meaning that it will calculate using all lights
+            available.
+            </remarks>
+        </member>
+        <member name="T:Balder.View.IView">
+            <summary>
+            Represents a view that is used to view a 3D scene
+            </summary>
+        </member>
+        <member name="M:Balder.View.IView.IsInView(Balder.Math.Vector)">
+            <summary>
+            Check if a vector is within view
+            </summary>
+            <param name="vector"><see cref="T:Balder.Math.Vector"/> to check</param>
+            <returns>True if in view, false if not</returns>
+        </member>
+        <member name="M:Balder.View.IView.IsInView(Balder.Math.Coordinate)">
+            <summary>
+            Check if a coordinate is within view
+            </summary>
+            <param name="coordinate"><see cref="T:Balder.Math.Coordinate"/> to check</param>
+            <returns>True if in view, false if not</returns>
+        </member>
+        <member name="M:Balder.View.IView.Update(Balder.Display.Viewport)">
+            <summary>
+            Update view - typically called before rendering to update all data view is holding
+            based upon any changes.
+            </summary>
+            <param name="viewport"><see cref="T:Balder.Display.Viewport"/> view is being rendered in</param>
+        </member>
+        <member name="P:Balder.View.IView.ViewMatrix">
+            <summary>
+            Gets the view <see cref="T:Balder.Math.Matrix"/> for the view
+            </summary>
+            <remarks>
+            The view <see cref="T:Balder.Math.Matrix"/> represents the translation of vectors in 
+            viewspace
+            </remarks>
+        </member>
+        <member name="P:Balder.View.IView.ProjectionMatrix">
+            <summary>
+            Gets the projection <see cref="T:Balder.Math.Matrix"/> - the conversion of 3D to 2D
+            </summary>
+        </member>
+        <member name="P:Balder.View.IView.Near">
+            <summary>
+            Gets or sets the near clipping value - the point closest to the screen before
+            clipping should occur
+            </summary>
+        </member>
+        <member name="P:Balder.View.IView.Far">
+            <summary>
+            Gets or sets the far clipping value - the point furthest away from the screen before
+            clipping should occur
+            </summary>
+        </member>
+        <member name="P:Balder.View.IView.DepthDivisor">
+            <summary>
+            Gets or sets the depthdivisor typically used by Z buffering
+            </summary>
+        </member>
+        <member name="P:Balder.View.IView.DepthZero">
+            <summary>
+            Gets the point in depth that represents Zero
+            </summary>
+        </member>
+        <member name="M:Balder.View.Camera.SetupProjection(Balder.Display.Viewport)">
+            <summary>
+            Calculates the projection matrix
+            </summary>
+        </member>
+        <member name="P:Balder.View.Camera.Position">
+            <summary>
+            Get and set the position for the Camera
+            </summary>
+        </member>
+        <member name="P:Balder.View.Camera.Target">
+            <summary>
+            Get and set the target for the Camera - The location the camera is looking at
+            </summary>
+        </member>
+        <member name="P:Balder.View.Camera.Forward">
+            <summary>
+            Get the forward vector for the camera. This is calculated from the target and position
+            </summary>
+        </member>
+        <member name="P:Balder.View.Camera.Near">
+            <summary>
+            Gets or sets the near distance clipping plane
+            </summary>
+        </member>
+        <member name="P:Balder.View.Camera.Far">
+            <summary>
+            Gets or sets the far distance clipping plane
+            </summary>
+        </member>
+        <member name="P:Balder.View.Camera.DepthDivisor">
+            <summary>
+            Gets the divisor used for transforming Z values for purposes such as depth buffers
+            </summary>
+        </member>
+        <member name="P:Balder.View.Camera.DepthZero">
+            <summary>
+            Gets the value that indicates the actual zero/start of the depth, typically used by depth buffers
+            </summary>
+        </member>
+        <member name="P:Balder.View.Camera.FieldOfView">
+            <summary>
+            Gets or sets the field of view for the camera
+            </summary>
+        </member>
+        <member name="T:Balder.Imaging.IImageContext">
+            <summary>
+            The context image data lives in - device specific
+            </summary>
+        </member>
+        <member name="M:Balder.Content.ContentCreator.#ctor(Ninject.IKernel,Balder.Execution.IIdentityManager)">
+            <summary>
+            Creates a new ContentCreator and provides functionality for creating content
+            </summary>
+            <param name="kernel">Kernel that the ContentCreator will use for creating content</param>
+            <param name="identityManager">IdentityManager used during creation of certain content</param>
+        </member>
+        <member name="T:Balder.Utils.EnumHelper">
+            <summary>
+            Helper class for getting values out of Enums
+            </summary>
+        </member>
+        <member name="M:Balder.Utils.EnumHelper.GetValues``1">
+            <summary>
+            Get all values in an enum specified as a generic parameter
+            </summary>
+            <typeparam name="T">Type of enum to get values from</typeparam>
+            <returns>Array of values in the enum</returns>
+            <exception cref="T:System.ArgumentException">If the type is not an enum type</exception>
+        </member>
+        <member name="M:Balder.Utils.EnumHelper.GetValues(System.Type)">
+            <summary>
+            Get all values in an enum specified as a parameter
+            </summary>
+            <param name="enumType">Type of enum to get values from</param>
+            <returns>Array of values in the enum</returns>
+            <exception cref="T:System.ArgumentException">If the type is not an enum type</exception>
+        </member>
+        <member name="T:Balder.Scene">
+            <summary>
+            Scene represents the root for all elements in a 3D world.
+            One can add any node implementing the INode interface to the
+            scene and the scene will handle the management and rendering 
+            of the nodes
+            </summary>
+        </member>
+        <member name="F:Balder.Scene.AmbientColor">
+            <summary>
+            Ambient color for the scene - default is set to #1f1f1f (RGB)
+            </summary>
+        </member>
+        <member name="M:Balder.Scene.#ctor">
+            <summary>
+            Construct a scene
+            </summary>
+        </member>
+        <member name="M:Balder.Scene.#ctor(Balder.Rendering.INodeRenderingService)">
+            <summary>
+            Construct a scene - specifying the rendering service
+            </summary>
+            <param name="nodeRenderingService">NodeRenderingService to use</param>
+        </member>
+        <member name="M:Balder.Scene.AddNode(Balder.INode)">
+            <summary>
+            Add a node to the scene
+            </summary>
+            <param name="node">Node to add</param>
+        </member>
+        <member name="M:Balder.Scene.RemoveNode(Balder.INode)">
+            <summary>
+            Remove a specific node from the scene
+            </summary>
+            <param name="node">Node to remove</param>
+        </member>
+        <member name="M:Balder.Scene.Clear">
+            <summary>
+            Clear out all nodes in the scene
+            </summary>
+        </member>
+        <member name="P:Balder.Scene.RenderableNodes">
+            <summary>
+            Gets all the renderable nodes in the scene
+            </summary>
+        </member>
+        <member name="P:Balder.Scene.Lights">
+            <summary>
+            Gets all the lights in the scene
+            </summary>
+        </member>
+        <member name="T:Balder.Materials.Material">
+            <summary>
+            Represents a material
+            </summary>
+        </member>
+        <member name="M:Balder.Materials.Material.#ctor">
+            <summary>
+            Creates an instance of <see cref="T:Balder.Materials.Material"/>
+            </summary>
+        </member>
+        <member name="M:Balder.Materials.Material.#ctor(Balder.Execution.IIdentityManager)">
+            <summary>
+            Creates an instance of <see cref="T:Balder.Materials.Material"/>
+            </summary>
+        </member>
+        <member name="F:Balder.Materials.Material.DiffuseMapProperty">
+            <summary>
+            DiffuseMap Property
+            </summary>
+        </member>
+        <member name="F:Balder.Materials.Material.ReflectionMapProperty">
+            <summary>
+            ReflectionMap Property
+            </summary>
+        </member>
+        <member name="P:Balder.Materials.Material.Ambient">
+            <summary>
+            Gets or sets the ambient <see cref="T:Balder.Color"/> of the material
+            </summary>
+        </member>
+        <member name="P:Balder.Materials.Material.Diffuse">
+            <summary>
+            Gets or sets the diffuse <see cref="T:Balder.Color"/> of the material
+            </summary>
+        </member>
+        <member name="P:Balder.Materials.Material.Specular">
+            <summary>
+            Gets or sets the specular <see cref="T:Balder.Color"/> of the material
+            </summary>
+        </member>
+        <member name="P:Balder.Materials.Material.Shine">
+            <summary>
+            Gets or sets the shininess of the material
+            </summary>
+        </member>
+        <member name="P:Balder.Materials.Material.ShineStrength">
+            <summary>
+            Gets or sets the shininess strength of the material
+            </summary>
+        </member>
+        <member name="P:Balder.Materials.Material.Shade">
+            <summary>
+            Gets or sets the shade model for the material
+            </summary>
+        </member>
+        <member name="P:Balder.Materials.Material.DoubleSided">
+            <summary>
+            Gets or sets wether or not the material is double sided or not
+            </summary>
+        </member>
+        <member name="P:Balder.Materials.Material.DiffuseMap">
+            <summary>
+            Gets or sets the diffuse map <see cref="T:Balder.Imaging.Image"/>
+            </summary>
+        </member>
+        <member name="P:Balder.Materials.Material.ReflectionMap">
+            <summary>
+            Gets or sets the reflection map <see cref="T:Balder.Imaging.Image"/>
+            </summary>
+        </member>
+        <member name="P:Balder.Materials.Material.Id">
+            <summary>
+            Gets the Id of the Material
+            </summary>
+        </member>
+        <member name="T:Balder.PixelFormat">
+            <summary>
+            Specifies the pixelformat used by typical <see cref="T:Balder.Imaging.Image"/>
+            </summary>
+        </member>
+        <member name="F:Balder.PixelFormat.Grayscale">
+            <summary>
+            8 bit gray without alpha
+            </summary>
+        </member>
+        <member name="F:Balder.PixelFormat.GrayscaleAlpha">
+            <summary>
+            8 bit gray with alpha
+            </summary>
+        </member>
+        <member name="F:Balder.PixelFormat.Palette">
+            <summary>
+            8 bit palette based (256 colors)
+            </summary>
+        </member>
+        <member name="F:Balder.PixelFormat.RGB">
+            <summary>
+            24 bit RGB, 8 bits per channel
+            </summary>
+        </member>
+        <member name="F:Balder.PixelFormat.RGBAlpha">
+            <summary>
+            32 bit RGB with Alpha, 8 bits per channel
+            </summary>
+        </member>
+        <member name="T:Balder.Extensions.WaitHandleExentions">
+            <summary>
+            Extension methods for WaitHandles
+            </summary>
+        </member>
+        <member name="M:Balder.Extensions.WaitHandleExentions.ResetAll(System.Threading.ManualResetEvent[])">
+            <summary>
+            Reset all <see cref="T:System.Threading.ManualResetEvent"/> in an array
+            </summary>
+            <param name="waitHandles">Array of <see cref="T:System.Threading.ManualResetEvent"/></param>
+        </member>
+        <member name="M:Balder.Extensions.WaitHandleExentions.SetAll(System.Threading.ManualResetEvent[])">
+            <summary>
+            Set all <see cref="T:System.Threading.ManualResetEvent"/> in an array
+            </summary>
+            <param name="waitHandles">Array of <see cref="T:System.Threading.ManualResetEvent"/></param>
+        </member>
+        <member name="T:Balder.Extensions.ImageFormatExtensions">
+            <summary>
+            Extension methods for <see cref="T:Balder.Imaging.ImageFormat"/>
+            </summary>
+        </member>
+        <member name="M:Balder.Extensions.ImageFormatExtensions.IsSupported(Balder.Imaging.ImageFormat[],Balder.Imaging.ImageFormat)">
+            <summary>
+            Check if a desired format is supported in an array of formats
+            </summary>
+            <param name="formats">Available image formats</param>
+            <param name="desiredFormat">The desired <see cref="T:Balder.Imaging.ImageFormat"/></param>
+            <returns>True if supported, false if not</returns>
+        </member>
+        <member name="M:Balder.Extensions.ImageFormatExtensions.GetBestSuitedFormat(Balder.Imaging.ImageFormat[],Balder.Imaging.ImageFormat)">
+            <summary>
+            Get the closest matching format from a specific <see cref="T:Balder.Imaging.ImageFormat"/>
+            </summary>
+            <param name="formats">Available image formats</param>
+            <param name="desiredFormat">The desired <see cref="T:Balder.Imaging.ImageFormat"/></param>
+            <returns>The closest <see cref="T:Balder.Imaging.ImageFormat"/>, null if no match</returns>
+        </member>
+        <member name="T:Balder.Lighting.OmniLight">
+            <summary>
+            Represents a non directional light that emits light in all directions
+            </summary>
+        </member>
+        <member name="M:Balder.Lighting.OmniLight.#ctor(Balder.Execution.IIdentityManager)">
+            <summary>
+            Creates an instance of OmniLight
+            </summary>
+            <param name="identityManager">Identitymanager to use for the light</param>
+        </member>
+        <member name="P:Balder.Lighting.OmniLight.Strength">
+            <summary>
+            Gets or sets the strength of the light
+            </summary>
+        </member>
+        <member name="P:Balder.Lighting.OmniLight.Range">
+            <summary>
+            Gets or sets the range of the light
+            </summary>
+        </member>
+        <member name="T:Balder.Rendering.INodeRenderingService">
+            <summary>
+            Represents rendering capabilities for nodes
+            </summary>
+        </member>
+        <member name="M:Balder.Rendering.INodeRenderingService.Prepare(Balder.Display.Viewport,Balder.Collections.NodeCollection)">
+            <summary>
+            Prepare nodes
+            </summary>
+            <param name="viewport">Viewport that the nodes are being rendered to</param>
+            <param name="nodes">Nodes to prepare</param>
+        </member>
+        <member name="M:Balder.Rendering.INodeRenderingService.PrepareForRendering(Balder.Display.Viewport,Balder.Collections.NodeCollection)">
+            <summary>
+            Prepare nodes for rendering
+            </summary>
+            <param name="viewport">Viewport that the nodes are being rendered to</param>
+            <param name="nodes">Nodes to prepare</param>
+        </member>
+        <member name="M:Balder.Rendering.INodeRenderingService.Render(Balder.Display.Viewport,Balder.Collections.NodeCollection)">
+            <summary>
+            Render nodes
+            </summary>
+            <param name="viewport">Viewport that the nodes are being rendered to</param>
+            <param name="nodes">Nodes to render</param>
+        </member>
+        <member name="T:Balder.Exceptions.UnsupportedImageFormatException">
+            <summary>
+            The exception that is thrown when a specific <see cref="T:Balder.Imaging.ImageFormat"/> is not supported
+            </summary>
+        </member>
+        <member name="M:Balder.Exceptions.UnsupportedImageFormatException.#ctor(Balder.Imaging.ImageFormat)">
+            <summary>
+            Initializes a new instance of <see cref="T:Balder.Exceptions.UnsupportedImageFormatException"/>
+            </summary>
+            <param name="format">Format that was not supported</param>
+        </member>
+        <member name="M:Balder.Exceptions.UnsupportedImageFormatException.#ctor(Balder.Imaging.ImageFormat,System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Balder.Exceptions.UnsupportedImageFormatException"/>
+            </summary>
+            <param name="format">Format that was not supported</param>
+            <param name="message">Message to show</param>
+        </member>
+        <member name="T:Balder.Execution.Messenger">
+            <summary>
+            Handles decoupled messaging
+            </summary>
+        </member>
+        <member name="M:Balder.Execution.Messenger.Context(System.Object)">
+            <summary>
+            Get a specific context for an object instance
+            </summary>
+            <param name="obj">Object instance to get context for</param>
+            <returns>Messenger context</returns>
+        </member>
+        <member name="P:Balder.Execution.Messenger.DefaultContext">
+            <summary>
+            Gets the default messenger context
+            </summary>
+        </member>
+        <member name="T:Balder.Execution.MessageAction`1">
+            <summary>
+            Represents an action for a message
+            </summary>
+            <typeparam name="T">Message it represents</typeparam>
+        </member>
+        <member name="T:Balder.Extensions.ICollectionExtensions">
+            <summary>
+            Extension methods for the generic version of ICollection
+            </summary>
+        </member>
+        <member name="M:Balder.Extensions.ICollectionExtensions.AddRange``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Add a range to a collection based on an generic IEnumerable with same
+            type as the ICollection generic parameter
+            </summary>
+            <typeparam name="T">Type to add for - will be inferred compiletime</typeparam>
+            <param name="collection">Collection to add items to</param>
+            <param name="range">IEnumerable with items to add</param>
+        </member>
+        <member name="T:Balder.Display.Viewport">
+            <summary>
+            Represents a viewport within a display - the Viewport is a 2D rectangle representing a clipping region.
+            The viewport also holds the view used to render and also holds the scene that contains the objects that
+            will be rendered within the viewport
+            </summary>
+        </member>
+        <member name="M:Balder.Display.Viewport.#ctor">
+            <summary>
+            Creates a viewport
+            </summary>
+        </member>
+        <member name="M:Balder.Display.Viewport.#ctor(Balder.Rendering.IRuntimeContext)">
+            <summary>
+            Creates a viewport
+            </summary>
+            <param name="runtimeContext">RuntimeContext that the viewport belongs to</param>
+        </member>
+        <member name="M:Balder.Display.Viewport.Unproject(Balder.Math.Vector,Balder.Math.Matrix,Balder.Math.Matrix,Balder.Math.Matrix)">
+            <summary>
+            Unproject a 2D coordinate into 3D. Basically convert a 2D point with depth
+            information (Z) into a real 3D coordinate.
+            </summary>
+            <param name="source">Point to unproject</param>
+            <param name="projection">Projection matrix</param>
+            <param name="view">View matrix</param>
+            <param name="world">World matrix</param>
+            <returns>Unprojected 3D coordinate</returns>
+        </member>
+        <member name="M:Balder.Display.Viewport.GetNodeAtPosition(System.Int32,System.Int32)">
+            <summary>
+            Get a node at a specified position relative to a specific viewport
+            </summary>
+            <param name="x">X position</param>
+            <param name="y">Y position</param>
+            <returns>A RenderableNode - null if it didn't find any node at the position</returns>
+        </member>
+        <member name="P:Balder.Display.Viewport.XPosition">
+            <summary>
+            Get or set the x position in pixelsof the viewport within the display, where 0 is the left
+            </summary>
+        </member>
+        <member name="P:Balder.Display.Viewport.YPosition">
+            <summary>
+            Get or set the y position in pixels of the viewport within the display, where 0 is the top.
+            </summary>
+        </member>
+        <member name="P:Balder.Display.Viewport.Width">
+            <summary>
+            Get or set the width in pixels of the viewport within the display
+            </summary>
+        </member>
+        <member name="P:Balder.Display.Viewport.Height">
+            <summary>
+            Get or set the height in pixels of the viewport within the display
+            </summary>
+        </member>
+        <member name="P:Balder.Display.Viewport.Scene">
+            <summary>
+            Get or set the scene to use during rendering
+            </summary>
+        </member>
+        <member name="P:Balder.Display.Viewport.View">
+            <summary>
+            Get or set the view to be used during rendering
+            </summary>
+        </member>
+        <member name="P:Balder.Display.Viewport.DebugInfo">
+            <summary>
+            Get or set the debug info for the Viewport
+            </summary>
+        </member>
+        <member name="P:Balder.Display.Viewport.Display">
+            <summary>
+            Get the display in which the viewport is rendered to
+            </summary>
+        </member>
+        <member name="P:Balder.Display.Viewport.Skybox">
+            <summary>
+            Get or set the Skybox for the display
+            </summary>
+        </member>
+        <member name="P:Balder.Display.Viewport.AspectRatio">
+            <summary>
+            Get the aspect ratio for the viewport
+            </summary>
+        </member>
+        <member name="F:Balder.ColorSpace.BytePositions">
+            <summary>
+            Gets or sets wether or not the position of the components are in bytes 
+            or in bits within the depth of the colorspace.
+            
+            The depth would typically be a dword/long word (32 bits) for 32 bits per pixel or a word for 15/16 bits per
+            pixel
+            </summary>
+        </member>
+        <member name="T:Balder.Execution.MessengerContext">
+            <summary>
+            Represents a context for the messenger in which one can publish and subscribe
+            to messages from
+            </summary>
+        </member>
+        <member name="M:Balder.Execution.MessengerContext.#ctor">
+            <summary>
+            Creates a messenger context
+            </summary>
+        </member>
+        <member name="M:Balder.Execution.MessengerContext.SubscriptionsFor``1">
+            <summary>
+            Get subscriptions for a specific message type
+            </summary>
+            <typeparam name="T">MessageType to get for</typeparam>
+            <returns>Subscriptions</returns>
+        </member>
+        <member name="M:Balder.Execution.MessengerContext.Send``1(``0)">
+            <summary>
+            Send a message to subscribers of a specific message type
+            </summary>
+            <typeparam name="T">Type of message to send - inferred from parameter</typeparam>
+            <param name="message">Message to send</param>
+        </member>
+        <member name="T:Balder.Rendering.PassiveRenderingMode">
+            <summary>
+            Rendering mode for a display
+            </summary>
+        </member>
+        <member name="F:Balder.Rendering.PassiveRenderingMode.FullDetail">
+            <summary>
+            Renders full detail when in passive mode and display is signaled to render
+            </summary>
+        </member>
+        <member name="F:Balder.Rendering.PassiveRenderingMode.Wireframe">
+            <summary>
+            Renders all objects in wireframe when in passive mode and display is signaled to render
+            </summary>
+        </member>
+        <member name="F:Balder.Rendering.PassiveRenderingMode.BoundingBox">
+            <summary>
+            Renders all objects as bounding-boxes when in passive mode and display is signaled to render
+            </summary>
+        </member>
+        <member name="T:Balder.Assets.AssetLoaders.Demoniak3DLoader">
+            <summary>
+            Notes:
+            3dsmax plugin can be found at: http://www.ozone3d.net/wak/
+            </summary>
+        </member>
+        <member name="T:Balder.Execution.StatePhase">
+            <summary>
+            Represents the different phases of statechanging
+            </summary>
+            <remarks>
+            A state has different phases : 
+            
+            Enter - Occurs before a State goes into run phase. This phase runs only once
+            Run - Running phase of a state - occurs until a statechange has been issued
+            Leave - Occurs after a running state has changed the state of a statemachine. This phase runs only once.
+            </remarks>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Balder.Execution.StateMachine`1" -->
+        <member name="M:Balder.Execution.StateMachine`1.ChangeState(`0)">
+            <summary>
+            Changes states and handles the different state phases
+            </summary>
+            <param name="nextState">State to change to</param>
+        </member>
+        <member name="M:Balder.Execution.StateMachine`1.Execute">
+            <summary>
+            Execute statemachine
+            </summary>
+        </member>
+        <member name="P:Balder.Execution.StateMachine`1.PreviousState">
+            <summary>
+            Gets the previous state
+            </summary>
+        </member>
+        <member name="P:Balder.Execution.StateMachine`1.CurrentState">
+            <summary>
+            Gets the current state
+            </summary>
+        </member>
+        <member name="P:Balder.Execution.StateMachine`1.NextState">
+            <summary>
+            Gets the next state
+            </summary>
+        </member>
+        <member name="P:Balder.Execution.StateMachine`1.DefaultState">
+            <summary>
+            Gets the Default state for the statemachine
+            </summary>
+        </member>
+        <member name="T:Balder.Execution.MessageSubscriptions`1">
+            <summary>
+            Represents all subscriptions for a message type
+            </summary>
+            <typeparam name="T">Type of message it holds subscriptions for</typeparam>
+        </member>
+        <member name="M:Balder.Execution.MessageSubscriptions`1.#ctor">
+            <summary>
+            Creates a message subscriptions container
+            </summary>
+        </member>
+        <member name="M:Balder.Execution.MessageSubscriptions`1.AddListener(System.Object,System.Action{`0})">
+            <summary>
+            Add a listener to the subscriptions
+            </summary>
+            <param name="target">Target object action belongs to</param>
+            <param name="listener">Action to call when subsriptions are notified</param>
+        </member>
+        <member name="M:Balder.Execution.MessageSubscriptions`1.RemoveListener(System.Object,System.Action{`0})">
+            <summary>
+            Removes a listener from the subscriptions
+            </summary>
+            <param name="target">Target object action belongs to</param>
+            <param name="listener">Action to remove</param>
+        </member>
+        <member name="M:Balder.Execution.MessageSubscriptions`1.Notify(`0)">
+            <summary>
+            Notify to the subscriptions with a specific message
+            </summary>
+            <param name="message">Message to notify with</param>
+        </member>
+        <member name="T:Balder.Execution.ActorState">
+            <summary>
+            State of an actor
+            </summary>
+        </member>
+    </members>
+</doc>

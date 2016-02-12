@@ -1,0 +1,10 @@
+I:\github\slartoolkit\trunk\SLARToolKit\Source\SLARToolKit\Bin\Debug\SLARToolKit.XML
+I:\github\slartoolkit\trunk\SLARToolKit\Source\SLARToolKit\Bin\Debug\SLARToolKit.dll
+I:\github\slartoolkit\trunk\SLARToolKit\Source\SLARToolKit\Bin\Debug\SLARToolKit.pdb
+I:\github\slartoolkit\trunk\SLARToolKit\Source\SLARToolKit\Bin\Debug\Matrix3DEx.dll
+I:\github\slartoolkit\trunk\SLARToolKit\Source\SLARToolKit\Bin\Debug\Matrix3DEx.pdb
+I:\github\slartoolkit\trunk\SLARToolKit\Source\SLARToolKit\Bin\Debug\Matrix3DEx.xml
+I:\github\slartoolkit\trunk\SLARToolKit\Source\SLARToolKit\obj\Debug\SLARToolKit.csprojResolveAssemblyReference.cache
+I:\github\slartoolkit\trunk\SLARToolKit\Source\SLARToolKit\obj\Debug\SLARToolKit.g.resources
+I:\github\slartoolkit\trunk\SLARToolKit\Source\SLARToolKit\obj\Debug\SLARToolKit.dll
+I:\github\slartoolkit\trunk\SLARToolKit\Source\SLARToolKit\obj\Debug\SLARToolKit.pdb

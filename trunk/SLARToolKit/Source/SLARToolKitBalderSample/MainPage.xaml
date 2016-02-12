@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="SLARToolKitBalderSample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:execution="clr-namespace:Balder.Execution;assembly=Balder"
+	xmlns:geometries="clr-namespace:Balder.Objects.Geometries;assembly=Balder"
+	xmlns:lighting="clr-namespace:Balder.Lighting;assembly=Balder"
+    xmlns:materials="clr-namespace:Balder.Materials;assembly=Balder"
+    xmlns:slar="clr-namespace:SLARToolKitBalderSample"
+    mc:Ignorable="d"
+	Loaded="UserControl_Loaded">
+
+    <Grid x:Name="LayoutRoot" Background="Black" >
+        <StackPanel Width="640" Height="550">
+            <TextBlock FontSize="12" Text="SLARToolkit - Silverlight 4 Augmented Reality Balder 3D Demo" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+            <StackPanel Orientation="Horizontal">
+                <Grid Name="ViewportContainer" Width="640" Height="480" >
+                    <Grid Name="VideoContainer" RenderTransformOrigin="0.5,0.5" >
+                        <Rectangle Name="Video"/>
+                        <Image Name="ViewportOverlay"/>
+                    </Grid>
+
+                    <execution:Game x:Name="Game" Width="640" Height="480" Background="Transparent" RenderTransformOrigin="0.5,0.5" >
+                        <lighting:OmniLight Name="Light1" Diffuse="Gray" Position="5,5,5"/>
+                        <lighting:OmniLight Name="Light2" Diffuse="Gray" Position="-5,5,-5"/>
+
+                        <geometries:Mesh x:Name="Car" AssetName="/SLARToolKitBalderSample;component/data/Assets/Car.ase" />
+                        <geometries:Mesh x:Name="Tank" AssetName="/SLARToolKitBalderSample;component/data/Assets/Tank.ase" >
+                            <geometries:Mesh.Material>
+                                <materials:Material Diffuse="Green" Shade="Gouraud" />
+                            </geometries:Mesh.Material>
+                        </geometries:Mesh>
+                        <geometries:Mesh x:Name="CubeRounded" AssetName="/SLARToolKitBalderSample;component/data/Assets/CubeRounded.ase" >
+                            <geometries:Mesh.Material>
+                                <materials:Material  ReflectionMap="/SLARToolKitBalderSample;component/data/Assets/ReflectionMap.jpg" />
+                            </geometries:Mesh.Material>
+                        </geometries:Mesh>
+                        <geometries:Mesh x:Name="Teapot" AssetName="/SLARToolKitBalderSample;component/data/Assets/Teapot.ase" >
+                            <geometries:Mesh.Material>
+                                <materials:Material x:Name="TeapotMaterial" ReflectionMap="/SLARToolKitBalderSample;component/data/Assets/ReflectionMap.jpg" />
+                            </geometries:Mesh.Material>
+                        </geometries:Mesh>
+
+                        <execution:Game.Camera>
+                            <slar:Camera x:Name="Camera" Position="0,0,400" Target="0,0,1"/>
+                        </execution:Game.Camera>
+
+                        <execution:Game.RenderTransform>
+                            <ScaleTransform ScaleX="-1" ScaleY="1" />
+                        </execution:Game.RenderTransform>
+                    </execution:Game>
+
+                </Grid>
+            </StackPanel>
+            <TextBlock Name="Txt" Text="FPS" Width="120" Style="{StaticResource TextBlockStyle}" TextAlignment="Center" VerticalAlignment="Center" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Name="BtnCapture" Content="Start Fun" Width="100" Click="BtnCapture_Click" />
+                <ComboBox Name="Combo" Width="100" SelectionChanged="Combo_SelectionChanged" Margin="20,0" >
+                    <ComboBox.Items>
+                        <ComboBoxItem Content="Car" IsSelected="True" />
+                        <ComboBoxItem Content="Tank" />
+                        <ComboBoxItem Content="CubeRounded" />
+                        <ComboBoxItem Content="Teapot" />
+                    </ComboBox.Items>
+                </ComboBox>
+                <CheckBox Name="ChkFlip" IsChecked="False" Content="Flip x-axis" Checked="ChkFlip_Checked" Unchecked="ChkFlip_Unchecked" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+                <CheckBox IsChecked="False" Content="Full Screen" Checked="ChkFullscreen_Checked" Unchecked="ChkFullscreen_Unchecked" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

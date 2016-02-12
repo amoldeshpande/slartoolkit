@@ -1,0 +1,10 @@
+﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             x:Class="SLARToolKitSample.App"
+             >
+    <Application.Resources>
+      <Style TargetType="TextBlock" x:Key="TextBlockStyle">
+         <Setter Property="Foreground" Value="#FFFFFFFF"/>
+      </Style>
+    </Application.Resources>
+</Application>

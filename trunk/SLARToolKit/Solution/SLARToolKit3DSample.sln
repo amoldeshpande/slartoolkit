@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLARToolKit3DSample", "..\Source\SLARToolKit3DSample\SLARToolKit3DSample.csproj", "{23B8B131-790A-434D-8D89-6E384793715A}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SLARToolKit3DSample.Web", "..\Source\SLARToolKit3DSample.Web\", "{440AABD3-C7A7-4C83-A900-28E0B84CACAC}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/SLARToolKit3DSample.Web"
+		Debug.AspNetCompiler.PhysicalPath = "..\Source\SLARToolKit3DSample.Web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\SLARToolKit3DSample.Web\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/SLARToolKit3DSample.Web"
+		Release.AspNetCompiler.PhysicalPath = "..\Source\SLARToolKit3DSample.Web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\SLARToolKit3DSample.Web\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "3514"
+		DefaultWebSiteLanguage = "Visual C#"
+		ProjOutputReferences = "{23B8B131-790A-434D-8D89-6E384793715A}|ClientBin|false;"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLARToolKitSL5", "..\Source\SLARToolKit\SLARToolKitSL5.csproj", "{0DB102D4-9D03-408A-BDB3-35D1DD0CB25A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23B8B131-790A-434D-8D89-6E384793715A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23B8B131-790A-434D-8D89-6E384793715A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23B8B131-790A-434D-8D89-6E384793715A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23B8B131-790A-434D-8D89-6E384793715A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{440AABD3-C7A7-4C83-A900-28E0B84CACAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{440AABD3-C7A7-4C83-A900-28E0B84CACAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{440AABD3-C7A7-4C83-A900-28E0B84CACAC}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{440AABD3-C7A7-4C83-A900-28E0B84CACAC}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{0DB102D4-9D03-408A-BDB3-35D1DD0CB25A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DB102D4-9D03-408A-BDB3-35D1DD0CB25A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DB102D4-9D03-408A-BDB3-35D1DD0CB25A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DB102D4-9D03-408A-BDB3-35D1DD0CB25A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

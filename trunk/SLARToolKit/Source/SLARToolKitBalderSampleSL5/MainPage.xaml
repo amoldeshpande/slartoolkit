@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="SLARToolKitBalderSampleSL5.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:SLARToolKitBalderSampleSL5" xmlns:Execution="clr-namespace:Balder.Execution;assembly=Balder" xmlns:Lighting="clr-namespace:Balder.Lighting;assembly=Balder" xmlns:Geometries="clr-namespace:Balder.Objects.Geometries;assembly=Balder" xmlns:View="clr-namespace:Balder.View;assembly=Balder" mc:Ignorable="d"
+    d:DesignHeight="576" d:DesignWidth="720"    
+    Loaded="UserControlLoaded">
+
+    <Grid x:Name="LayoutRoot" Background="Black">
+        <StackPanel Width="640" Height="720">
+            <TextBlock FontSize="12" Text="SLARToolkit - Silverlight 5 3D Balder Augmented Reality Demo" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+            <StackPanel>
+                <Grid Name="ViewportContainer" Width="640" Height="480" RenderTransformOrigin="0.5,0.5" >
+                    <Rectangle Name="Viewport" Stroke="Black" StrokeThickness="2" />
+                    <Image Name="ViewportOverlay"/>
+                    <local:SlarGame x:Name="Game" Width="640" Height="480" RenderTransformOrigin="0.5,0.5" >
+                        <Execution:Game.Camera>
+                            <View:Camera x:Name="Camera" Position="0,200,400" Target="0,0,1" FieldOfView="21" />
+                        </Execution:Game.Camera>
+                        <Lighting:OmniLight Position="-100,50,0" Diffuse="White" />
+                        <local:SlarGame.RenderTransform>
+                            <ScaleTransform ScaleX="-1" ScaleY="1" />
+                        </local:SlarGame.RenderTransform>
+
+                    </local:SlarGame>
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5,10">
+                <Button Name="BtnCapture" Content="Start Cam" Width="70" Click="BtnCaptureClick" Margin="0,0,10,0"/>
+                <CheckBox Name="ChkFlip" IsChecked="False" Content="Flip X-axis" Checked="ChkFlipChecked" Unchecked="ChkFlipUnchecked" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+                <CheckBox IsChecked="False" Content="Full Screen" Checked="ChkFullscreenChecked" Unchecked="ChkFullscreenUnchecked" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+            </StackPanel>
+            <Grid Name="ArCtrls">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Text="Particles" Style="{StaticResource TextBlockStyle}" />
+                <TextBlock Grid.Column="1" Text="Velocity" Style="{StaticResource TextBlockStyle}" />
+                <TextBlock Grid.Column="2" Text="Frequency" Style="{StaticResource TextBlockStyle}" />
+                <TextBlock Grid.Column="3" Text="Angle" Style="{StaticResource TextBlockStyle}" />
+                <Slider Grid.Column="0" Grid.Row="1" Value="{Binding ParticleSystem.MaxParticles, ElementName=Game, Mode=TwoWay}"  Minimum="10" Maximum="1000" />
+                <Slider Grid.Column="1" Grid.Row="1" Value="{Binding ParticleSystem.Velocity, ElementName=Game, Mode=TwoWay}" Minimum="20" Maximum="200" />
+                <Slider Grid.Column="2" Grid.Row="1" Value="{Binding ParticleSystem.Frequency, ElementName=Game, Mode=TwoWay}" Minimum="0" Maximum="10" />
+                <Slider Grid.Column="3" Grid.Row="1" Value="{Binding ParticleSystem.Angle, ElementName=Game, Mode=TwoWay}" Minimum="0" Maximum="90" />
+                <!--<CheckBox Grid.Column="3" Grid.Row="1" Name="ChkGlass" Content="Glass" Foreground="White" IsChecked="False" />-->
+            </Grid >
+
+        </StackPanel>
+    </Grid>
+</UserControl>

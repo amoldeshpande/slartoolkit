@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="SLARToolKit3DSample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="576" d:DesignWidth="720"    
+    Loaded="UserControlLoaded">
+
+    <Grid x:Name="LayoutRoot" Background="Black">
+        <StackPanel Width="640" Height="576">
+            <TextBlock FontSize="12" Text="SLARToolkit - Silverlight 5 3D Augmented Reality Demo" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+            <StackPanel>
+                <Grid Name="ViewportContainer" Width="640" Height="480" RenderTransformOrigin="0.5,0.5" >
+                    <Rectangle Name="Viewport" Stroke="Black" StrokeThickness="2" />
+                    <Image Name="ViewportOverlay"/>
+                    <Canvas Name="CanvasElements" >
+                        <TextBox Name="TxtEarth" Text="Earth" TextAlignment="Center" VerticalAlignment="Center"  Visibility="Collapsed" />
+                        <TextBox Name="TxtSun" Text="Sun" TextAlignment="Center" VerticalAlignment="Center"  Visibility="Collapsed" />
+                    </Canvas>
+                    <DrawingSurface x:Name="ds" Loaded="DrawingSurfaceLoaded" Draw="DrawingSurfaceDraw" SizeChanged="DrawingSurfaceSizeChanged" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5,10">
+                <Button Name="BtnCapture" Content="Start Fun" Width="70" Click="BtnCaptureClick" Margin="0,0,10,0"/>
+                <CheckBox Name="ChkFlip" IsChecked="False" Content="Flip X-axis" Checked="ChkFlipChecked" Unchecked="ChkFlipUnchecked" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+                <CheckBox IsChecked="False" Content="Full Screen" Checked="ChkFullscreenChecked" Unchecked="ChkFullscreenUnchecked" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+                <CheckBox IsChecked="False" Content="Wireframe" Checked="ChkWireframeChecked" Unchecked="ChkWireframeUnchecked" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+                <TextBlock Name="Txt" Style="{StaticResource TextBlockStyle}" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
+            </StackPanel>
+            <Grid Name="ArCtrls" Visibility="Collapsed">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Text="Scale Earth" Style="{StaticResource TextBlockStyle}" />
+                <TextBlock Grid.Column="1" Text="Scale Moon" Style="{StaticResource TextBlockStyle}" />
+                <TextBlock Grid.Column="2" Text="Scale Sun" Style="{StaticResource TextBlockStyle}" />
+                <Slider Grid.Column="0" Grid.Row="1" Value="{Binding Earth.Scale, Mode=TwoWay}" Minimum="50" Maximum="600" />
+                <Slider Grid.Column="1" Grid.Row="1" Value="{Binding Earth.Moon.Scale, Mode=TwoWay}" Minimum="1" Maximum="20" />
+                <Slider Grid.Column="2" Grid.Row="1" Value="{Binding Sun.Scale, Mode=TwoWay}" Minimum="50" Maximum="600" />
+                <CheckBox Grid.Column="3" Grid.Row="1" Name="ChkGlass" Content="Glass" Foreground="White" IsChecked="False" />
+            </Grid >
+
+        </StackPanel>
+    </Grid>
+</UserControl>
