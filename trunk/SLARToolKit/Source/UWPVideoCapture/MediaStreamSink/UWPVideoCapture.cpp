@@ -44,10 +44,7 @@ namespace UWPVideoCapture
 
 	}
 	IAsyncOperation<bool>^ UWPVideoCaptureHelper::Start(MediaCaptureInitializationSettings^ settings,int width, int height, int port)
-	{
-		//auto settings = ref new MediaCaptureInitializationSettings();
-		//settings->StreamingCaptureMode = StreamingCaptureMode::Video; // Video-only capture
-		//settings->VideoDeviceId = idStr;
+	{	
 		m_width = width;
 		m_height = height;
 		m_capture = ref new MediaCapture();
@@ -72,7 +69,6 @@ namespace UWPVideoCapture
 					result = (m_grabber != nullptr);
 					if (result)
 					{
-						::OutputDebugStringA("result tru\r\n");
 						if (!m_socketClient->Connect(port))
 						{
 							result = false;
@@ -92,5 +88,14 @@ namespace UWPVideoCapture
 		m_stop = true;
 		auto t= m_grabber->FinishAsync();
 		t.wait();
-	}	
+	}
+	static  GUID  RotationKey = { 0xC380465D , 0x2271,0x428C,{0x9B,0x83,0xEC,0xEA,0x3B,0x4A,0x85,0xC1 } };
+	void UWPVideoCaptureHelper::Rotate(int rotAngle)
+	{
+		if (m_capture != nullptr)
+		{
+			auto props = m_capture->VideoDeviceController->GetMediaStreamProperties(MediaStreamType::VideoPreview);
+			props->Properties->Insert(RotationKey, rotAngle);
+		}
+	}
 }

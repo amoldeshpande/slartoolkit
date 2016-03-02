@@ -21,7 +21,7 @@ namespace UWPVideoCapture
 		Windows::Foundation::IAsyncOperation<bool>^ Start(Windows::Media::Capture::MediaCaptureInitializationSettings^ settings, int width, int height, int port);
 		void GetFrame();
 		void Stop();
-
+		void Rotate(int rotAngle);
 
 	private:
 

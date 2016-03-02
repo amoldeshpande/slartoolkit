@@ -6,10 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using UWPVideoCapture;
 using Windows.Devices.Enumeration;
+using Windows.Graphics.Display;
 using Windows.Media.Capture;
 using Windows.Networking;
 using Windows.Networking.Sockets;
 using Windows.Storage.Streams;
+using Windows.System.Display;
 
 namespace SLARToolKit
 {
@@ -19,7 +21,11 @@ namespace SLARToolKit
         private long frameCounter;
         private UWPVideoCaptureHelper uwpCapture;
         private StreamSocketListener listener = new StreamSocketListener();
-        
+        private DisplayRequest displayRequest = new DisplayRequest();
+        private DisplayInformation displayInformation = DisplayInformation.GetForCurrentView();
+        private DisplayOrientations displayOrientation = DisplayOrientations.Landscape;
+        bool capturing = false;
+
         /// <summary>
         /// If true, the detection will be called multi-threaded.
         /// </summary>
@@ -33,6 +39,24 @@ namespace SLARToolKit
         {
             this.detector = detector;
             listener.ConnectionReceived += Listener_ConnectionReceived;
+            displayOrientation = displayInformation.CurrentOrientation;
+            displayInformation.OrientationChanged += DisplayInformation_OrientationChanged;
+        }
+
+        private void DisplayInformation_OrientationChanged(DisplayInformation sender, Object args)
+        {
+            displayOrientation = sender.CurrentOrientation;
+            if(capturing)
+            {
+                setPreviewRotation();
+            }
+        }
+
+        private void setPreviewRotation()
+        {
+            // Calculate which way and how far to rotate the preview
+            int rotationDegrees = ConvertDisplayOrientationToDegrees(displayOrientation);
+            uwpCapture.Rotate(rotationDegrees);
         }
 
         public async Task<bool> Start(Panel panel, int width,int height, int frameRate)
@@ -46,6 +70,8 @@ namespace SLARToolKit
                 {
                     return false;
                 }
+                displayRequest.RequestActive();
+                capturing = true;
                return  await uwpCapture.Start(mediaInitSettings, width, height, port);
             }
             catch(Exception ex)
@@ -131,6 +157,8 @@ namespace SLARToolKit
         /// </summary>
         protected  void OnCaptureStopped()
         {
+            displayRequest.RequestRelease();
+            capturing = false;
         }
         
         /// <summary>
@@ -192,8 +220,7 @@ namespace SLARToolKit
                     uint sizeFieldCount = await reader.LoadAsync(sizeof(uint));
                     if (sizeFieldCount != sizeof(uint))
                     {
-                        OnCaptureStopped();
-                        return;
+                        throw new ArgumentException("bad data from capture socket");
                     }
                     int actualLength = reader.ReadInt32();
                     byte[] data = new byte[actualLength];
@@ -202,11 +229,31 @@ namespace SLARToolKit
                     OnSample(data);
                 }
             }
-            catch 
+            finally
             {
+                uwpCapture.Stop();
                 OnCaptureStopped();
             }
         }
-
+        /// <summary>
+        /// Converts the given orientation of the app on the screen to the corresponding rotation in degrees
+        /// </summary>
+        /// <param name="orientation">The orientation of the app on the screen</param>
+        /// <returns>An orientation in degrees</returns>
+        private static int ConvertDisplayOrientationToDegrees(DisplayOrientations orientation)
+        {
+            switch (orientation)
+            {
+                case DisplayOrientations.Portrait:
+                    return 90;
+                case DisplayOrientations.LandscapeFlipped:
+                    return 180;
+                case DisplayOrientations.PortraitFlipped:
+                    return 270;
+                case DisplayOrientations.Landscape:
+                default:
+                    return 0;
+            }
+        }
     }
 }

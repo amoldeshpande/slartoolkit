@@ -86,12 +86,7 @@ namespace UWPBeginnersGuide
         {
             try
             {
-                // Request webcam access and start the capturing
-                if (CaptureDeviceConfiguration.RequestDeviceAccess())
-                {
-                    arDetector.Start();
-                    await InitializeDetector();
-                }
+                await InitializeDetector();                
             }
             catch
             {

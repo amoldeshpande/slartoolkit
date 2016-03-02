@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Media.Imaging;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using System.Linq;
+using Windows.System.Display;
+using Windows.Graphics.Display;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,11 +27,53 @@ namespace MediaStreamSinkTest
     public sealed partial class MainPage : Page
     {
         UWPVideoCaptureHelper capture;
+        private DisplayRequest displayRequest = new DisplayRequest();
+        private DisplayInformation displayInformation = DisplayInformation.GetForCurrentView();
+        private DisplayOrientations displayOrientation = DisplayOrientations.Landscape;
+        bool capturing = false;
+
         public MainPage()
         {
             this.InitializeComponent();
+            displayOrientation = displayInformation.CurrentOrientation;
+            displayInformation.OrientationChanged += DisplayInformation_OrientationChanged;
         }
 
+        private void DisplayInformation_OrientationChanged(DisplayInformation sender, Object args)
+        {
+            displayOrientation = sender.CurrentOrientation;
+            if (capturing)
+            {
+                setPreviewRotation();
+            }
+        }
+
+        private void setPreviewRotation()
+        {
+            // Calculate which way and how far to rotate the preview
+            int rotationDegrees = ConvertDisplayOrientationToDegrees(displayOrientation);
+            capture.Rotate(rotationDegrees);
+        }
+        /// <summary>
+        /// Converts the given orientation of the app on the screen to the corresponding rotation in degrees
+        /// </summary>
+        /// <param name="orientation">The orientation of the app on the screen</param>
+        /// <returns>An orientation in degrees</returns>
+        private static int ConvertDisplayOrientationToDegrees(DisplayOrientations orientation)
+        {
+            switch (orientation)
+            {
+                case DisplayOrientations.Portrait:
+                    return 90;
+                case DisplayOrientations.LandscapeFlipped:
+                    return 180;
+                case DisplayOrientations.PortraitFlipped:
+                    return 270;
+                case DisplayOrientations.Landscape:
+                default:
+                    return 0;
+            }
+        }
         private async void StartButton_Click(Object sender, RoutedEventArgs e)
         {
             String devId = String.Empty;
@@ -55,7 +99,7 @@ namespace MediaStreamSinkTest
                                                                                                  (int)Preview.Height, 
                                                                                                  30);
                 await listener.BindEndpointAsync(new HostName("127.0.0.1"), "25");
-
+                capturing = true;
                 bool result = await capture.Start(settings,(int)Preview.Width,(int)Preview.Height, 25);
                 System.Diagnostics.Debug.WriteLine("Capture start returned " + result);                
             }
