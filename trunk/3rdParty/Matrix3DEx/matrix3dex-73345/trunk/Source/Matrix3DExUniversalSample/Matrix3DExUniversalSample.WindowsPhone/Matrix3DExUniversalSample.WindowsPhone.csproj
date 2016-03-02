@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A92DC064-CA1F-41D4-A35A-9DD1D98EFCE2}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Matrix3DExUniversalSample</RootNamespace>
+    <AssemblyName>Matrix3DExUniversalSample.WindowsPhone</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{76F1466A-8B6D-4E39-A767-685A06062A39};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SynthesizeLinkMetadata>true</SynthesizeLinkMetadata>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\0.jpg">
+      <Link>Pics\0.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\1.jpg">
+      <Link>Pics\1.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\10.jpg">
+      <Link>Pics\10.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\11.jpg">
+      <Link>Pics\11.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\12.jpg">
+      <Link>Pics\12.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\13.jpg">
+      <Link>Pics\13.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\14.jpg">
+      <Link>Pics\14.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\15.jpg">
+      <Link>Pics\15.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\16.jpg">
+      <Link>Pics\16.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\17.jpg">
+      <Link>Pics\17.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\18.jpg">
+      <Link>Pics\18.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\19.jpg">
+      <Link>Pics\19.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\2.jpg">
+      <Link>Pics\2.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\20.jpg">
+      <Link>Pics\20.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\21.jpg">
+      <Link>Pics\21.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\22.jpg">
+      <Link>Pics\22.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\23.jpg">
+      <Link>Pics\23.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\24.jpg">
+      <Link>Pics\24.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\25.jpg">
+      <Link>Pics\25.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\26.jpg">
+      <Link>Pics\26.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\27.jpg">
+      <Link>Pics\27.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\28.jpg">
+      <Link>Pics\28.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\29.jpg">
+      <Link>Pics\29.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\3.jpg">
+      <Link>Pics\3.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\30.jpg">
+      <Link>Pics\30.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\31.jpg">
+      <Link>Pics\31.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\32.jpg">
+      <Link>Pics\32.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\33.jpg">
+      <Link>Pics\33.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\34.jpg">
+      <Link>Pics\34.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\35.jpg">
+      <Link>Pics\35.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\36.jpg">
+      <Link>Pics\36.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\37.jpg">
+      <Link>Pics\37.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\38.jpg">
+      <Link>Pics\38.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\39.jpg">
+      <Link>Pics\39.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\4.jpg">
+      <Link>Pics\4.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\40.jpg">
+      <Link>Pics\40.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\41.jpg">
+      <Link>Pics\41.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\42.jpg">
+      <Link>Pics\42.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\43.jpg">
+      <Link>Pics\43.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\44.jpg">
+      <Link>Pics\44.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\45.jpg">
+      <Link>Pics\45.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\46.jpg">
+      <Link>Pics\46.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\47.jpg">
+      <Link>Pics\47.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\48.jpg">
+      <Link>Pics\48.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\49.jpg">
+      <Link>Pics\49.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\5.jpg">
+      <Link>Pics\5.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\50.jpg">
+      <Link>Pics\50.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\51.jpg">
+      <Link>Pics\51.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\52.jpg">
+      <Link>Pics\52.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\53.jpg">
+      <Link>Pics\53.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\54.jpg">
+      <Link>Pics\54.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\55.jpg">
+      <Link>Pics\55.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\56.jpg">
+      <Link>Pics\56.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\57.jpg">
+      <Link>Pics\57.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\58.jpg">
+      <Link>Pics\58.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\59.jpg">
+      <Link>Pics\59.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\6.jpg">
+      <Link>Pics\6.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\60.jpg">
+      <Link>Pics\60.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\61.jpg">
+      <Link>Pics\61.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\62.jpg">
+      <Link>Pics\62.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\63.jpg">
+      <Link>Pics\63.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\64.jpg">
+      <Link>Pics\64.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\65.jpg">
+      <Link>Pics\65.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\66.jpg">
+      <Link>Pics\66.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\67.jpg">
+      <Link>Pics\67.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\68.jpg">
+      <Link>Pics\68.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\69.jpg">
+      <Link>Pics\69.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\7.jpg">
+      <Link>Pics\7.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\70.jpg">
+      <Link>Pics\70.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\71.jpg">
+      <Link>Pics\71.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\72.jpg">
+      <Link>Pics\72.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\73.jpg">
+      <Link>Pics\73.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\74.jpg">
+      <Link>Pics\74.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\75.jpg">
+      <Link>Pics\75.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\76.jpg">
+      <Link>Pics\76.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\77.jpg">
+      <Link>Pics\77.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\78.jpg">
+      <Link>Pics\78.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\79.jpg">
+      <Link>Pics\79.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\8.jpg">
+      <Link>Pics\8.jpg</Link>
+    </Content>
+    <Content Include="..\..\Matrix3DExSample.Web\ClientBin\Pics\9.jpg">
+      <Link>Pics\9.jpg</Link>
+    </Content>
+    <Content Include="Assets\Logo.scale-240.png" />
+    <Content Include="Assets\SmallLogo.scale-240.png" />
+    <Content Include="Assets\SplashScreen.scale-240.png" />
+    <Content Include="Assets\Square71x71Logo.scale-240.png" />
+    <Content Include="Assets\StoreLogo.scale-240.png" />
+    <Content Include="Assets\WideLogo.scale-240.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Matrix3DEx\Matrix3DExUniversal.csproj">
+      <Project>{c29e4a42-33bb-4ff0-91cf-64d803bb6dae}</Project>
+      <Name>Matrix3DExUniversal</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
+    <VisualStudioVersion>12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetPlatformIdentifier)' == '' ">
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+  </PropertyGroup>
+  <Import Project="..\Matrix3DExUniversalSample.Shared\Matrix3DExUniversalSample.Shared.projitems" Label="Shared" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using SLARToolKit;
-using Windows.Devices.Enumeration;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -64,26 +63,19 @@ namespace UWPBeginnersGuide
                     var dr = me.DetectionResults;
                     if (dr.HasResults)
                     {
-                        CompositeTransform3D transform = new CompositeTransform3D();
                         // Center at origin of the TextBlock
-                        transform.TranslateX = -Txt.ActualWidth * 0.5;
-                        transform.TranslateY = -Txt.ActualHeight * 0.5;
-                        transform.TranslateZ = 0;
+                        var centerAtOrigin = Matrix3DFactory.CreateTranslation(-Txt.ActualWidth * 0.5, -Txt.ActualHeight * 0.5, 0);
+                        // Swap the y-axis and scale down by half
+                        var scale = Matrix3DFactory.CreateScale(0.5, -0.5, 0.5);
+                        // Calculate the complete transformation matrix based on the first detection result
+                        var world = centerAtOrigin * scale * dr[0].Transformation;
 
-                        transform.ScaleX = 0.5;
-                        transform.ScaleY = -0.5;
-                        transform.ScaleZ = 0.5;
-                        
-                        //TODO
-                        //// Calculate the complete transformation matrix based on the first detection result
-                        //var world = centerAtOrigin * scale * dr[0].Transformation;
-
-                        //// Calculate the final transformation matrix by using the camera projection matrix 
-                        //var vp = Matrix3DFactory.CreateViewportTransformation(Viewport.ActualWidth, Viewport.ActualHeight);
-                        //var m = Matrix3DFactory.CreateViewportProjection(world, Matrix3D.Identity, arDetector.Projection, vp);
+                        // Calculate the final transformation matrix by using the camera projection matrix 
+                        var vp = Matrix3DFactory.CreateViewportTransformation(Viewport.ActualWidth, Viewport.ActualHeight);
+                        var m = Matrix3DFactory.CreateViewportProjection(world, Matrix3D.Identity, arDetector.Projection, vp);
 
                         // Apply the final transformation matrix to the TextBox
-                        //Txt.Projection = new Matrix3DProjection { ProjectionMatrix = m };
+                        Txt.Projection = new Matrix3DProjection { ProjectionMatrix = m };
                     }
                 });
             };
@@ -95,11 +87,11 @@ namespace UWPBeginnersGuide
             try
             {
                 // Request webcam access and start the capturing
-                //if (CaptureDeviceConfiguration.RequestDeviceAccess())
-                //{
-                //    arDetector.Start();
-                await InitializeDetector();
-                //}
+                if (CaptureDeviceConfiguration.RequestDeviceAccess())
+                {
+                    arDetector.Start();
+                    await InitializeDetector();
+                }
             }
             catch
             {

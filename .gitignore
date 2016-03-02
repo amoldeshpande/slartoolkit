@@ -8,3 +8,6 @@ trunk/SLARToolKit/Source/UWPVideoCapture/MediaStreamSinkTest/obj/
 trunk/SLARToolKit/Source/UWPVideoCapture/MediaStreamSinkTest/bin/
 trunk/SLARToolKit/Solution/ARM/
 *.ipch
+trunk/SLARToolKit/Source/UWPARToolkit/bin/
+trunk/SLARToolKit/Solution/Debug/
+*.opendb

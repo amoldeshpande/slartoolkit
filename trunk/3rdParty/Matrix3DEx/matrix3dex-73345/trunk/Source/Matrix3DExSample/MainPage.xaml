@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Matrix3DExSample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    Loaded="UserControl_Loaded">
+    <Grid x:Name="LayoutRoot" Background="Black" >
+        <StackPanel Width="700" Height="900">
+            <TextBlock FontSize="12" Text="Matrix3DEx - Matrix3D Extensions - Sample" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Stretch" CacheMode="BitmapCache" />
+            <StackPanel Orientation="Horizontal">
+                <Canvas Name="Viewport" Width="512" Height="512">
+                    <Canvas.Clip>
+                        <RectangleGeometry Rect="0,0,512,512" />
+                    </Canvas.Clip>
+                </Canvas>
+                <StackPanel>
+                    <TextBlock Text="Selected element" Style="{StaticResource TextBlockStyle}" TextAlignment="Left" HorizontalAlignment="Left" Width="180" CacheMode="BitmapCache" />
+                    <TextBlock Text="Translate XYZ" Style="{StaticResource TextBlockStyle}" TextAlignment="Left" HorizontalAlignment="Left" Width="180" Margin="0,2,0,0" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="-1000" Maximum="1000" Value="{Binding TranslateX, Mode=TwoWay}" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="-1000" Maximum="1000" Value="{Binding TranslateY, Mode=TwoWay}" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="-1000" Maximum="1000" Value="{Binding TranslateZ, Mode=TwoWay}" CacheMode="BitmapCache" />
+
+                    <TextBlock Text="Scale XYZ" Style="{StaticResource TextBlockStyle}" TextAlignment="Left" HorizontalAlignment="Left" Width="180" Margin="0,10,0,0" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="0" Maximum="10" Value="{Binding ScaleX, Mode=TwoWay}" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="0" Maximum="10" Value="{Binding ScaleY, Mode=TwoWay}" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="0" Maximum="10" Value="{Binding ScaleZ, Mode=TwoWay}" CacheMode="BitmapCache" />
+
+                    <TextBlock Text="Rotate XYZ" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Left" TextAlignment="Left" Width="180" Margin="0,10,0,0" CacheMode="BitmapCache"/>
+                    <Slider Width="180" Minimum="0" Maximum="360" Value="{Binding RotateX, Mode=TwoWay}" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="0" Maximum="360" Value="{Binding RotateY, Mode=TwoWay}" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="0" Maximum="360" Value="{Binding RotateZ, Mode=TwoWay}" CacheMode="BitmapCache" />
+
+                    <TextBlock Text="Projection" Style="{StaticResource TextBlockStyle}" TextAlignment="Left" HorizontalAlignment="Left" Width="180" Margin="0,20,0,0" CacheMode="BitmapCache" />
+                    <TextBlock Text="Camera position XYZ" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Left" TextAlignment="Left" Width="180" Margin="0,2,0,0" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="-4000" Maximum="4000" Value="{Binding CameraX, Mode=TwoWay}" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="-4000" Maximum="4000" Value="{Binding CameraY, Mode=TwoWay}" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="-7000" Maximum="0" Value="{Binding CameraZ, Mode=TwoWay}" CacheMode="BitmapCache" />
+                    <CheckBox Name="ChkAnimated" Content="Animate" IsChecked="True"  Foreground="#FFFFFFFF" CacheMode="BitmapCache" />
+
+                    <TextBlock Text="Camera look-at XYZ" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Left" TextAlignment="Left" Width="180" Margin="0,5,0,0" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="-1000" Maximum="1000" Value="{Binding CameraLookAtX, Mode=TwoWay}" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="-1000" Maximum="1000" Value="{Binding CameraLookAtY, Mode=TwoWay}" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="-1000" Maximum="1000" Value="{Binding CameraLookAtZ, Mode=TwoWay}" CacheMode="BitmapCache" />
+                    <CheckBox Name="ChkLookAtSelected" Content="Look-at selected" Foreground="#FFFFFFFF" CacheMode="BitmapCache" />
+
+                    <TextBlock Text="Field Of View" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Left" TextAlignment="Left" Width="180" Margin="0,10,0,0" CacheMode="BitmapCache" />
+                    <Slider Width="180" Minimum="0" Maximum="180" Value="{Binding FieldOfView, Mode=TwoWay}" CacheMode="BitmapCache" />
+                    <CheckBox Name="ChkPerspective" Content="Perspective projection" IsChecked="True" Foreground="#FFFFFFFF" CacheMode="BitmapCache" />
+
+                    <CheckBox Name="ChkGPUAccel" Content="GPU Acceleration" IsChecked="False" IsEnabled="False" Foreground="#FFFFFFFF" Checked="ChkGPUAccel_Checked" Unchecked="ChkGPUAccel_Unchecked" Margin="0,10,0,0" CacheMode="BitmapCache" />
+                    <CheckBox Name="ChkGPUVis" Content="Cache Visualization" IsChecked="False" IsEnabled="False" Foreground="#FFFFFFFF" Checked="ChkGPUVis_Checked" Unchecked="ChkGPUVis_Unchecked" CacheMode="BitmapCache" />
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Name="TxtTrace1" Style="{StaticResource TextBlockStyle}" TextAlignment="Left" Width="250" Margin="0,0,10,0" CacheMode="BitmapCache" />
+        </StackPanel>
+    </Grid>
+</UserControl>
