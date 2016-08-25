@@ -12,3 +12,6 @@ trunk/SLARToolKit/Solution/ARM/
 trunk/SLARToolKit/Source/UWPARToolkit/bin/
 trunk/SLARToolKit/Solution/Debug/
 *.opendb
+*.db
+trunk/SLARToolKit/Source/SLARToolKit/Bin/
+trunk/SLARToolKit/Source/SLARToolKit/obj/

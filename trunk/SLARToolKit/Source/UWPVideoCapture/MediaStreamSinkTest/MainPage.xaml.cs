@@ -76,20 +76,8 @@ namespace MediaStreamSinkTest
         }
         private async void StartButton_Click(Object sender, RoutedEventArgs e)
         {
-            String devId = String.Empty;
             StreamSocketListener listener = new StreamSocketListener();
             listener.ConnectionReceived += Listener_ConnectionReceived;
-
-            var dinfo = await DeviceInformation.FindAllAsync(DeviceClass.VideoCapture);
-            foreach(DeviceInformation di in dinfo)
-            {
-                devId = di.Id;
-            }
-            if(devId == String.Empty)
-            {
-                StartButton.Content = "Stop";
-                return;
-            }
             capture = new UWPVideoCaptureHelper();
             try
             {
